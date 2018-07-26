@@ -1,8 +1,11 @@
 import 'package:buddish_project/ui/main/main_container.dart';
 import 'package:buddish_project/ui/menu/menu_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_driver/driver_extension.dart';
 
-void main() => runApp(new MyApp());
+void main(){
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
