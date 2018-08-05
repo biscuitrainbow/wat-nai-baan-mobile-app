@@ -17,13 +17,25 @@ class UserRepository {
   static final String fieldGender = 'gender';
 
   Future<User> login(String email, String password) async {
-    final response = await http.post('${Environment.apiUrl}/login', body: {
-      fieldEmail: email,
-      fieldPassword: password,
-    });
+//    final response = await http.post('${Environment.apiUrl}/login', body: {
+//      fieldEmail: email,
+//      fieldPassword: password,
+//    });
+//
+//    final jsonResponse = json.decode(response.body);
+//
+//    final user = UserParser.parse(
+//      jsonResponse[ApiConstant.fieldData],
+//    );
 
-    final jsonResponse = json.decode(response.body);
-    final user = UserParser.parse(jsonResponse[ApiConstant.fieldData]);
+    var user = User(
+      id: 1,
+      email: 'user@gmail.com',
+      name: 'Natthapon Sricort',
+      gender: 'ชาย',
+      tel: '0920922721',
+      dateOfBirth: DateTime.now(),
+    );
 
     return user;
   }
