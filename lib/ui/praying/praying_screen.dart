@@ -1,25 +1,42 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/mantra.dart';
+import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayer/audioplayer.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 
 class PrayingScreen extends StatefulWidget {
   static final String route = "/praying";
+
+  final PrayingScreenViewModel viewModel;
+
+  PrayingScreen({
+    this.viewModel,
+  });
 
   @override
   _PrayingScreenState createState() => _PrayingScreenState();
 }
 
 class _PrayingScreenState extends State<PrayingScreen> {
-  final List<Mantra> mantras = [
-    Mantra(name: 'สวดมนต์ทำวัดเช้า', url: 'http://www.rxlabz.com/labz/audio2.mp3'),
-    Mantra(name: 'สวดมนต์ทำวัดเย็น', url: 'http://www.rxlabz.com/labz/audio2.mp3'),
-    Mantra(name: 'สวดมนต์ประจำวัน', url: 'http://www.rxlabz.com/labz/audio2.mp3'),
-    Mantra(name: 'สวดมนต์ก่อนนอน', url: 'http://www.rxlabz.com/labz/audio2.mp3'),
-    Mantra(name: 'สวดมนต์แผ่เมตตรา', url: 'http://www.rxlabz.com/labz/audio2.mp3'),
-  ];
-
   final AudioPlayer audioPlugin = new AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<File> copyLocalAsset(Directory localDir, String bundleDir, String assetName) async {
+    final data = await rootBundle.load('$bundleDir/$assetName');
+    final bytes = data.buffer.asUint8List();
+    final localAssetFile = File('${localDir.path}/$assetName');
+    await localAssetFile.writeAsBytes(bytes, flush: true);
+    return localAssetFile;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,28 +48,39 @@ class _PrayingScreenState extends State<PrayingScreen> {
           ),
           iconTheme: IconThemeData(color: AppColors.main),
         ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
-              child: Column(
-                children: mantras
-                    ?.map(
-                      (Mantra mantra) => MantraPlayer(
-                            title: mantra.name,
-                            titleColor: AppColors.main,
-                            backgroundColor: AppColors.secondary,
-                            isPlaying: true,
-                            onPressed: () async {
-                              await audioPlugin.play(mantra.url);
-                            },
-                          ),
-                    )
-                    ?.toList(),
-              ),
-            )
-          ],
-        ));
+        body: ListView.builder(
+            padding: EdgeInsets.symmetric(
+              vertical: Dimension.fieldVerticalMargin + 2,
+              horizontal: Dimension.screenHorizonPadding,
+            ),
+            itemCount: widget.viewModel.mantras.length,
+            itemBuilder: (BuildContext context, int index) {
+              var mantra = widget.viewModel.mantras[index];
+
+              return Container(
+                padding: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
+                child: MantraPlayer(
+                  title: mantra.name,
+                  titleColor: AppColors.main,
+                  backgroundColor: AppColors.secondary,
+                  isPlaying: mantra.isPlaying,
+                  onPressed: () async {
+                    if (!mantra.isPlaying) {
+                      final dir = await getApplicationDocumentsDirectory();
+                      final localAssetFile = await copyLocalAsset(dir, Asset.audioBundle, mantra.url);
+
+                      audioPlugin.play(localAssetFile.path, isLocal: true);
+
+                      widget.viewModel.onPlay(index);
+                      return;
+                    }
+
+                    audioPlugin.stop();
+                    widget.viewModel.onStop(index);
+                  },
+                ),
+              );
+            }));
   }
 }
 
@@ -86,17 +114,17 @@ class MantraPlayer extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: isPlaying ? Color(0xFFFCDE4C) : AppColors.main,
+              color: isPlaying ? AppColors.main : Color(0xFFFCDE4C),
               shape: BoxShape.circle,
             ),
             child: IconButton(
               icon: isPlaying
                   ? Icon(
-                      Icons.play_arrow,
+                      Icons.stop,
                       color: Colors.white,
                     )
                   : Icon(
-                      Icons.stop,
+                      Icons.play_arrow,
                       color: Colors.white,
                     ),
               onPressed: onPressed,

@@ -22,7 +22,6 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
 
   void _showLogin() {
     setState(() {
-      animationController.dispose();
       this.currentPage = LoginContainer();
     });
   }
@@ -32,6 +31,14 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
     super.initState();
 
     currentPage = SplashScreen();
+
+    animationController = new AnimationController(duration: Duration(seconds: 2), vsync: this)
+      ..forward()
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _showLogin();
+        }
+      });
   }
 
   @override
@@ -43,14 +50,6 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    animationController = new AnimationController(duration: Duration(seconds: 2), vsync: this)
-      ..forward()
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          _showLogin();
-        }
-      });
-
     return currentPage;
   }
 }

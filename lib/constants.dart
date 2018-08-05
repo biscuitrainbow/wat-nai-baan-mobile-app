@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 class Asset {
   static final String imageLoginBg = 'asset/img/login_bg.png';
+  static final String audioBundle = 'asset/audio';
+
+  static final String audio1 = '1.mp3';
+  static final String audio2 = '2.mp3';
+  static final String audio3 = '3.mp3';
+  static final String audio4 = '4.mp3';
+  static final String audio5 = '5.mp3';
 }
 
 class Dimension {

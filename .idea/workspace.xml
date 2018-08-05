@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e86e8d81-e654-4351-b3b7-7175e3c8acf7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/data/model/mantra.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/ui/praying/praying_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/redux/mantra/mantra_action.dart" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/redux/mantra/mantra_reducer.dart" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/ui/praying/praying_container.dart" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" />
       <change beforePath="$PROJECT_DIR$/lib/constants.dart" afterPath="$PROJECT_DIR$/lib/constants.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/data/model/mantra.dart" afterPath="$PROJECT_DIR$/lib/data/model/mantra.dart" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" afterPath="$PROJECT_DIR$/lib/main.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/menu/menu_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/menu/menu_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/sermon/sermon_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/sermon/sermon_screen.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/app/app_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/app/app_reducer.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/app/app_state.dart" afterPath="$PROJECT_DIR$/lib/redux/app/app_state.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/main/main_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/main/main_screen.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/praying/praying_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/praying/praying_screen.dart" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
     </list>
@@ -31,43 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="19" column="2" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="praying_screen.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/ui/praying/praying_screen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1197">
-              <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Info.plist" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ios/Runner/Info.plist">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="audioplayer.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/audioplayer-0.5.0/lib/audioplayer.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="365">
+              <caret line="75" column="21" lean-forward="true" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -75,22 +44,98 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constants.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/constants.dart">
+      <file leaf-file-name="main_screen.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/ui/main/main_screen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+            <state relative-caret-position="529">
+              <caret line="43" column="11" lean-forward="true" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu_screen.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/ui/menu/menu_screen.dart">
+      <file leaf-file-name="app_state.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/redux/app/app_state.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2562">
-              <caret line="158" column="29" lean-forward="false" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
+            <state relative-caret-position="67">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sermon_video_container.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/sermon_video/sermon_video_container.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="41" column="3" lean-forward="true" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login_container.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/login/login_container.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-126">
+              <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="praying_container.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/praying/praying_container.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="214">
+              <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mantra.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/data/model/mantra.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_reducer.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/redux/user/user_reducer.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mantra_action.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/redux/mantra/mantra_action.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mantra_reducer.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/redux/mantra/mantra_reducer.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,9 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/data/parser/user_parser.dart" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
-        <option value="$PROJECT_DIR$/test_driver/login_test.dart" />
         <option value="$PROJECT_DIR$/test_driver/login/login_it.dart" />
         <option value="$PROJECT_DIR$/test_driver/login/login_test.dart" />
         <option value="$PROJECT_DIR$/lib/ui/common/button.dart" />
@@ -144,14 +186,11 @@
         <option value="$PROJECT_DIR$/lib/ui/login/login_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/login/login_screen.dart" />
         <option value="$PROJECT_DIR$/lib/redux/ui/sermon_screen/sermon_screen.dart" />
-        <option value="$PROJECT_DIR$/lib/ui/main/main_screen.dart" />
         <option value="$PROJECT_DIR$/lib/data/repository/youtbe_repository.darty.dart" />
         <option value="$PROJECT_DIR$/lib/.env.dart" />
         <option value="$PROJECT_DIR$/lib/data/repository/youtbe_repository.dart" />
         <option value="$PROJECT_DIR$/lib/redux/ui/sermon_videos_screen.dart" />
         <option value="$PROJECT_DIR$/lib/redux/ui/sermon_videos_screen/sermon_video_action.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/app/app_state.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/app/app_reducer.dart" />
         <option value="$PROJECT_DIR$/lib/redux/sermon/sermon_action.dart" />
         <option value="$PROJECT_DIR$/lib/redux/store.dart" />
         <option value="$PROJECT_DIR$/lib/data/model/Video.dart" />
@@ -165,14 +204,20 @@
         <option value="$PROJECT_DIR$/lib/redux/video/video_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/ui/sermon_video/sermon_video_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/sermon_video/sermon_video_screen.dart" />
-        <option value="$PROJECT_DIR$/lib/constants.dart" />
-        <option value="$PROJECT_DIR$/lib/data/model/mantra.dart" />
         <option value="$PROJECT_DIR$/lib/ui/sermon/sermon_screen.dart" />
-        <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/ui/menu/menu_screen.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/lib/ui/praying/praying_screen.dart" />
         <option value="$PROJECT_DIR$/ios/Runner/Info.plist" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/constants.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/app/app_reducer.dart" />
+        <option value="$PROJECT_DIR$/lib/main.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/app/app_state.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/mantra/mantra_action.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/praying/praying_container.dart" />
+        <option value="$PROJECT_DIR$/lib/data/model/mantra.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/mantra/mantra_reducer.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/praying/praying_screen.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/main/main_screen.dart" />
       </list>
     </option>
   </component>
@@ -211,33 +256,6 @@
             <path>
               <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="asset" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="asset" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="ios" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="ios" type="462c0819:PsiDirectoryNode" />
-              <item name="Runner" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -257,20 +275,6 @@
               <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="parser" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="redux" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -285,28 +289,20 @@
               <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="redux" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="redux" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="sermon_videos_screen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="redux" type="462c0819:PsiDirectoryNode" />
-              <item name="video" type="462c0819:PsiDirectoryNode" />
+              <item name="mantra" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
@@ -321,6 +317,13 @@
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="sermon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="buddish_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="buddish_project" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="sermon_video" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -352,18 +355,19 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="menu&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/menu/menu_screen.dart&#10;sermon_scre&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermonv&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_screen.dart&#10;sermons&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;cons&#9;FILE&#9;file://D:/Code/buddish_project/lib/constants.dart&#10;sermonsc&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermon_&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermon_vi&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_screen.dart&#10;sermonscre&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermonvico&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_container.dart&#10;sermoncon&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_container.dart&#10;sermon&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;videmid&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/video/video_middleware.dart&#10;sermon_vide&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/ui/sermon_videos_screen/sermon_video_screen_state.dart&#10;sermonco&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_container.dart&#10;store&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/store.dart&#10;main.dart&#9;FILE&#9;file://D:/Code/buddish_project/lib/main.dart&#10;main_s&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/main/main_screen.dart&#10;consta&#9;FILE&#9;file://D:/Code/buddish_project/lib/constants.dart&#10;logins&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/login/login_screen.dart&#10;men&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/menu/menu_screen.dart&#10;logi&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/login/login_container.dart&#10;main&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/main/main_screen.dart&#10;appre&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/app/app_reducer.dart&#10;user_ac&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/user/user_action.dart&#10;loginac&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/ui/login_screen/login_screen_action.dart&#10;usermid&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/user/user_middleware.dart&#10;loginsta&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/ui/login_screen/login_screen_state.dart&#10;login_s&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/login/login_screen.dart" />
+    <property name="SearchEverywhereHistoryKey" value="mains&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/main/main_screen.dart&#10;main&#9;FILE&#9;file://D:/Code/buddish_project/lib/main.dart&#10;app_re&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/app/app_reducer.dart&#10;ass&#9;null&#9;null&#10;cons&#9;FILE&#9;file://D:/Code/buddish_project/lib/constants.dart&#10;menu&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/menu/menu_screen.dart&#10;sermon_scre&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermonv&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_screen.dart&#10;sermons&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermonsc&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermon_&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermon_vi&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_screen.dart&#10;sermonscre&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;sermonvico&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_container.dart&#10;sermoncon&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_container.dart&#10;sermon&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon/sermon_screen.dart&#10;videmid&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/video/video_middleware.dart&#10;sermon_vide&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/ui/sermon_videos_screen/sermon_video_screen_state.dart&#10;sermonco&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/sermon_video/sermon_video_container.dart&#10;store&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/store.dart&#10;main.dart&#9;FILE&#9;file://D:/Code/buddish_project/lib/main.dart&#10;main_s&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/main/main_screen.dart&#10;consta&#9;FILE&#9;file://D:/Code/buddish_project/lib/constants.dart&#10;logins&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/login/login_screen.dart&#10;men&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/menu/menu_screen.dart&#10;logi&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/login/login_container.dart&#10;appre&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/app/app_reducer.dart&#10;user_ac&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/user/user_action.dart&#10;loginac&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/ui/login_screen/login_screen_action.dart&#10;usermid&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/user/user_middleware.dart&#10;loginsta&#9;FILE&#9;file://D:/Code/buddish_project/lib/redux/ui/login_screen/login_screen_state.dart&#10;login_s&#9;FILE&#9;file://D:/Code/buddish_project/lib/ui/login/login_screen.dart" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\buddish_project\asset\audio" />
+      <recent name="D:\Code\buddish_project\lib\data" />
+      <recent name="D:\Code\buddish_project\lib\ui\common" />
+      <recent name="D:\Code\buddish_project\asset\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Code\buddish_project\lib\ui\splash_screen" />
       <recent name="D:\Code\buddish_project\test_driver\login" />
       <recent name="D:\Code\buddish_project\lib\redux\app" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Code\buddish_project\lib\data" />
-      <recent name="D:\Code\buddish_project\lib\ui\common" />
-      <recent name="D:\Code\buddish_project\asset\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -560,7 +564,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -580,7 +583,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -632,54 +635,19 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/data/loading_status.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/common/loading_content.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/common/loading_view.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="33" column="49" lean-forward="true" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../flutter/packages/flutter/lib/src/material/button.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="218" column="8" lean-forward="false" selection-start-line="218" selection-start-column="8" selection-end-line="218" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/data/repository/prefs_repository.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/redux/user/user_action.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
           <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#20#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -715,23 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/user/user_reducer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#54#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/main/main_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="33" column="28" lean-forward="false" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -783,24 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/app/app_state.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/app/app_reducer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#58#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/redux/user/user_middleware.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -809,26 +742,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/store.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/login/login_container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/login/login_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -944,14 +862,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/sermon_video/sermon_video_container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/data/model/sermon_category.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -978,30 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/data/model/mantra.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="39" column="49" lean-forward="true" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="19" column="2" lean-forward="false" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/menu/menu_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2562">
@@ -1010,38 +896,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/constants.dart">
+    <entry file="file://$PROJECT_DIR$/ios/Runner/Info.plist">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+        <state relative-caret-position="340">
+          <caret line="39" column="37" lean-forward="false" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flutter/packages/flutter/lib/src/services/platform_channel.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="270" column="18" lean-forward="false" selection-start-line="270" selection-start-column="18" selection-end-line="270" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/audioplayer-0.5.0/lib/audioplayer.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="407">
+          <caret line="46" column="27" lean-forward="false" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="27" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/praying/praying_screen.dart">
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1197">
-          <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+        <state relative-caret-position="294">
+          <caret line="41" column="9" lean-forward="false" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../flutter/packages/flutter/lib/src/widgets/framework.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="1705" column="24" lean-forward="false" selection-start-line="1705" selection-start-column="24" selection-end-line="1705" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/constants.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/store.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="25" column="8" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/app/app_reducer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="52" lean-forward="true" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#58#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="26" column="11" lean-forward="false" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/app/app_state.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ios/Runner/Info.plist">
+    <entry file="file://$PROJECT_DIR$/lib/ui/login/login_container.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+        <state relative-caret-position="-126">
+          <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/praying/praying_container.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/user/user_reducer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/mantra/mantra_action.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/data/model/mantra.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="6" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/mantra/mantra_reducer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/sermon_video/sermon_video_container.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="41" column="3" lean-forward="true" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/praying/praying_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="75" column="21" lean-forward="true" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/main/main_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="43" column="11" lean-forward="true" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
           <folding />
         </state>
       </provider>
