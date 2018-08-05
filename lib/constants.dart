@@ -13,6 +13,7 @@ class Dimension {
 
 class AppColors {
   static final Color main = Color.fromRGBO(163, 84, 60, 1.0);
+  static final Color secondary = Color(0xFFFCEA88);
   static final Color facebook = Color(0xFF4267B2);
 }
 

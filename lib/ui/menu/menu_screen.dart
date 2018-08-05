@@ -1,4 +1,5 @@
 import 'package:buddish_project/constants.dart';
+import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +74,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: 'สวดมนต์',
                 titleColor: Color(0xFFA23825),
                 backgroundColor: Color(0xFFF9A479),
-                onPressed: () => print(''),
+                onPressed: () => Navigator.of(context).pushNamed(PrayingScreen.route),
               ),
               new Menu(
                 title: 'สะสมบุญ 9 วัด',

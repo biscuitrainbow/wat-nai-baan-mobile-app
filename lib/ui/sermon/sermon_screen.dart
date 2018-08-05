@@ -27,8 +27,7 @@ class _SermonScreenState extends State<SermonScreen> {
     )
   ];
 
-  final Color titleColor = AppColors.main;
-  final Color backgroundColor = Color(0xFFFCEA88);
+
 
   void _showSermonVideos(SermonCategory category) {
     Navigator.of(context).push(MaterialPageRoute(
@@ -57,8 +56,8 @@ class _SermonScreenState extends State<SermonScreen> {
                 ?.map(
                   (SermonCategory category) => Menu(
                         title: category.title,
-                        titleColor: titleColor,
-                        backgroundColor: backgroundColor,
+                        titleColor: AppColors.main,
+                        backgroundColor: AppColors.secondary,
                         onPressed: () => _showSermonVideos(category),
                       ),
                 )
