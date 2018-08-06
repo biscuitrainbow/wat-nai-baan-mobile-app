@@ -50,6 +50,6 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return currentPage;
+    return Scaffold(body: currentPage);
   }
 }

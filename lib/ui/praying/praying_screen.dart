@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:buddish_project/constants.dart';
-import 'package:buddish_project/data/model/mantra.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayer/audioplayer.dart';
@@ -25,17 +24,22 @@ class PrayingScreen extends StatefulWidget {
 class _PrayingScreenState extends State<PrayingScreen> {
   final AudioPlayer audioPlugin = new AudioPlayer();
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Future<File> copyLocalAsset(Directory localDir, String bundleDir, String assetName) async {
     final data = await rootBundle.load('$bundleDir/$assetName');
     final bytes = data.buffer.asUint8List();
     final localAssetFile = File('${localDir.path}/$assetName');
     await localAssetFile.writeAsBytes(bytes, flush: true);
     return localAssetFile;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -58,7 +62,7 @@ class _PrayingScreenState extends State<PrayingScreen> {
               var mantra = widget.viewModel.mantras[index];
 
               return Container(
-                padding: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
+                padding: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin - 8),
                 child: MantraPlayer(
                   title: mantra.name,
                   titleColor: AppColors.main,

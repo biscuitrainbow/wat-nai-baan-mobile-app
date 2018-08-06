@@ -21,7 +21,7 @@ class AppState {
     return AppState(
       user: null,
       mantras: [
-        Mantra(name: 'สวดมนต์ทำวัดเช้า', url: Asset.audio1, isPlaying: true),
+        Mantra(name: 'สวดมนต์ทำวัดเช้า', url: Asset.audio1, isPlaying: false),
         Mantra(name: 'สวดมนต์ทำวัดเย็น', url: Asset.audio2, isPlaying: false),
         Mantra(name: 'สวดมนต์ประจำวัน', url: Asset.audio3, isPlaying: false),
         Mantra(name: 'สวดมนต์ก่อนนอน', url: Asset.audio4, isPlaying: false),

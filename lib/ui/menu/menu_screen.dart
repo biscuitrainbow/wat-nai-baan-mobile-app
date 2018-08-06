@@ -1,6 +1,7 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
+import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -86,7 +87,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: 'แบบทดสอบสุขภาพจิต',
                 titleColor: Color(0xFF8856A4),
                 backgroundColor: Color(0xFFDEC1DC),
-                onPressed: () => print(''),
+                onPressed: () => Navigator.of(context).pushNamed(SurveyScreen.route),
               ),
             ],
           ),

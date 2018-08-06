@@ -8,6 +8,7 @@ import 'package:buddish_project/ui/menu/menu_screen.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
+import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -39,6 +40,8 @@ class MyApp extends StatelessWidget {
           SermonScreen.route: (context) => SermonScreen(),
           LoginScreen.route: (context) => LoginContainer(),
           PrayingScreen.route: (context) => PrayingContainer(),
+          SurveyScreen.route: (context) => SurveyScreen(),
+
         },
       ),
     );
