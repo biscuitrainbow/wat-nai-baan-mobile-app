@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/loading_status.dart';
+import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/ui/login_screen/login_screen_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
@@ -34,15 +36,27 @@ class LoginScreenViewModel {
     @required this.onLogin,
   });
 
+  static void _showToast(String message, BuildContext context) {
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text(message, style: Style.snackBarMessage), duration: Duration(seconds: 4)));
+  }
+
   static LoginScreenViewModel fromStore(Store<AppState> store) {
     return LoginScreenViewModel(
         state: store.state.loginScreenState,
         onLogin: (String email, String password, BuildContext context) {
-          Completer<String> completer = Completer();
-          completer.future.then((String message) {
+          Completer<Null> completer = Completer();
+
+          completer.future.then((_) {
             Navigator.of(context).pushReplacementNamed(MenuScreen.route);
           }).catchError((error) {
-            print(error);
+            switch (error.runtimeType) {
+              case UnauthorizedException:
+                _showToast(error.error, context);
+                break;
+              case FormatException:
+                _showToast('เกิดข้อผิดพลาด', context);
+                break;
+            }
           });
 
           store.dispatch(Login(email, password, completer));

@@ -26,4 +26,5 @@ class AppColors {
 
 class Style {
   static final TextStyle appbarTitleStyle = TextStyle(color: AppColors.main, fontWeight: FontWeight.w600);
+  static final TextStyle snackBarMessage = TextStyle(color: Colors.white, fontWeight: FontWeight.w600);
 }

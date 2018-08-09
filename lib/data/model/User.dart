@@ -8,6 +8,7 @@ class User {
   final String tel;
   final DateTime dateOfBirth;
   final String gender;
+  final String token;
 
   User({
     @required this.id,
@@ -17,6 +18,7 @@ class User {
     this.password,
     this.tel,
     this.dateOfBirth,
+    this.token,
   });
 
   User copyWith({
@@ -25,6 +27,7 @@ class User {
     String tel,
     DateTime dateOfBirth,
     String gender,
+    String token,
   }) {
     return User(
       id: id ?? this.id,
@@ -33,6 +36,12 @@ class User {
       name: name ?? this.name,
       tel: tel ?? this.tel,
       gender: gender ?? this.gender,
+      token: token ?? this.token,
     );
+  }
+
+  @override
+  String toString() {
+    return 'User{id: $id, email: $email, password: $password, name: $name, tel: $tel, dateOfBirth: $dateOfBirth, gender: $gender, token: $token}';
   }
 }

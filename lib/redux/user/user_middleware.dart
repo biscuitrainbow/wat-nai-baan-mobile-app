@@ -27,16 +27,15 @@ Middleware<AppState> _login(
     if (action is Login) {
       try {
         next(ShowLoginLoading());
-
         User user = await userRepository.login(action.email, action.password);
-        await Future.delayed(Duration(seconds: 1));
+        await sharedPrefRepository.saveToken(user.token);
 
-        action.completer.complete(user.name);
+        action.completer.complete(null);
         next(LoginSuccess(user));
         next(HideLoginLoading());
       } catch (error) {
-        next(HideLoginLoading());
         action.completer.completeError(error);
+        next(HideLoginLoading());
       }
 
       next(action);

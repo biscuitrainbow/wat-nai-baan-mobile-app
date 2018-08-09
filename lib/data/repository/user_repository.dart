@@ -15,33 +15,26 @@ class UserRepository {
   static final String fieldTel = 'tel';
   static final String fieldDateOfBirth = 'date_of_birth';
   static final String fieldGender = 'gender';
+  static final String fieldToken = 'token';
 
   Future<User> login(String email, String password) async {
-//    final response = await http.post('${Environment.apiUrl}/login', body: {
-//      fieldEmail: email,
-//      fieldPassword: password,
-//    });
-//
-//    final jsonResponse = json.decode(response.body);
-//
-//    final user = UserParser.parse(
-//      jsonResponse[ApiConstant.fieldData],
-//    );
+    final response = await http.post('${Environment.apiUrl}/login', body: {
+      fieldEmail: email,
+      fieldPassword: password,
+    });
 
-    var user = User(
-      id: 1,
-      email: 'user@gmail.com',
-      name: 'Natthapon Sricort',
-      gender: 'ชาย',
-      tel: '0920922721',
-      dateOfBirth: DateTime.now(),
-    );
+    if (response.statusCode == 401) {
+      throw (UnauthorizedException('เข้าสู่ระบบล้มเหลว อีเมลล์หรือรหัสผ่านไม่ถูกต้อง'));
+    }
+
+    final jsonResponse = json.decode(response.body);
+    final user = UserParser.parse(jsonResponse);
 
     return user;
   }
 
   Future<User> register(User user) async {
-    final response = await http.post('${Environment.apiUrl}/login', body: {
+    final response = await http.post('${Environment.apiUrl}/register', body: {
       fieldEmail: user.email,
       fieldPassword: user.password,
       fieldName: user.name,
@@ -71,4 +64,10 @@ class UserRepository {
 
     return updatedUser;
   }
+}
+
+class UnauthorizedException implements Exception {
+  String error;
+
+  UnauthorizedException(this.error);
 }

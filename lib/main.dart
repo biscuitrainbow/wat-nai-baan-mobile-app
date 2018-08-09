@@ -1,3 +1,7 @@
+
+import 'dart:io';
+
+import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/store.dart';
 import 'package:buddish_project/ui/login/login_container.dart';
@@ -10,13 +14,14 @@ import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_driver/driver_extension.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_stetho/flutter_stetho.dart';
 import 'package:redux/redux.dart';
 
 void main() async {
-  var store = await createStore();
+  HttpOverrides.global = new StethoHttpOverrides();
 
+  var store = await createStore();
   runApp(new MyApp(store: store));
 }
 
@@ -33,6 +38,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.yellow,
+          textSelectionColor: AppColors.main
         ),
         routes: {
           MainScreen.route: (context) => MainContainer(),
@@ -41,7 +47,6 @@ class MyApp extends StatelessWidget {
           LoginScreen.route: (context) => LoginContainer(),
           PrayingScreen.route: (context) => PrayingContainer(),
           SurveyScreen.route: (context) => SurveyScreen(),
-
         },
       ),
     );

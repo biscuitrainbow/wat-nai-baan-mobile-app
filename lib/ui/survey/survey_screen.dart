@@ -112,7 +112,11 @@ class ResultWidget extends StatelessWidget {
       child: Center(
         child: Text(
           'ระดับสุขภาพจิตของท่าน',
-          style: TextStyle(color: Color(0xFF1c602a), fontSize: 28.0, fontWeight: FontWeight.w600),
+          style: TextStyle(
+            color: Color(0xFF1c602a),
+            fontSize: 28.0,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );

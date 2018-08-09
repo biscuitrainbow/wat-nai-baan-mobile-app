@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController(text: 'user@gmail.com');
-  final TextEditingController _passwordController = TextEditingController(text: 'password');
+  final TextEditingController _passwordController = TextEditingController(text: '123456s');
 
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
@@ -89,6 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_passwordFocusNode),
           validator: (String value) => value.isEmpty ? 'กรุณากรอกอีเมลล์' : null,
           decoration: InputDecoration(
+            border: InputBorder.none,
             hintText: 'อีเมลล์',
             fillColor: Colors.white,
             filled: true,
@@ -103,9 +104,11 @@ class _LoginScreenState extends State<LoginScreen> {
           validator: (String value) => value.isEmpty ? 'กรุณากรอกรหัสผ่าน' : null,
           obscureText: true,
           decoration: InputDecoration(
+            border: InputBorder.none,
             hintText: 'รหัสผ่าน',
             fillColor: Colors.white,
             filled: true,
+
           ),
         ),
         SizedBox(height: Dimension.fieldVerticalMargin),
@@ -130,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomPadding: true,
+        resizeToAvoidBottomPadding: false,
         body: LoadingView(
           loadingStatus: widget.viewModel.state.loadingStatus,
           initialContent: _buildInitialContent(),

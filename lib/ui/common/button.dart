@@ -16,7 +16,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      elevation: 1.0,
+      elevation: 0.9,
       padding: EdgeInsets.symmetric(vertical: 8.0),
       minWidth: MediaQuery.of(context).size.width,
       child: Text(

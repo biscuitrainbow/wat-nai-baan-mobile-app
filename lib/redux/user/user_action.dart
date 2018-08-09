@@ -5,7 +5,7 @@ import 'package:buddish_project/data/model/User.dart';
 class Login {
   final String email;
   final String password;
-  final Completer<String> completer;
+  final Completer<Null> completer;
 
   Login(this.email, this.password, this.completer);
 }
