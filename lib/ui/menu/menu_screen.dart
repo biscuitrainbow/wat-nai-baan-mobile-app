@@ -25,11 +25,11 @@ class _MenuScreenState extends State<MenuScreen> {
     return Scaffold(
       drawer: Drawer(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             children: <Widget>[
               SizedBox(height: 48.0),
               DrawerItem(
+                onPressed: () => print('profile'),
                 icon: Icons.person,
                 title: 'ข้อมูลผู้ใช้',
               ),
@@ -118,25 +118,19 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Row(
-        children: <Widget>[
-          Icon(
-            this.icon,
-            color: Colors.grey[600],
-          ),
-          SizedBox(width: 8.0),
-          Text(
-            this.title,
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontSize: 18.0,
-            ),
-          )
-        ],
-      ),
-    );
+    return MaterialButton(
+        onPressed: onPressed,
+//        highlightColor: Colors.green,
+        child: Row(
+          children: <Widget>[
+            Icon(this.icon, color: Colors.grey[600]),
+            SizedBox(width: 8.0),
+            Text(
+              this.title,
+              style: TextStyle(color: Colors.grey[600], fontSize: 18.0),
+            )
+          ],
+        ));
   }
 }
 
