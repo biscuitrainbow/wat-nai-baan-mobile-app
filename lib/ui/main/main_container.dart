@@ -11,8 +11,6 @@ class MainContainer extends StatelessWidget {
     return StoreConnector(
       converter: MainScreenViewModel.fromStore,
       builder: (BuildContext context, MainScreenViewModel viewModel) {
-        print(viewModel.user);
-
         return MainScreen(
           viewModel: viewModel,
         );
@@ -23,14 +21,17 @@ class MainContainer extends StatelessWidget {
 
 class MainScreenViewModel {
   final User user;
+  final String token;
 
   MainScreenViewModel({
     @required this.user,
+    @required this.token,
   });
 
   static MainScreenViewModel fromStore(Store<AppState> store) {
     return MainScreenViewModel(
       user: store.state.user,
+      token: store.state.token,
     );
   }
 }

@@ -16,7 +16,8 @@ class LoginSuccess {
   LoginSuccess(this.user);
 }
 
-class Logout {}
+class Logout {
+}
 
 class Register {
   final User user;

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:buddish_project/data/repository/prefs_repository.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:buddish_project/data/repository/youtube_repository.dart';
+import 'package:buddish_project/redux/app/app_middleware.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/app/app_reducer.dart';
 import 'package:buddish_project/redux/user/user_middleware.dart';
@@ -18,11 +19,8 @@ Future<Store<AppState>> createStore() async {
     appReducer,
     initialState: AppState.initial(),
     middleware: []
-      ..addAll(
-        createUserMiddlewares(userRepository, sharedPreferencesRepository),
-      )
-      ..addAll(
-        createVideoMiddleware(youtubeRepository),
-      ),
+      ..addAll(createAppMiddleware(userRepository, sharedPreferencesRepository))
+      ..addAll(createUserMiddlewares(userRepository, sharedPreferencesRepository))
+      ..addAll(createVideoMiddleware(youtubeRepository))
   );
 }

@@ -47,7 +47,7 @@ class LoginScreenViewModel {
           Completer<Null> completer = Completer();
 
           completer.future.then((_) {
-            Navigator.of(context).pushReplacementNamed(MenuScreen.route);
+            //  Navigator.of(context).pushReplacementNamed(MenuScreen.route);
           }).catchError((error) {
             switch (error.runtimeType) {
               case UnauthorizedException:

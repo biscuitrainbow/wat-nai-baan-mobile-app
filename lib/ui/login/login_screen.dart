@@ -3,6 +3,7 @@ import 'package:buddish_project/ui/common/button.dart';
 import 'package:buddish_project/ui/common/loading_content.dart';
 import 'package:buddish_project/ui/common/loading_view.dart';
 import 'package:buddish_project/ui/login/login_container.dart';
+import 'package:buddish_project/utils/StringUtil.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController(text: 'user@gmail.com');
-  final TextEditingController _passwordController = TextEditingController(text: '123456s');
+  final TextEditingController _passwordController = TextEditingController(text: '123456');
 
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
@@ -87,7 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
           controller: _emailController,
           focusNode: _emailFocusNode,
           onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_passwordFocusNode),
-          validator: (String value) => value.isEmpty ? 'กรุณากรอกอีเมลล์' : null,
+          validator: (String value) {
+            if (value.isEmpty) return 'กรุณากรอกอีเมลล์';
+            if (!StringUtil.isEmail(value)) return 'รูปแบบอีเมลล์ไม่ถูกต้อง';
+          },
           decoration: InputDecoration(
             border: InputBorder.none,
             hintText: 'อีเมลล์',
@@ -108,7 +112,6 @@ class _LoginScreenState extends State<LoginScreen> {
             hintText: 'รหัสผ่าน',
             fillColor: Colors.white,
             filled: true,
-
           ),
         ),
         SizedBox(height: Dimension.fieldVerticalMargin),

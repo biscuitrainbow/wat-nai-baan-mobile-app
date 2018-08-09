@@ -1,8 +1,12 @@
 import 'package:buddish_project/constants.dart';
+import 'package:buddish_project/redux/app/app_state.dart';
+import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
 class MenuScreen extends StatefulWidget {
   static final String route = '/menu';
@@ -33,6 +37,10 @@ class _MenuScreenState extends State<MenuScreen> {
               DrawerItem(
                 icon: Icons.call_missed_outgoing,
                 title: 'ลงชื่ออก',
+                onPressed: () {
+                  final Store<AppState> store = StoreProvider.of(context);
+                  store.dispatch(Logout());
+                },
               )
             ],
           ),
@@ -110,21 +118,24 @@ class DrawerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Icon(
-          this.icon,
-          color: Colors.grey[600],
-        ),
-        SizedBox(width: 8.0),
-        Text(
-          this.title,
-          style: TextStyle(
+    return GestureDetector(
+      onTap: onPressed,
+      child: Row(
+        children: <Widget>[
+          Icon(
+            this.icon,
             color: Colors.grey[600],
-            fontSize: 18.0,
           ),
-        )
-      ],
+          SizedBox(width: 8.0),
+          Text(
+            this.title,
+            style: TextStyle(
+              color: Colors.grey[600],
+              fontSize: 18.0,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
