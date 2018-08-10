@@ -53,12 +53,10 @@ class MyAppState extends State<MyApp> {
       child: MaterialApp(
         title: 'วัดในบ้าน',
         theme: ThemeData(
-            primarySwatch: Colors.yellow,
-            textSelectionColor: AppColors.main,
-            textTheme: TextTheme(
-              body1: TextStyle(color: Colors.white),
-              caption: TextStyle(color: Colors.white),
-            )),
+          fontFamily: 'Kanit',
+          primarySwatch: Colors.yellow,
+          textSelectionColor: AppColors.main,
+        ),
         home: SplashScreen(),
         routes: {
           MainScreen.route: (context) => MainContainer(),

@@ -70,10 +70,30 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-      - family: THSarabunNew
-        fonts:
-          - asset: fonts/THSarabunNew Bold.ttf
-          - asset: fonts/THSarabunNew.ttf
+  - family: Kanit
+    fonts:
+      - asset: fonts/Kanit-Black.ttf
+        weight: 900
+      - asset: fonts/Kanit-ExtraBold.ttf
+        weight: 800
+      - asset: fonts/Kanit-Bold.ttf
+        weight: 700
+      - asset: fonts/Kanit-Semibold.ttf
+        weight: 600
+      - asset: fonts/Kanit-Medium.ttf
+        weight: 500
+      - asset: fonts/Kanit-Regular.ttf
+        weight: 400
+      - asset: fonts/Kanit-Light.ttf
+        weight: 300
+      - asset: fonts/Kanit-Light.ttf
+        weight: 200
+      - asset: fonts/Kanit-Thin.ttf
+        weight: 100
+#      - family: THSarabunNew
+#        fonts:
+#          - asset: fonts/THSarabunNew Bold.ttf
+#          - asset: fonts/THSarabunNew.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

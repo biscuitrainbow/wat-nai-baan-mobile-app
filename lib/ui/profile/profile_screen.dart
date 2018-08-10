@@ -70,13 +70,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final user = widget.viewModel.user;
 
     nameController.text = user.name;
+    telController.text = user.tel;
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final textInputStyle = TextStyle(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 16.0);
+    final textInputStyle = TextStyle(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 16.0, fontFamily: 'Kanit');
 
     final inputStyle = InputDecoration(
       border: InputBorder.none,
