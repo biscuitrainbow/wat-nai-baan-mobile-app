@@ -1,12 +1,12 @@
 import 'package:buddish_project/constants.dart';
+import 'package:buddish_project/data/loading_status.dart';
 import 'package:buddish_project/data/model/Video.dart';
 import 'package:buddish_project/data/repository/youtube_repository.dart';
 import 'package:buddish_project/ui/common/loading_content.dart';
-import 'package:buddish_project/ui/common/loading_view.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_container.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube/flutter_youtube.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SermonVideoScreen extends StatefulWidget {
@@ -23,25 +23,45 @@ class SermonVideoScreen extends StatefulWidget {
 }
 
 class _SermonVideoScreenState extends State<SermonVideoScreen> {
+  Widget _buildAppBar() {
+    return SliverAppBar(
+      snap: true,
+      floating: true,
+      elevation: 1.0,
+      forceElevated: true,
+      title: Text(
+        widget.title,
+        style: Style.appbarTitle,
+      ),
+      iconTheme: IconThemeData(color: AppColors.main),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: Style.appbarTitle,
-        ),
-        iconTheme: IconThemeData(color: AppColors.main),
-      ),
-      body: LoadingView(
-        loadingStatus: widget.viewModel.state.loadingStatus,
-        initialContent: ListView(
-          padding: EdgeInsets.symmetric(vertical: Dimension.fieldVerticalMargin),
-          children: _buildVideoItem(),
-        ),
-        loadingContent: LoadingContent(
-          text: 'กำลังโหลด',
-        ),
+      body: CustomScrollView(
+        slivers: [
+          _buildAppBar(),
+          widget.viewModel.state.loadingStatus == LoadingStatus.loading
+              ? SliverFillRemaining(
+                  child: LoadingContent(
+                    text: 'กำลังโหลด',
+                  ),
+                )
+              : SliverPadding(
+                  padding: EdgeInsets.only(top: Dimension.screenVerticalPadding),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        final video = widget.viewModel.state.videos[index];
+                        return _buildVideoItem(video);
+                      },
+                      childCount: widget.viewModel.state.videos.length,
+                    ),
+                  ),
+                )
+        ],
       ),
     );
   }
@@ -52,15 +72,8 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
     );
   }
 
-  List<Widget> _buildVideoItem() {
-    return widget.viewModel.state.videos
-        .map(
-          (Video video) => VideoItem(
-                video: video,
-                onPressed: () => _showVideo(video.id),
-              ),
-        )
-        .toList();
+  Widget _buildVideoItem(Video video) {
+    return VideoItem(video: video, onPressed: () => _showVideo(video.id));
   }
 }
 
