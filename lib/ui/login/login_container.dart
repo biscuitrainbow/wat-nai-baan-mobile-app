@@ -1,13 +1,11 @@
 import 'dart:async';
 
 import 'package:buddish_project/constants.dart';
-import 'package:buddish_project/data/loading_status.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/ui/login_screen/login_screen_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/login/login_screen.dart';
-import 'package:buddish_project/ui/menu/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -45,10 +43,7 @@ class LoginScreenViewModel {
         state: store.state.loginScreenState,
         onLogin: (String email, String password, BuildContext context) {
           Completer<Null> completer = Completer();
-
-          completer.future.then((_) {
-            //  Navigator.of(context).pushReplacementNamed(MenuScreen.route);
-          }).catchError((error) {
+          completer.future.catchError((error) {
             switch (error.runtimeType) {
               case UnauthorizedException:
                 _showToast(error.error, context);

@@ -30,6 +30,23 @@ class AppColors {
 }
 
 class Style {
-  static final TextStyle appbarTitleStyle = TextStyle(color: AppColors.main, fontWeight: FontWeight.w600);
+  static final TextStyle appbarTitle = TextStyle(color: AppColors.main, fontWeight: FontWeight.w600);
   static final TextStyle snackBarMessage = TextStyle(color: Colors.white, fontWeight: FontWeight.w600);
+
+  static final InputDecoration textInputLogin = InputDecoration(
+    border: InputBorder.none,
+    fillColor: Colors.white,
+    filled: true,
+  );
+
+  static final InputDecoration textInput = InputDecoration(
+    labelStyle: TextStyle(
+      color: Colors.black87,
+      fontWeight: FontWeight.w500,
+    ),
+    labelText: 'ชื่อ - นามสกุล',
+    hintText: '',
+    fillColor: Colors.grey.shade200,
+    filled: true
+  );
 }

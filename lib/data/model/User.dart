@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 class User {
   final int id;
   final String email;
@@ -11,10 +9,10 @@ class User {
   final String token;
 
   User({
-    @required this.id,
-    @required this.email,
-    @required this.name,
-    @required this.gender,
+    this.id,
+    this.email,
+    this.name,
+    this.gender,
     this.password,
     this.tel,
     this.dateOfBirth,

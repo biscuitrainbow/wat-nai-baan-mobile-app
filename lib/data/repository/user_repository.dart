@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/data/model/User.dart';
 import 'package:buddish_project/data/parser/user_parser.dart';
 import 'package:buddish_project/data/repository/constant.dart';
+import 'package:buddish_project/utils/StringUtil.dart';
 import 'package:http/http.dart' as http;
 
 class UserRepository {
@@ -22,6 +24,8 @@ class UserRepository {
       fieldEmail: email,
       fieldPassword: password,
     });
+
+    print(response.body);
 
     if (response.statusCode == 401) {
       throw (UnauthorizedException('เข้าสู่ระบบล้มเหลว อีเมลล์หรือรหัสผ่านไม่ถูกต้อง'));
@@ -49,7 +53,18 @@ class UserRepository {
     return registeredUser;
   }
 
-  Future<User> update(User user) async {
+  Future<User> fetchUser(String token) async {
+    final response = await http.get('${Environment.apiUrl}/user', headers: {
+      HttpHeaders.AUTHORIZATION: toBearer(token),
+    });
+
+    final jsonResponse = json.decode(response.body);
+    final user = UserParser.parse(jsonResponse);
+
+    return user;
+  }
+
+  Future<Null> update(String token, User user) async {
     final response = await http.put('${Environment.apiUrl}/user', body: {
       fieldEmail: user.email,
       fieldPassword: user.password,

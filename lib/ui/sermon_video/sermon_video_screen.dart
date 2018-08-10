@@ -29,7 +29,7 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
       appBar: AppBar(
         title: Text(
           widget.title,
-          style: Style.appbarTitleStyle,
+          style: Style.appbarTitle,
         ),
         iconTheme: IconThemeData(color: AppColors.main),
       ),

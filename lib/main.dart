@@ -11,6 +11,8 @@ import 'package:buddish_project/ui/main/main_screen.dart';
 import 'package:buddish_project/ui/menu/menu_screen.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
+import 'package:buddish_project/ui/profile/profile_container.dart';
+import 'package:buddish_project/ui/profile/profile_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
 import 'package:buddish_project/ui/splash/splash_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
@@ -63,6 +65,7 @@ class MyAppState extends State<MyApp> {
           MenuScreen.route: (context) => MenuScreen(),
           SermonScreen.route: (context) => SermonScreen(),
           LoginScreen.route: (context) => LoginContainer(),
+          ProfileScreen.route: (context) => ProfileContainer(),
           PrayingScreen.route: (context) => PrayingContainer(),
           SurveyScreen.route: (context) => SurveyScreen(),
         },

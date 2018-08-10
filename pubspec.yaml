@@ -20,6 +20,7 @@ dependencies:
   audioplayer: ^0.5.0
   path_provider: ^0.4.1
   flutter_launcher_icons: "^0.6.0"
+  flutter_masked_text: ^0.5.0
 
 dev_dependencies:
   flutter_stetho: 0.1.1

@@ -90,14 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
           onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_passwordFocusNode),
           validator: (String value) {
             if (value.isEmpty) return 'กรุณากรอกอีเมลล์';
-            if (!StringUtil.isEmail(value)) return 'รูปแบบอีเมลล์ไม่ถูกต้อง';
+            if (!isEmail(value)) return 'รูปแบบอีเมลล์ไม่ถูกต้อง';
           },
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: 'อีเมลล์',
-            fillColor: Colors.white,
-            filled: true,
-          ),
+          decoration: Style.textInputLogin.copyWith(hintText: 'อีเมลล์'),
         ),
         SizedBox(height: Dimension.fieldVerticalMargin),
         TextFormField(
@@ -107,12 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onFieldSubmitted: (String value) => _login(),
           validator: (String value) => value.isEmpty ? 'กรุณากรอกรหัสผ่าน' : null,
           obscureText: true,
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: 'รหัสผ่าน',
-            fillColor: Colors.white,
-            filled: true,
-          ),
+          decoration: Style.textInputLogin.copyWith(hintText: 'รหัสผ่าน'),
         ),
         SizedBox(height: Dimension.fieldVerticalMargin),
       ],

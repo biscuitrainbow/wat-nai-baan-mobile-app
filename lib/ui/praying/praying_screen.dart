@@ -48,7 +48,7 @@ class _PrayingScreenState extends State<PrayingScreen> {
         appBar: AppBar(
           title: Text(
             'สวดมนต์',
-            style: Style.appbarTitleStyle,
+            style: Style.appbarTitle,
           ),
           iconTheme: IconThemeData(color: AppColors.main),
         ),

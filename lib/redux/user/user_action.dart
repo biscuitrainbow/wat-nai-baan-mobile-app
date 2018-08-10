@@ -16,6 +16,10 @@ class LoginSuccess {
   LoginSuccess(this.user);
 }
 
+class FetchUserDetail {
+
+}
+
 class Logout {
 }
 

@@ -2,6 +2,7 @@ import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
+import 'package:buddish_project/ui/profile/profile_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,10 @@ class _MenuScreenState extends State<MenuScreen> {
             children: <Widget>[
               SizedBox(height: 48.0),
               DrawerItem(
-                onPressed: () => print('profile'),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).pushNamed(ProfileScreen.route);
+                },
                 icon: Icons.person,
                 title: 'ข้อมูลผู้ใช้',
               ),
@@ -59,7 +63,7 @@ class _MenuScreenState extends State<MenuScreen> {
         elevation: 1.0,
         title: Text(
           'หน้าหลัก',
-          style: Style.appbarTitleStyle,
+          style: Style.appbarTitle,
         ),
       ),
       body: SingleChildScrollView(
@@ -120,7 +124,6 @@ class DrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
         onPressed: onPressed,
-//        highlightColor: Colors.green,
         child: Row(
           children: <Widget>[
             Icon(this.icon, color: Colors.grey[600]),

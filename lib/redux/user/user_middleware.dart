@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:buddish_project/data/model/User.dart';
 import 'package:buddish_project/data/repository/prefs_repository.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
@@ -19,6 +17,9 @@ List<Middleware<AppState>> createUserMiddlewares(
     ),
     new TypedMiddleware<AppState, Logout>(
       _logout(userRepository, sharedPrefRepository),
+    ),
+    new TypedMiddleware<AppState, FetchUserDetail>(
+      _fetchUser(userRepository),
     ),
   ];
 }
@@ -58,6 +59,23 @@ Middleware<AppState> _logout(
       try {
         await sharedPrefRepository.deleteToken();
         next(DeleteToken());
+      } catch (error) {}
+
+      next(action);
+    }
+  };
+}
+
+Middleware<AppState> _fetchUser(
+  UserRepository userRepository,
+) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    if (action is FetchUserDetail) {
+      try {
+        final token = store.state.token;
+        final user = await userRepository.fetchUser(token);
+
+        next(LoginSuccess(user));
       } catch (error) {}
 
       next(action);

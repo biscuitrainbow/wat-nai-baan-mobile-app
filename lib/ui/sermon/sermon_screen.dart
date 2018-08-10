@@ -44,7 +44,7 @@ class _SermonScreenState extends State<SermonScreen> {
         elevation: 1.0,
         title: Text(
           'ฟังเทศน์ ฟังธรรม',
-          style: Style.appbarTitleStyle,
+          style: Style.appbarTitle,
         ),
         iconTheme: IconThemeData(color: AppColors.main),
       ),
