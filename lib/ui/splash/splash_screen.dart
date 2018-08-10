@@ -12,15 +12,21 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   @override
   void initState() {
-    animationController = new AnimationController(duration: Duration(seconds: 2), vsync: this)
+    animationController = new AnimationController(duration: Duration(seconds: 3), vsync: this)
       ..forward()
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          // Navigator.of(context).pushReplacementNamed(MainScreen.route);
+          Navigator.of(context).pushReplacementNamed(MainScreen.route);
         }
       });
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override

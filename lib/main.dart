@@ -49,11 +49,14 @@ class MyAppState extends State<MyApp> {
     return StoreProvider<AppState>(
       store: widget.store,
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'วัดในบ้าน',
         theme: ThemeData(
-          primarySwatch: Colors.yellow,
-          textSelectionColor: AppColors.main,
-        ),
+            primarySwatch: Colors.yellow,
+            textSelectionColor: AppColors.main,
+            textTheme: TextTheme(
+              body1: TextStyle(color: Colors.white),
+              caption: TextStyle(color: Colors.white),
+            )),
         home: SplashScreen(),
         routes: {
           MainScreen.route: (context) => MainContainer(),
