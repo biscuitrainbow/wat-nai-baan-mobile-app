@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:buddish_project/.env.dart';
+import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/User.dart';
 import 'package:buddish_project/data/parser/user_parser.dart';
 import 'package:buddish_project/data/repository/constant.dart';
 import 'package:buddish_project/utils/StringUtil.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class UserRepository {
   static final String fieldId = 'id';
@@ -65,19 +67,25 @@ class UserRepository {
   }
 
   Future<Null> update(String token, User user) async {
-    final response = await http.put('${Environment.apiUrl}/user', body: {
-      fieldEmail: user.email,
-      fieldPassword: user.password,
-      fieldName: user.name,
-      fieldTel: user.tel,
-      fieldDateOfBirth: user.dateOfBirth,
-      fieldGender: user.gender,
-    });
+    final DateFormat formatter = DateFormat('yyyy-MM-dd', 'th');
 
-    final jsonResponse = json.decode(response.body);
-    final updatedUser = UserParser.parse(jsonResponse[ApiConstant.fieldData]);
+    print(user.tel);
 
-    return updatedUser;
+    final response = await http.put(
+      '${Environment.apiUrl}/user',
+      body: {
+        fieldName: user.name,
+        fieldDateOfBirth: formatter.format(user.dateOfBirth),
+        fieldTel: user.tel,
+        fieldGender: user.gender,
+      },
+      headers: {
+        HttpHeaders.ACCEPT: AppString.httpApplicationJson,
+        HttpHeaders.AUTHORIZATION: toBearer(token),
+      },
+    );
+    print(response.statusCode);
+    print(response.body);
   }
 }
 

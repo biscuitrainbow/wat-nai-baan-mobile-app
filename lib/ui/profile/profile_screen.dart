@@ -4,6 +4,7 @@ import 'package:buddish_project/ui/common/radio_item.dart';
 import 'package:buddish_project/ui/profile/profile_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:intl/intl.dart';
 
 class ProfileScreen extends StatefulWidget {
   static final String route = "/profile";
@@ -19,7 +20,9 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController nameController = TextEditingController();
   final MaskedTextController telController = MaskedTextController(mask: '000-0000000');
-  final MaskedTextController dateOfBirth = MaskedTextController(mask: '00-00-0000');
+  final MaskedTextController dateOfBirthController = MaskedTextController(mask: '00-00-0000');
+
+  final DateFormat formatter = DateFormat(AppString.dateOfBirthFormat, 'th');
 
   String gender = 'ชาย';
 
@@ -62,7 +65,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _update() {
-    print('update');
+    final user = widget.viewModel.user.copyWith(
+      name: nameController.text,
+      tel: telController.text.replaceAll(RegExp(r'-'), ''),
+      dateOfBirth: formatter.parse(dateOfBirthController.text),
+      gender: gender,
+    );
+
+    widget.viewModel.onUpdate(user);
   }
 
   @override
@@ -71,6 +81,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     nameController.text = user.name;
     telController.text = user.tel;
+    dateOfBirthController.text = formatter.format(user.dateOfBirth);
+    gender = user.gender;
 
     super.initState();
   }
@@ -119,7 +131,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(height: Dimension.fieldVerticalMargin),
                   TextFormField(
                     style: textInputStyle,
-                    controller: dateOfBirth,
+                    controller: dateOfBirthController,
                     keyboardType: TextInputType.number,
                     decoration: inputStyle.copyWith(labelText: 'วันเกิด', helperText: 'เช่น 30-12-1994'),
                   ),

@@ -40,13 +40,17 @@ class Style {
   );
 
   static final InputDecoration textInput = InputDecoration(
-    labelStyle: TextStyle(
-      color: Colors.black87,
-      fontWeight: FontWeight.w500,
-    ),
-    labelText: 'ชื่อ - นามสกุล',
-    hintText: '',
-    fillColor: Colors.grey.shade200,
-    filled: true
-  );
+      labelStyle: TextStyle(
+        color: Colors.black87,
+        fontWeight: FontWeight.w500,
+      ),
+      labelText: 'ชื่อ - นามสกุล',
+      hintText: '',
+      fillColor: Colors.grey.shade200,
+      filled: true);
+}
+
+class AppString {
+  static final String dateOfBirthFormat = 'dd-MM-yyyy';
+  static final String httpApplicationJson = 'application/json';
 }

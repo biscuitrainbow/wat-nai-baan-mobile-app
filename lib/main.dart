@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:buddish_project/constants.dart';
@@ -19,10 +20,12 @@ import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_stetho/flutter_stetho.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:redux/redux.dart';
 
 void main() async {
   HttpOverrides.global = new StethoHttpOverrides();
+  Future.wait([initializeDateFormatting('th', null)]);
 
   var store = await createStore();
   runApp(new MyApp(store: store));

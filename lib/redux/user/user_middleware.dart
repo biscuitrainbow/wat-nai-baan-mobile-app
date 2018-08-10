@@ -21,6 +21,9 @@ List<Middleware<AppState>> createUserMiddlewares(
     new TypedMiddleware<AppState, FetchUserDetail>(
       _fetchUser(userRepository),
     ),
+    new TypedMiddleware<AppState, UpdateUser>(
+      _update(userRepository),
+    ),
   ];
 }
 
@@ -77,6 +80,23 @@ Middleware<AppState> _fetchUser(
 
         next(LoginSuccess(user));
       } catch (error) {}
+
+      next(action);
+    }
+  };
+}
+
+Middleware<AppState> _update(
+  UserRepository userRepository,
+) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    if (action is UpdateUser) {
+      try {
+        final token = store.state.token;
+        await userRepository.update(token, action.user);
+      } catch (error) {
+        print(error);
+      }
 
       next(action);
     }

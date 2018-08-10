@@ -33,6 +33,7 @@ class User {
       password: password ?? this.password,
       name: name ?? this.name,
       tel: tel ?? this.tel,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       gender: gender ?? this.gender,
       token: token ?? this.token,
     );

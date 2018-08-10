@@ -16,12 +16,16 @@ class LoginSuccess {
   LoginSuccess(this.user);
 }
 
-class FetchUserDetail {
+class FetchUserDetail {}
 
+class UpdateUser {
+  final User user;
+  final Completer<Null> completer;
+
+  UpdateUser(this.user, this.completer);
 }
 
-class Logout {
-}
+class Logout {}
 
 class Register {
   final User user;
