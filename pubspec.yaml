@@ -25,6 +25,7 @@ dependencies:
   image_picker: ^0.4.6
   redux_logging: ^0.3.0
   flutter_advanced_networkimage: any
+  flutter_facebook_login: ^1.1.1
 
 dev_dependencies:
 #  flutter_stetho: 0.1.1

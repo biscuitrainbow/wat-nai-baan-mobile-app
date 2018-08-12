@@ -5,6 +5,7 @@ import 'package:buddish_project/ui/common/loading_view.dart';
 import 'package:buddish_project/ui/login/login_container.dart';
 import 'package:buddish_project/utils/StringUtil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class LoginScreen extends StatefulWidget {
   static final String route = '/login';
@@ -62,7 +63,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 title: 'เข้าสู่ระบบด้วย Facebook',
                 titleColor: Colors.white,
                 backgroundColor: AppColors.facebook,
-                onPressed: () => print('login'),
+                onPressed: () async {
+                  var facebookLogin = new FacebookLogin();
+                  var result = await facebookLogin.logInWithReadPermissions(['email']);
+
+                  print(result.status);
+                },
               ),
               SizedBox(height: Dimension.fieldVerticalMargin),
               Button(
