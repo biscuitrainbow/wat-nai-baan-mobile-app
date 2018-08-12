@@ -4,9 +4,11 @@ import 'package:buddish_project/data/model/Video.dart';
 import 'package:buddish_project/data/repository/youtube_repository.dart';
 import 'package:buddish_project/ui/common/loading_content.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_container.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart';
+import 'package:flutter_advanced_networkimage/transition_to_image.dart';
 import 'package:flutter_youtube/flutter_youtube.dart';
+import 'package:path/path.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SermonVideoScreen extends StatefulWidget {
@@ -31,7 +33,7 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
       forceElevated: true,
       title: Text(
         widget.title,
-        style: Style.appbarTitle,
+        style: AppStyle.appbarTitle,
       ),
       iconTheme: IconThemeData(color: AppColors.main),
     );
@@ -119,10 +121,20 @@ class VideoItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            CachedNetworkImage(
-              imageUrl: video.thumbnailUrl,
+            TransitionToImage(
+              AdvancedNetworkImage(video.thumbnailUrl, timeoutDuration: Duration(minutes: 1)),
+              // This is the default placeholder widget at loading status,
+              // you can write your own widget with CustomPainter.
               placeholder: _buildImagePlaceholder(),
+              loadingWidget: _buildImagePlaceholder(),
+              // This is default duration
+              duration: Duration(milliseconds: 300),
             ),
+            // Image.network(video.thumbnailUrl),
+//            CachedNetworkImage(
+//              imageUrl: video.thumbnailUrl,
+//              placeholder: _buildImagePlaceholder(),
+//            ),
             SizedBox(height: 4.0),
             _buildVideoTitle(),
             SizedBox(height: 28.0),

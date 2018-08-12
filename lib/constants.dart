@@ -29,7 +29,7 @@ class AppColors {
   static final Color facebook = Color(0xFF4267B2);
 }
 
-class Style {
+class AppStyle {
   static final TextStyle appbarTitle = TextStyle(color: AppColors.main, fontWeight: FontWeight.w600);
   static final TextStyle snackBarMessage = TextStyle(color: Colors.white, fontWeight: FontWeight.w600);
 

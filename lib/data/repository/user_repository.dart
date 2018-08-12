@@ -27,8 +27,6 @@ class UserRepository {
       fieldPassword: password,
     });
 
-    print(response.body);
-
     if (response.statusCode == 401) {
       throw (UnauthorizedException('เข้าสู่ระบบล้มเหลว อีเมลล์หรือรหัสผ่านไม่ถูกต้อง'));
     }
@@ -69,8 +67,6 @@ class UserRepository {
   Future<Null> update(String token, User user) async {
     final DateFormat formatter = DateFormat('yyyy-MM-dd', 'th');
 
-    print(user.tel);
-
     final response = await http.put(
       '${Environment.apiUrl}/user',
       body: {
@@ -84,8 +80,6 @@ class UserRepository {
         HttpHeaders.AUTHORIZATION: toBearer(token),
       },
     );
-    print(response.statusCode);
-    print(response.body);
   }
 }
 

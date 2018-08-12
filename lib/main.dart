@@ -10,6 +10,7 @@ import 'package:buddish_project/ui/login/login_screen.dart';
 import 'package:buddish_project/ui/main/main_container.dart';
 import 'package:buddish_project/ui/main/main_screen.dart';
 import 'package:buddish_project/ui/menu/menu_screen.dart';
+import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_container.dart';
@@ -19,12 +20,10 @@ import 'package:buddish_project/ui/splash/splash_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_stetho/flutter_stetho.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:redux/redux.dart';
 
 void main() async {
-  HttpOverrides.global = new StethoHttpOverrides();
   Future.wait([initializeDateFormatting('th', null)]);
 
   var store = await createStore();
@@ -69,6 +68,7 @@ class MyAppState extends State<MyApp> {
           ProfileScreen.route: (context) => ProfileContainer(),
           PrayingScreen.route: (context) => PrayingContainer(),
           SurveyScreen.route: (context) => SurveyScreen(),
+          NewsComposeScreen.route: (context) => NewsComposeScreen(),
         },
       ),
     );

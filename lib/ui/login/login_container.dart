@@ -35,7 +35,7 @@ class LoginScreenViewModel {
   });
 
   static void _showToast(String message, BuildContext context) {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text(message, style: Style.snackBarMessage), duration: Duration(seconds: 4)));
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text(message, style: AppStyle.snackBarMessage), duration: Duration(seconds: 4)));
   }
 
   static LoginScreenViewModel fromStore(Store<AppState> store) {

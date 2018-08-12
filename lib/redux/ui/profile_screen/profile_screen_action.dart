@@ -1,0 +1,3 @@
+class ShowProfileLoading {}
+
+class HideProfileLoading {}

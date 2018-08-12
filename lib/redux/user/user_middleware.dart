@@ -4,6 +4,7 @@ import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/token/token_action.dart';
 import 'package:buddish_project/redux/ui/login_screen/login_screen_action.dart';
+import 'package:buddish_project/redux/ui/profile_screen/profile_screen_action.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:redux/redux.dart';
 
@@ -18,11 +19,11 @@ List<Middleware<AppState>> createUserMiddlewares(
     new TypedMiddleware<AppState, Logout>(
       _logout(userRepository, sharedPrefRepository),
     ),
-    new TypedMiddleware<AppState, FetchUserDetail>(
-      _fetchUser(userRepository),
-    ),
     new TypedMiddleware<AppState, UpdateUser>(
       _update(userRepository),
+    ),
+    new TypedMiddleware<AppState, FetchUserDetail>(
+      _fetchUser(userRepository),
     ),
   ];
 }
@@ -92,12 +93,16 @@ Middleware<AppState> _update(
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is UpdateUser) {
       try {
+        next(ShowProfileLoading());
         final token = store.state.token;
         await userRepository.update(token, action.user);
+        next(FetchUserDetail());
+        action.completer.complete(null);
       } catch (error) {
         print(error);
       }
 
+      next(HideProfileLoading());
       next(action);
     }
   };

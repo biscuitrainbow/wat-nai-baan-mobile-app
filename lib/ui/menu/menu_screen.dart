@@ -1,6 +1,7 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
+import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
@@ -63,7 +64,7 @@ class _MenuScreenState extends State<MenuScreen> {
         elevation: 1.0,
         title: Text(
           'หน้าหลัก',
-          style: Style.appbarTitle,
+          style: AppStyle.appbarTitle,
         ),
       ),
       body: SingleChildScrollView(
@@ -75,7 +76,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: 'ข่าวสารทางพระพุทธศาสนา',
                 titleColor: Color(0xFFAD4C3C),
                 backgroundColor: Color(0xFFF9BFB9),
-                onPressed: () => print(''),
+                onPressed: () => Navigator.of(context).pushNamed(NewsComposeScreen.route),
               ),
               new Menu(
                 title: 'ฟังเทศน์ ฟังธรรม',

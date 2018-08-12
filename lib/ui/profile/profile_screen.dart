@@ -1,5 +1,7 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/ui/common/button.dart';
+import 'package:buddish_project/ui/common/loading_content.dart';
+import 'package:buddish_project/ui/common/loading_view.dart';
 import 'package:buddish_project/ui/common/radio_item.dart';
 import 'package:buddish_project/ui/profile/profile_container.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void _update() {
+  void _update(BuildContext scaffoldContext) {
     final user = widget.viewModel.user.copyWith(
       name: nameController.text,
       tel: telController.text.replaceAll(RegExp(r'-'), ''),
@@ -72,7 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       gender: gender,
     );
 
-    widget.viewModel.onUpdate(user);
+    widget.viewModel.onUpdate(user, scaffoldContext);
   }
 
   @override
@@ -105,50 +107,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: AppColors.main),
         elevation: 1.0,
-        title: Text('ข้อมูลส่วนตัว', style: Style.appbarTitle),
+        title: Text('ข้อมูลส่วนตัว', style: AppStyle.appbarTitle),
       ),
       resizeToAvoidBottomPadding: true,
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
-        child: Column(
-          children: <Widget>[
-            Form(
+      body: Builder(
+        builder: (BuildContext scaffoldContext) {
+          return LoadingView(
+            loadingStatus: widget.viewModel.profileScreenState.loadingStatus,
+            loadingContent: LoadingContent(text: 'กำลังบันทึก'),
+            initialContent: Container(
+              padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
               child: Column(
                 children: <Widget>[
-                  TextFormField(
-                    style: textInputStyle,
-                    controller: nameController,
-                    keyboardType: TextInputType.text,
-                    decoration: inputStyle.copyWith(labelText: 'ชื่อ - นามสกุล'),
+                  Form(
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          style: textInputStyle,
+                          controller: nameController,
+                          keyboardType: TextInputType.text,
+                          decoration: inputStyle.copyWith(labelText: 'ชื่อ - นามสกุล'),
+                        ),
+                        SizedBox(height: Dimension.fieldVerticalMargin),
+                        TextFormField(
+                          style: textInputStyle,
+                          controller: telController,
+                          keyboardType: TextInputType.number,
+                          decoration: inputStyle.copyWith(labelText: 'เบอร์โทร'),
+                        ),
+                        SizedBox(height: Dimension.fieldVerticalMargin),
+                        TextFormField(
+                          style: textInputStyle,
+                          controller: dateOfBirthController,
+                          keyboardType: TextInputType.number,
+                          decoration: inputStyle.copyWith(labelText: 'วันเกิด', helperText: 'เช่น 30-12-1994'),
+                        ),
+                        SizedBox(height: Dimension.fieldVerticalMargin),
+                        _buildGenderField(),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: Dimension.fieldVerticalMargin),
-                  TextFormField(
-                    style: textInputStyle,
-                    controller: telController,
-                    keyboardType: TextInputType.number,
-                    decoration: inputStyle.copyWith(labelText: 'เบอร์โทร'),
+                  SizedBox(height: Dimension.fieldVerticalMargin * 2),
+                  Button(
+                    title: 'บันทึก',
+                    titleColor: AppColors.main,
+                    backgroundColor: Colors.yellow,
+                    onPressed: () => _update(scaffoldContext),
                   ),
-                  SizedBox(height: Dimension.fieldVerticalMargin),
-                  TextFormField(
-                    style: textInputStyle,
-                    controller: dateOfBirthController,
-                    keyboardType: TextInputType.number,
-                    decoration: inputStyle.copyWith(labelText: 'วันเกิด', helperText: 'เช่น 30-12-1994'),
-                  ),
-                  SizedBox(height: Dimension.fieldVerticalMargin),
-                  _buildGenderField(),
                 ],
               ),
             ),
-            SizedBox(height: Dimension.fieldVerticalMargin * 2),
-            Button(
-              title: 'บันทึก',
-              titleColor: AppColors.main,
-              backgroundColor: Colors.yellow,
-              onPressed: _update,
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

@@ -67,7 +67,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
         elevation: 1.0,
         title: Text(
           'แบบสอบถาม',
-          style: Style.appbarTitle,
+          style: AppStyle.appbarTitle,
         ),
         iconTheme: IconThemeData(color: AppColors.main),
       ),

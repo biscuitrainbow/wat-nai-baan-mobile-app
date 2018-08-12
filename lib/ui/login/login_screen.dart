@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
             if (value.isEmpty) return 'กรุณากรอกอีเมลล์';
             if (!isEmail(value)) return 'รูปแบบอีเมลล์ไม่ถูกต้อง';
           },
-          decoration: Style.textInputLogin.copyWith(hintText: 'อีเมลล์'),
+          decoration: AppStyle.textInputLogin.copyWith(hintText: 'อีเมลล์'),
         ),
         SizedBox(height: Dimension.fieldVerticalMargin),
         TextFormField(
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onFieldSubmitted: (String value) => _login(),
           validator: (String value) => value.isEmpty ? 'กรุณากรอกรหัสผ่าน' : null,
           obscureText: true,
-          decoration: Style.textInputLogin.copyWith(hintText: 'รหัสผ่าน'),
+          decoration: AppStyle.textInputLogin.copyWith(hintText: 'รหัสผ่าน'),
         ),
         SizedBox(height: Dimension.fieldVerticalMargin),
       ],
