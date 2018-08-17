@@ -24,7 +24,6 @@ class NewsListScreen extends StatefulWidget {
 
 class _NewsListScreenState extends State<NewsListScreen> with SingleTickerProviderStateMixin {
   TabController tabController;
-  ScrollController scrollController;
 
   Widget _buildAppBar() {
     return SliverAppBar(
@@ -61,7 +60,6 @@ class _NewsListScreenState extends State<NewsListScreen> with SingleTickerProvid
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
-    scrollController = ScrollController()
     super.initState();
   }
 
@@ -85,7 +83,6 @@ class _NewsListScreenState extends State<NewsListScreen> with SingleTickerProvid
                 RefreshIndicator(
                   onRefresh: () async => print('refresh'),
                   child: ListView.builder(
-                    controller: ,
                     itemBuilder: (BuildContext context, int index) {
                       final news = widget.viewModel.news[index];
                       return NewsItem(news: news, onPressed: () => _showNews(news));
