@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:buddish_project/data/model/User.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/parser/user_parser.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:test/test.dart';

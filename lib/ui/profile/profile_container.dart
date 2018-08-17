@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:buddish_project/data/model/User.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/ui/profile_screen/profile_screen_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';

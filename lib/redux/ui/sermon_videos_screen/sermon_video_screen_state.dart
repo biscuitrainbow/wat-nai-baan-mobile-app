@@ -1,5 +1,5 @@
 import 'package:buddish_project/data/loading_status.dart';
-import 'package:buddish_project/data/model/Video.dart';
+import 'package:buddish_project/data/model/video.dart';
 import 'package:meta/meta.dart';
 
 class SermonVideoScreenState {

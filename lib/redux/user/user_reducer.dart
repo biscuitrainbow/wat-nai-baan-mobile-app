@@ -1,4 +1,4 @@
-import 'package:buddish_project/data/model/User.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:redux/redux.dart';
 

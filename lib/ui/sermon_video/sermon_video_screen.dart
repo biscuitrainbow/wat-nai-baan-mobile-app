@@ -1,6 +1,6 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/loading_status.dart';
-import 'package:buddish_project/data/model/Video.dart';
+import 'package:buddish_project/data/model/video.dart';
 import 'package:buddish_project/data/repository/youtube_repository.dart';
 import 'package:buddish_project/ui/common/loading_content.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_container.dart';

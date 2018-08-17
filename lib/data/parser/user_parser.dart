@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:buddish_project/data/model/User.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';

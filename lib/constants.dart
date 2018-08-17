@@ -48,6 +48,16 @@ class AppStyle {
       hintText: '',
       fillColor: Colors.grey.shade200,
       filled: true);
+
+  static final inputStyle = InputDecoration(
+    border: InputBorder.none,
+//    labelStyle: TextStyle(
+//      color: Colors.black54,
+//      fontWeight: FontWeight.w300,
+//    ),
+    fillColor: Colors.grey.shade200,
+    filled: true,
+  );
 }
 
 class AppString {

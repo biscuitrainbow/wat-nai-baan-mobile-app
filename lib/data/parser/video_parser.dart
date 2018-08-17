@@ -1,4 +1,4 @@
-import 'package:buddish_project/data/model/Video.dart';
+import 'package:buddish_project/data/model/video.dart';
 import 'package:buddish_project/data/repository/youtube_repository.dart';
 
 class VideoParser {

@@ -66,8 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () async {
                   var facebookLogin = new FacebookLogin();
                   var result = await facebookLogin.logInWithReadPermissions(['email']);
-
-                  print(result.status);
+                  print(result.accessToken.token);
                 },
               ),
               SizedBox(height: Dimension.fieldVerticalMargin),
@@ -132,11 +131,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
-        body: LoadingView(
-          loadingStatus: widget.viewModel.state.loadingStatus,
-          initialContent: _buildInitialContent(),
-          loadingContent: LoadingContent(text: 'กำลังเข้าสู่ระบบ'),
-        ));
+      resizeToAvoidBottomPadding: false,
+      body: LoadingView(
+        loadingStatus: widget.viewModel.state.loadingStatus,
+        initialContent: _buildInitialContent(),
+        loadingContent: LoadingContent(text: 'กำลังเข้าสู่ระบบ'),
+      ),
+    );
   }
 }

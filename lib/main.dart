@@ -10,7 +10,10 @@ import 'package:buddish_project/ui/login/login_screen.dart';
 import 'package:buddish_project/ui/main/main_container.dart';
 import 'package:buddish_project/ui/main/main_screen.dart';
 import 'package:buddish_project/ui/menu/menu_screen.dart';
+import 'package:buddish_project/ui/news_compose/news_compose_container.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
+import 'package:buddish_project/ui/news_list/news_list_container.dart';
+import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_container.dart';
@@ -66,9 +69,10 @@ class MyAppState extends State<MyApp> {
           SermonScreen.route: (context) => SermonScreen(),
           LoginScreen.route: (context) => LoginContainer(),
           ProfileScreen.route: (context) => ProfileContainer(),
+          NewsListScreen.route: (context) => NewsListContainer(),
           PrayingScreen.route: (context) => PrayingContainer(),
           SurveyScreen.route: (context) => SurveyScreen(),
-          NewsComposeScreen.route: (context) => NewsComposeScreen(),
+          NewsComposeScreen.route: (context) => NewsComposeContainer(),
         },
       ),
     );

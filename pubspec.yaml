@@ -26,6 +26,7 @@ dependencies:
   redux_logging: ^0.3.0
   flutter_advanced_networkimage: any
   flutter_facebook_login: ^1.1.1
+  fluttertoast: ^2.0.7
 
 dev_dependencies:
 #  flutter_stetho: 0.1.1

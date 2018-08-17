@@ -1,4 +1,4 @@
-import 'package:buddish_project/data/model/User.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/repository/prefs_repository.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
@@ -8,7 +8,7 @@ import 'package:buddish_project/redux/ui/profile_screen/profile_screen_action.da
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:redux/redux.dart';
 
-List<Middleware<AppState>> createUserMiddlewares(
+List<Middleware<AppState>> createUserMiddleware(
   UserRepository userRepository,
   SharedPreferencesRepository sharedPrefRepository,
 ) {

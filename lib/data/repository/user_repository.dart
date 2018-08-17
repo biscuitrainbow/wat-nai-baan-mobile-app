@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/constants.dart';
-import 'package:buddish_project/data/model/User.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/parser/user_parser.dart';
 import 'package:buddish_project/data/repository/constant.dart';
 import 'package:buddish_project/utils/StringUtil.dart';

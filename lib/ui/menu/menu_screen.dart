@@ -2,6 +2,7 @@ import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
+import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
@@ -76,7 +77,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: 'ข่าวสารทางพระพุทธศาสนา',
                 titleColor: Color(0xFFAD4C3C),
                 backgroundColor: Color(0xFFF9BFB9),
-                onPressed: () => Navigator.of(context).pushNamed(NewsComposeScreen.route),
+                onPressed: () => Navigator.of(context).pushNamed(NewsListScreen.route),
               ),
               new Menu(
                 title: 'ฟังเทศน์ ฟังธรรม',

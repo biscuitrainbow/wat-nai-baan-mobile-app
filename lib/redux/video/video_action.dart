@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:buddish_project/data/model/Video.dart';
+import 'package:buddish_project/data/model/video.dart';
 
 class FetchSermonPlaylist {
   final String playlistId;

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:buddish_project/data/model/User.dart';
+import 'package:buddish_project/data/model/user.dart';
 
 class Login {
   final String email;

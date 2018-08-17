@@ -1,0 +1,7 @@
+class ShowNewsComposeLoading {
+
+}
+
+class HideNewsComposeLoading {
+
+}
