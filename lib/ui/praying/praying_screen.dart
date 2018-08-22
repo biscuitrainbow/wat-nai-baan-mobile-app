@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:audioplayer/audioplayer.dart';
@@ -7,6 +8,7 @@ import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:zefyr/zefyr.dart';
 
 class PrayingScreen extends StatefulWidget {
   static final String route = "/praying";
@@ -22,7 +24,12 @@ class PrayingScreen extends StatefulWidget {
 }
 
 class _PrayingScreenState extends State<PrayingScreen> {
-  final AudioPlayer audioPlugin = new AudioPlayer();
+  final AudioPlayer _audioPlugin = new AudioPlayer();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  ZefyrController _controller;
+  FocusNode _editorFocusNode;
+  PersistentBottomSheetController _bottomSheetController;
 
   Future<File> copyLocalAsset(Directory localDir, String bundleDir, String assetName) async {
     final data = await rootBundle.load('$bundleDir/$assetName');
@@ -32,8 +39,43 @@ class _PrayingScreenState extends State<PrayingScreen> {
     return localAssetFile;
   }
 
+  void _showLyric() {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: MediaQuery.of(context).size.height * .45,
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 8.0),
+                Text(
+                  'บทสวด',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
+                SizedBox(height: 8.0),
+                Expanded(
+                  child: ZefyrEditor(
+                    enabled: false,
+                    controller: _controller,
+                    focusNode: _editorFocusNode,
+                  ),
+                )
+              ],
+            ),
+          );
+        });
+  }
+
   @override
   void initState() {
+    final document = NotusDocument.fromJson(
+        json.decode("[{\"insert\":\"๑. คำบูชาพระรัตนตรัยโดยพิสดาร\",\"attributes\":{\"b\":true}},{\"insert\":\"\\nโย โส ภะคะวา อะระหัง สัมมาสัมพุทโธ , สวากขาโต เยนะ ภะคะวะตา ธัมโม , สุปะฏิปันโน ยัสสะ\\nภะคะวะโต สาวะกะสังโฆ , ตัมมะยัง ภะคะวันตัง สะธัมมัง สะสังฆัง , อิเมหิ สักกาเรหิ ยะถาระหัง อาโรปิเตหิ อะภิปูชะยามะ , สาธุ โน ภันเต ภะคะวา สุจิระปะรินิพพุโตปิ , ปัจฉิมาชะนะตานุกัมปะมานะสา , อิเม สักกาเร\\nทุคคะตะปัณณาการะภูเต ปะฏิคคัณหาตุ , อัมหากัง  ทีฆะรัตตัง หิตายะ สุขายะ  ฯ\\n\"}]"));
+
+    _controller = ZefyrController(document);
+    _editorFocusNode = FocusNode();
+
     super.initState();
   }
 
@@ -45,6 +87,7 @@ class _PrayingScreenState extends State<PrayingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           title: Text(
             'สวดมนต์',
@@ -74,15 +117,24 @@ class _PrayingScreenState extends State<PrayingScreen> {
                       final dir = await getApplicationDocumentsDirectory();
                       final localAssetFile = await copyLocalAsset(dir, Asset.audioBundle, mantra.url);
 
-                      audioPlugin.play(localAssetFile.path, isLocal: true);
+                      _audioPlugin.play(localAssetFile.path, isLocal: true);
                       widget.viewModel.onPlay(index);
+
+                      _showLyric();
 
                       return;
                     }
 
-                    audioPlugin.stop();
-                    widget.viewModel.onStop(index);
+                    try {
+//                      _bottomSheetController?.close();
+
+                      _audioPlugin.stop();
+                      widget.viewModel.onStop(index);
+                    } catch (e) {
+                      print(e);
+                    }
                   },
+                  onLyricPressed: () {},
                 ),
               );
             }));
@@ -96,6 +148,7 @@ class MantraPlayer extends StatelessWidget {
   final double fontSize;
   final bool isPlaying;
   final VoidCallback onPressed;
+  final VoidCallback onLyricPressed;
 
   MantraPlayer({
     @required this.title,
@@ -103,6 +156,7 @@ class MantraPlayer extends StatelessWidget {
     @required this.backgroundColor,
     @required this.isPlaying,
     @required this.onPressed,
+    @required this.onLyricPressed,
     this.fontSize = 24.0,
   });
 
@@ -115,7 +169,7 @@ class MantraPlayer extends StatelessWidget {
       width: double.infinity,
       color: backgroundColor,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
@@ -145,7 +199,13 @@ class MantraPlayer extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-          )
+          ),
+//          Flexible(
+//            child: IconButton(
+//              icon: Icon(Icons.font_download),
+//              onPressed: onLyricPressed,
+//            ),
+//          )
         ],
       ),
     );
