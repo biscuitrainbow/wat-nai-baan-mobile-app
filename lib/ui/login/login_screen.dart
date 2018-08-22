@@ -3,7 +3,7 @@ import 'package:buddish_project/ui/common/button.dart';
 import 'package:buddish_project/ui/common/loading_content.dart';
 import 'package:buddish_project/ui/common/loading_view.dart';
 import 'package:buddish_project/ui/login/login_container.dart';
-import 'package:buddish_project/utils/StringUtil.dart';
+import 'package:buddish_project/utils/string_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 

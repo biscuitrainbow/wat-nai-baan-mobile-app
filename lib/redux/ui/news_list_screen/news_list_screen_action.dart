@@ -1,0 +1,7 @@
+class ShowNewsListLoading {
+
+}
+
+class HideNewsListLoading {
+
+}

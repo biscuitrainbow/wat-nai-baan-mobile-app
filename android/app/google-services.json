@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "608017343131",
+    "firebase_url": "https://wat-nai-bann.firebaseio.com",
+    "project_id": "wat-nai-bann",
+    "storage_bucket": "wat-nai-bann.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608017343131:android:622b0ddf4bf19c23",
+        "android_client_info": {
+          "package_name": "buddish.camt.cmu.ac.th.buddishproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608017343131-lou7tl96qo00qrv88khonkms1cvm20su.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "buddish.camt.cmu.ac.th.buddishproject",
+            "certificate_hash": "634f3f2ff210c8c8ded84bc6e2e6dfd24e8d4b3a"
+          }
+        },
+        {
+          "client_id": "608017343131-3bsi4lsikbcqv9kulk1b53jqk6hjadej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHOW36SMq3_-mDfA6YavqIRDqO9drEkTg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608017343131-3bsi4lsikbcqv9kulk1b53jqk6hjadej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

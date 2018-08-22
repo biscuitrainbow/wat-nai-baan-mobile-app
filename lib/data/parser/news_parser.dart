@@ -1,5 +1,5 @@
 import 'package:buddish_project/data/model/news.dart';
-import 'package:buddish_project/utils/StringUtil.dart';
+import 'package:buddish_project/utils/string_util.dart';
 
 class NewsParser {
   static List<News> parseArray(List<dynamic> array) {
@@ -14,6 +14,7 @@ class NewsParser {
       category: json[Field.category],
       dueDate: fromMysqlDateTime(json[Field.dueDate]),
       dateCreated: fromMysqlDateTime(json[Field.createdAt]),
+      diff: json[Field.diff],
     );
   }
 }

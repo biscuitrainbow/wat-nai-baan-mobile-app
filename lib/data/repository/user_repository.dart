@@ -7,7 +7,7 @@ import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/parser/user_parser.dart';
 import 'package:buddish_project/data/repository/constant.dart';
-import 'package:buddish_project/utils/StringUtil.dart';
+import 'package:buddish_project/utils/string_util.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 

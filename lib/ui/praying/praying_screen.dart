@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:audioplayer/audioplayer.dart';
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayer/audioplayer.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -51,6 +51,7 @@ class _PrayingScreenState extends State<PrayingScreen> {
             style: AppStyle.appbarTitle,
           ),
           iconTheme: IconThemeData(color: AppColors.main),
+          elevation: 1.0,
         ),
         body: ListView.builder(
             padding: EdgeInsets.symmetric(
@@ -74,8 +75,8 @@ class _PrayingScreenState extends State<PrayingScreen> {
                       final localAssetFile = await copyLocalAsset(dir, Asset.audioBundle, mantra.url);
 
                       audioPlugin.play(localAssetFile.path, isLocal: true);
-
                       widget.viewModel.onPlay(index);
+
                       return;
                     }
 

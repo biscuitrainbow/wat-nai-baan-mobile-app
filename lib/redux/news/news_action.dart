@@ -8,7 +8,11 @@ class FetchNewsSuccess {
   FetchNewsSuccess(this.news);
 }
 
-class FetchNews {}
+class FetchNews {
+  final Completer<Null> completer;
+
+  FetchNews({this.completer});
+}
 
 class AddNews {
   final News news;

@@ -10,6 +10,7 @@ class News {
   final DateTime dateCreated;
   final DateTime dueDate;
   final String content;
+  final String diff;
 
   News({
     this.title,
@@ -18,6 +19,7 @@ class News {
     this.dateCreated,
     this.dueDate,
     this.content,
+    this.diff,
   });
 
   News copyWith({
@@ -27,6 +29,7 @@ class News {
     DateTime dateCreated,
     DateTime dueDate,
     String content,
+    String diff,
   }) {
     return News(
       title: title ?? this.title,
@@ -35,12 +38,13 @@ class News {
       dateCreated: dateCreated ?? this.dateCreated,
       dueDate: dueDate ?? this.dueDate,
       content: content ?? this.content,
+      diff: diff ?? this.diff,
     );
   }
 
   @override
   String toString() {
-    return 'News{title: $title, cover: $cover, category: $category, dateCreated: $dateCreated, dueDate: $dueDate, content: $content}';
+    return 'News{title: $title, cover: $cover, category: $category, dateCreated: $dateCreated, dueDate: $dueDate, content: $content, diff: $diff}';
   }
 
   static String getRandomImage() {
@@ -112,4 +116,5 @@ abstract class Field {
   static final String category = 'category';
   static final String cover = 'cover';
   static final String createdAt = 'created_at';
+  static final String diff = 'diff';
 }

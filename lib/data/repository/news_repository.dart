@@ -6,7 +6,7 @@ import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/news.dart';
 import 'package:buddish_project/data/parser/news_parser.dart';
-import 'package:buddish_project/utils/StringUtil.dart';
+import 'package:buddish_project/utils/string_util.dart';
 import 'package:http/http.dart' as http;
 
 class NewsRepository {
@@ -25,6 +25,8 @@ class NewsRepository {
         Field.cover: news.cover,
       },
     );
+
+    print(response.body);
   }
 
   Future<List<News>> fetchNews(String token) async {
