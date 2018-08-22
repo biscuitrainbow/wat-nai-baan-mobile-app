@@ -335,6 +335,9 @@ class NewsGeneralItem extends StatelessWidget {
             _buildVideoTitle(),
             SizedBox(height: 4.0),
             CachedNetworkImage(
+              fit: BoxFit.cover,
+              height: 200.0,
+              width: 500.0,
               imageUrl: news.cover ?? 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png',
               placeholder: _buildImagePlaceholder(context),
             )
