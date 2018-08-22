@@ -104,7 +104,7 @@ class VideoItem extends StatelessWidget {
         child: Text(
           video.name,
           textAlign: TextAlign.start,
-          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
+          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: AppColors.main),
         ),
       ),
     ]);

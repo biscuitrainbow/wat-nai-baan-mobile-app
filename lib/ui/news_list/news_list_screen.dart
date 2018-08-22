@@ -26,7 +26,8 @@ class NewsListScreen extends StatefulWidget {
 
 // ignore: mixin_inference_inconsistent_matching_classes
 class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<NewsListScreen>, SingleTickerProviderStateMixin {
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
+  static GlobalKey<RefreshIndicatorState> _generalRefreshIndicatorKey;
+  static GlobalKey<RefreshIndicatorState> _activityRefreshIndicatorKey;
 
   TabController _tabController;
 
@@ -63,14 +64,14 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
 
   Widget _buildGeneralNews() {
     return RefreshIndicator(
-      key: _refreshIndicatorKey,
+      key: _generalRefreshIndicatorKey,
       onRefresh: () async {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
           print('completer');
         });
 
-        widget.viewModel.onRefresh(_refreshIndicatorKey.currentState, completer);
+        widget.viewModel.onRefresh(_activityRefreshIndicatorKey.currentState, completer);
 
         return completer.future;
       },
@@ -81,13 +82,47 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  final news = widget.viewModel.news[index];
-                  return NewsItem(
+                  final news = widget.viewModel.generalNews[index];
+
+                  return NewsGeneralItem(
                     news: news,
                     onPressed: () => _showNews(news),
                   );
                 },
-                childCount: widget.viewModel.news.length,
+                childCount: widget.viewModel.generalNews.length,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActivityNews() {
+    return RefreshIndicator(
+      key: _activityRefreshIndicatorKey,
+      onRefresh: () async {
+        Completer<Null> completer = Completer();
+
+        widget.viewModel.onRefresh(_activityRefreshIndicatorKey.currentState, completer);
+
+        return completer.future;
+      },
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverPadding(
+            padding: EdgeInsets.only(top: 8.0),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  final news = widget.viewModel.activityNews[index];
+
+                  return NewsActivityItem(
+                    news: news,
+                    onPressed: () => _showNews(news),
+                  );
+                },
+                childCount: widget.viewModel.activityNews.length,
               ),
             ),
           )
@@ -99,6 +134,9 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
+
+    _generalRefreshIndicatorKey = new GlobalObjectKey<RefreshIndicatorState>('__general');
+    _activityRefreshIndicatorKey = new GlobalObjectKey<RefreshIndicatorState>('__activity');
 
     super.initState();
   }
@@ -128,6 +166,7 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
           controller: _tabController,
           children: [
             _buildGeneralNews(),
+            _buildActivityNews(),
           ],
         ),
       ),
@@ -135,11 +174,101 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
   }
 }
 
-class NewsItem extends StatelessWidget {
+class NewsActivityItem extends StatelessWidget {
   final News news;
   final VoidCallback onPressed;
 
-  NewsItem({
+  NewsActivityItem({
+    this.news,
+    this.onPressed,
+  });
+
+  Widget _buildDueDate() {
+    final formatter = DateFormat('dd MMM yyy');
+    final date = formatter.format(news.dateCreated);
+
+    return Text(
+      date,
+      style: TextStyle(color: Colors.black54),
+    );
+  }
+
+  Widget _buildLocation() {
+    return Row(
+      children: <Widget>[
+        Icon(
+          Icons.pin_drop,
+          color: Colors.black54,
+        ),
+        Text(news.location, style: TextStyle(color: Colors.black54)),
+      ],
+    );
+  }
+
+  Widget _buildThumbnail() {
+    return Flexible(
+      flex: 2,
+      child: Container(
+        height: 300.0,
+        width: 500.0,
+        child: CachedNetworkImage(
+          fit: BoxFit.cover,
+          imageUrl: news.cover ?? 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png',
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDetail() {
+    return Flexible(
+      flex: 3,
+      child: Padding(
+        padding: EdgeInsets.all(Dimension.screenVerticalPadding),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                _buildDueDate(),
+                Text(
+                  news.title,
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: AppColors.main),
+                ),
+              ],
+            ),
+            news.location != null ? _buildLocation() : Container(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        color: Colors.grey.shade200,
+        height: 150.0,
+        margin: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
+        child: Row(
+          children: <Widget>[
+            _buildDetail(),
+            _buildThumbnail(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewsGeneralItem extends StatelessWidget {
+  final News news;
+  final VoidCallback onPressed;
+
+  NewsGeneralItem({
     this.news,
     this.onPressed,
   });

@@ -8,6 +8,14 @@ import 'package:uuid/uuid.dart';
 import 'package:zefyr/zefyr.dart';
 
 class FirebaseImageDelegate implements ZefyrImageDelegate<ImageSource> {
+  final Function onCompleteUpload;
+  final Function onStartUploading;
+
+  FirebaseImageDelegate({
+    this.onCompleteUpload,
+    this.onStartUploading,
+  });
+
   @override
   ImageProvider createImageProvider(String imageSource) {
 //    final file = new File.fromUri(Uri.parse(imageSource));
@@ -21,6 +29,8 @@ class FirebaseImageDelegate implements ZefyrImageDelegate<ImageSource> {
 
     if (file == null) return null;
 
+    onStartUploading();
+
     try {
       final resizedFile = await resizeImage(file);
       final uuid = Uuid();
@@ -28,6 +38,8 @@ class FirebaseImageDelegate implements ZefyrImageDelegate<ImageSource> {
       final task = ref.putFile(resizedFile);
 
       final downloadUri = (await task.future).downloadUrl;
+
+      onCompleteUpload();
 
       return downloadUri.toString();
     } catch (e) {

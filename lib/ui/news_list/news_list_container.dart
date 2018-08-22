@@ -14,7 +14,7 @@ class NewsListContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector(
       converter: NewsListViewModel.fromStore,
-//      onInit: (Store<AppState> store) => store.dispatch(FetchNews()),
+      onInit: (Store<AppState> store) => store.dispatch(FetchNews()),
       onDispose: (Store<AppState> store) {},
       builder: (BuildContext context, NewsListViewModel viewModel) {
         return NewsListScreen(
@@ -27,11 +27,16 @@ class NewsListContainer extends StatelessWidget {
 
 class NewsListViewModel {
   final List<News> news;
+  final List<News> generalNews;
+  final List<News> activityNews;
+
   final NewsListScreenState state;
   final Function(RefreshIndicatorState refresherIndicatorState, Completer<Null> completer) onRefresh;
 
   NewsListViewModel({
     @required this.news,
+    @required this.generalNews,
+    @required this.activityNews,
     @required this.state,
     @required this.onRefresh,
   });
@@ -39,6 +44,8 @@ class NewsListViewModel {
   static NewsListViewModel fromStore(Store<AppState> store) {
     return NewsListViewModel(
       news: store.state.news,
+      generalNews: store.state.news.where((news) => news.category == News.categoryGeneral).toList(),
+      activityNews: store.state.news.where((news) => news.category == News.categoryActivity).toList(),
       state: store.state.newsListScreenState,
       onRefresh: (RefreshIndicatorState refresherIndicatorState, Completer<Null> completer) {
         store.dispatch(FetchNews(completer: completer));

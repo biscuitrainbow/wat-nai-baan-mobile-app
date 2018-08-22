@@ -32,6 +32,7 @@ class AppColors {
 class AppStyle {
   static final TextStyle appbarTitle = TextStyle(color: AppColors.main, fontWeight: FontWeight.w600);
   static final TextStyle snackBarMessage = TextStyle(color: Colors.white, fontWeight: FontWeight.w600);
+  static final TextStyle inputLabelStyle = TextStyle(color: Colors.black45, fontSize: 16.0, fontWeight: FontWeight.w400);
 
   static final InputDecoration textInputLogin = InputDecoration(
     border: InputBorder.none,
@@ -62,5 +63,7 @@ class AppStyle {
 
 class AppString {
   static final String dateOfBirthFormat = 'dd-MM-yyyy';
+  static final String datetimeTextField = 'dd MMM yyyy HH:mm a';
+
   static final String httpApplicationJson = 'application/json';
 }

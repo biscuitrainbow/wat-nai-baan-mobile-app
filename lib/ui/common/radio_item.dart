@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class RadioItem extends StatelessWidget {
   final String groupValue;
   final String value;
+  final String label;
   final Function(String) onChanged;
 
   const RadioItem({
     this.groupValue,
     this.value,
+    this.label,
     this.onChanged,
   });
 
@@ -22,8 +24,8 @@ class RadioItem extends StatelessWidget {
           onChanged: onChanged,
         ),
         Text(
-          value,
-          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w500, fontSize: 16.0),
+          label ?? value,
+          style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w400, fontSize: 16.0),
         ),
       ],
     );

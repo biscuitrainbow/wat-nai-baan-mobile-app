@@ -21,6 +21,7 @@ class NewsRepository {
         Field.title: news.title,
         Field.content: news.content,
         Field.dueDate: toMysqlDateTime(news.dueDate),
+        Field.location: news.location,
         Field.category: news.category,
         Field.cover: news.cover,
       },

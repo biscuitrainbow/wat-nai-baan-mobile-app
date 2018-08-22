@@ -4,6 +4,9 @@ class News {
   static final String categoryGeneral = 'general';
   static final String categoryActivity = 'activity';
 
+  static final String categoryGeneralTH = 'ทั่วไป';
+  static final String categoryActivityTH = 'นัดหมายกิจกรรม';
+
   final String title;
   final String cover;
   final String category;
@@ -11,6 +14,7 @@ class News {
   final DateTime dueDate;
   final String content;
   final String diff;
+  final String location;
 
   News({
     this.title,
@@ -18,6 +22,7 @@ class News {
     this.category,
     this.dateCreated,
     this.dueDate,
+    this.location,
     this.content,
     this.diff,
   });
@@ -28,6 +33,7 @@ class News {
     String category,
     DateTime dateCreated,
     DateTime dueDate,
+    String location,
     String content,
     String diff,
   }) {
@@ -37,6 +43,7 @@ class News {
       category: category ?? this.category,
       dateCreated: dateCreated ?? this.dateCreated,
       dueDate: dueDate ?? this.dueDate,
+      location: location ?? this.location,
       content: content ?? this.content,
       diff: diff ?? this.diff,
     );
@@ -44,7 +51,7 @@ class News {
 
   @override
   String toString() {
-    return 'News{title: $title, cover: $cover, category: $category, dateCreated: $dateCreated, dueDate: $dueDate, content: $content, diff: $diff}';
+    return 'News{title: $title, cover: $cover, category: $category, dateCreated: $dateCreated, dueDate: $dueDate, content: $content, diff: $diff, location: $location}';
   }
 
   static String getRandomImage() {
@@ -117,4 +124,5 @@ abstract class Field {
   static final String cover = 'cover';
   static final String createdAt = 'created_at';
   static final String diff = 'diff';
+  static final String location = 'location';
 }

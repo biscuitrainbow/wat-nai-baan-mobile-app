@@ -7,8 +7,8 @@ import 'package:buddish_project/redux/ui/news_compose_screen/news_compose_screen
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:redux/redux.dart';
 
 class NewsComposeContainer extends StatelessWidget {
   @override
@@ -24,10 +24,12 @@ class NewsComposeContainer extends StatelessWidget {
 
 class NewsComposeViewModel {
   final Function(News, BuildContext) onSave;
+  final Function onUploadImage;
   final NewsComposeScreenState state;
 
   NewsComposeViewModel({
     @required this.onSave,
+    @required this.onUploadImage,
     @required this.state,
   });
 
@@ -36,14 +38,7 @@ class NewsComposeViewModel {
       onSave: (News news, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
-          Fluttertoast.showToast(
-              msg: "ข่าวสารเผยแพร่แล้ว",
-              toastLength: Toast.LENGTH_LONG,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIos: 3,
-              bgcolor: "#000000",
-              textcolor: '#ffffff'
-          );
+          Fluttertoast.showToast(msg: "ข่าวสารเผยแพร่แล้ว", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM, timeInSecForIos: 3, bgcolor: "#000000", textcolor: '#ffffff');
 
           Navigator.of(context).pop();
         });
@@ -51,6 +46,9 @@ class NewsComposeViewModel {
         store.dispatch(AddNews(news, completer));
       },
       state: store.state.newsComposeScreenState,
+      onUploadImage: () {
+
+      },
     );
   }
 }

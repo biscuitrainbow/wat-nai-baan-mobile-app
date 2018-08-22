@@ -15,6 +15,7 @@ class NewsParser {
       dueDate: fromMysqlDateTime(json[Field.dueDate]),
       dateCreated: fromMysqlDateTime(json[Field.createdAt]),
       diff: json[Field.diff],
+      location: json[Field.location],
     );
   }
 }
