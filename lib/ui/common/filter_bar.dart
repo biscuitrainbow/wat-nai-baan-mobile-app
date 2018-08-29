@@ -26,9 +26,7 @@ class FilterBar extends StatefulWidget {
 class _FilterBarState extends State<FilterBar> {
   Set<String> selectedItems = Set();
 
-  bool isSelected(String item){
-
-  }
+  bool isSelected(String item) {}
 
   Widget _buildChip(String item) {
     return GestureDetector(
@@ -47,7 +45,7 @@ class _FilterBarState extends State<FilterBar> {
       child: Container(
         margin: widget.itemMargin,
         child: Chip(
-          shape: StadiumBorder(side: BorderSide(color: selectedItems.contains(item) ? widget.activeBackgroundColor : Colors.grey.shade300)),
+          shape: StadiumBorder(side: BorderSide(color: selectedItems.contains(item) ? widget.activeBackgroundColor : Colors.blueGrey.shade100)),
           backgroundColor: selectedItems.contains(item) ? widget.activeBackgroundColor : widget.backgroundColor,
           label: Text(item, style: TextStyle(color: selectedItems.contains(item) ? widget.activeTextColor : widget.textColor)),
         ),
