@@ -3,6 +3,7 @@ import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_screen.dart';
+import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
@@ -10,6 +11,7 @@ import 'package:buddish_project/ui/sermon_video/sermon_video_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:redux/redux.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -39,6 +41,15 @@ class _MenuScreenState extends State<MenuScreen> {
                 },
                 icon: Icons.person,
                 title: 'ข้อมูลผู้ใช้',
+              ),
+              SizedBox(height: 16.0),
+              DrawerItem(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).pushNamed(OnBoardingScreen.route);
+                },
+                icon: FontAwesomeIcons.stackOverflow,
+                title: 'ไตรสิขา',
               ),
               SizedBox(height: 16.0),
               DrawerItem(

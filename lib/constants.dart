@@ -8,6 +8,8 @@ class Asset {
   static final String logoMed = 'asset/logo/med.png';
   static final String lgoMjr = 'asset/logo/mjr.png';
 
+  static final String iconLotus = 'asset/icon/lotus.png';
+
   static final String audioBundle = 'asset/audio';
   static final String audio1 = '1.mp3';
   static final String audio2 = '2.mp3';
@@ -27,6 +29,9 @@ class AppColors {
   static final Color main = Color.fromRGBO(163, 84, 60, 1.0);
   static final Color secondary = Color(0xFFFCEA88);
   static final Color facebook = Color(0xFF4267B2);
+
+  static final Color gradientStart = Color(0xFFF6EB31);
+  static final Color gradientEnd = Color(0xFFF9B923);
 }
 
 class AppStyle {

@@ -11,6 +11,7 @@ import 'package:buddish_project/ui/news_compose/news_compose_container.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_container.dart';
 import 'package:buddish_project/ui/news_list/news_list_screen.dart';
+import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_container.dart';
@@ -71,6 +72,7 @@ class MyAppState extends State<MyApp> {
           PrayingScreen.route: (context) => PrayingContainer(),
           SurveyScreen.route: (context) => SurveyScreen(),
           NewsComposeScreen.route: (context) => NewsComposeContainer(),
+          OnBoardingScreen.route: (context) => OnBoardingScreen(),
         },
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,

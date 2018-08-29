@@ -67,6 +67,7 @@ flutter:
     - asset/logo/cmu.png
     - asset/logo/med.png
     - asset/logo/mjr.png
+    - asset/icon/lotus.png
     - asset/audio/1.mp3
     - asset/audio/2.mp3
     - asset/audio/3.mp3

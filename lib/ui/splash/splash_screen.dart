@@ -1,5 +1,7 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/ui/main/main_screen.dart';
+import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,6 +19,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           Navigator.of(context).pushReplacementNamed(MainScreen.route);
+//          Navigator.of(context).pushNamed(OnBoardingScreen.route);
+
+          Navigator.of(context, rootNavigator: true).push(
+            CupertinoPageRoute<bool>(
+              fullscreenDialog: true,
+              builder: (BuildContext context) => new OnBoardingScreen(),
+            ),
+          );
         }
       });
 
