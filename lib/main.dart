@@ -2,6 +2,8 @@ import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/redux/app/app_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/store.dart';
+import 'package:buddish_project/ui/activity_list/activity_list_container.dart';
+import 'package:buddish_project/ui/activity_list/activity_list_screen.dart';
 import 'package:buddish_project/ui/login/login_container.dart';
 import 'package:buddish_project/ui/login/login_screen.dart';
 import 'package:buddish_project/ui/main/main_container.dart';
@@ -72,6 +74,7 @@ class MyAppState extends State<MyApp> {
           PrayingScreen.route: (context) => PrayingContainer(),
           SurveyScreen.route: (context) => SurveyScreen(),
           NewsComposeScreen.route: (context) => NewsComposeContainer(),
+          ActivityListScreen.route: (context) => ActivityListContainer(),
           OnBoardingScreen.route: (context) => OnBoardingScreen(),
         },
         localizationsDelegates: [

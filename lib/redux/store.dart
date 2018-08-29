@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:buddish_project/data/repository/activity_repository.dart';
 import 'package:buddish_project/data/repository/news_repository.dart';
 import 'package:buddish_project/data/repository/prefs_repository.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:buddish_project/data/repository/youtube_repository.dart';
+import 'package:buddish_project/redux/activity/activity_middleware.dart';
 import 'package:buddish_project/redux/app/app_middleware.dart';
 import 'package:buddish_project/redux/app/app_reducer.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
@@ -18,6 +20,7 @@ Future<Store<AppState>> createStore() async {
   var userRepository = UserRepository();
   var youtubeRepository = YoutubeRepository();
   var newsRepository = NewsRepository();
+  var activityRepository = ActivityRepository();
 
   return Store<AppState>(
     appReducer,
@@ -27,6 +30,7 @@ Future<Store<AppState>> createStore() async {
       ..addAll(createAppMiddleware(userRepository, sharedPreferencesRepository))
       ..addAll(createUserMiddleware(userRepository, sharedPreferencesRepository))
       ..addAll(createNewsMiddleware(newsRepository))
-      ..addAll(createVideoMiddleware(youtubeRepository)),
+      ..addAll(createVideoMiddleware(youtubeRepository))
+      ..addAll(createActivityMiddleware(activityRepository)),
   );
 }

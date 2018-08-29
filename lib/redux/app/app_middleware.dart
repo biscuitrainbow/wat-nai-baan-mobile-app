@@ -1,5 +1,6 @@
 import 'package:buddish_project/data/repository/prefs_repository.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
+import 'package:buddish_project/redux/activity/activity_action.dart';
 import 'package:buddish_project/redux/app/app_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/news/news_action.dart';
@@ -31,6 +32,7 @@ Middleware<AppState> init(
           next(SaveToken(token));
           next(FetchUserDetail());
           next(FetchNews());
+          next(FetchActivities());
         }
       } catch (error) {}
 

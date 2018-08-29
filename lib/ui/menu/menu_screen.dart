@@ -1,7 +1,7 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
-import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
+import 'package:buddish_project/ui/activity_list/activity_list_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
@@ -85,31 +85,31 @@ class _MenuScreenState extends State<MenuScreen> {
           padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
           child: Column(
             children: <Widget>[
-              new Menu(
+              Menu(
                 title: 'ข่าวสารทางพระพุทธศาสนา',
                 titleColor: Color(0xFFAD4C3C),
                 backgroundColor: Color(0xFFF9BFB9),
                 onPressed: () => Navigator.of(context).pushNamed(NewsListScreen.route),
               ),
-              new Menu(
+              Menu(
                 title: 'ฟังเทศน์ ฟังธรรม',
                 titleColor: Color(0xFF363C72),
                 backgroundColor: Color(0xFFAEDED5),
                 onPressed: () => Navigator.of(context).pushNamed(SermonVideoScreen.route),
               ),
-              new Menu(
+              Menu(
                 title: 'สวดมนต์',
                 titleColor: Color(0xFFA23825),
                 backgroundColor: Color(0xFFF9A479),
                 onPressed: () => Navigator.of(context).pushNamed(PrayingScreen.route),
               ),
-              new Menu(
-                title: 'สะสมบุญ 9 วัด',
+              Menu(
+                title: 'กิจกรรมสะสมบุญ',
                 titleColor: Color(0xFF2A733A),
                 backgroundColor: Color(0xFF8AC96F),
-                onPressed: () => print(''),
+                onPressed: () => Navigator.of(context).pushNamed(ActivityListScreen.route),
               ),
-              new Menu(
+              Menu(
                 title: 'แบบทดสอบสุขภาพจิต',
                 titleColor: Color(0xFF8856A4),
                 backgroundColor: Color(0xFFDEC1DC),

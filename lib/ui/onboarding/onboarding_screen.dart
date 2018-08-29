@@ -12,6 +12,7 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   List<Slide> slides = [];
 
+
   @override
   void initState() {
     super.initState();

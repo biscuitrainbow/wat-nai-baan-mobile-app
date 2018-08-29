@@ -1,0 +1,7 @@
+class ShowActivityListLoading {
+
+}
+
+class HideActivityListLoading {
+
+}

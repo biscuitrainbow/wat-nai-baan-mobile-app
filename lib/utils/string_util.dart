@@ -1,3 +1,4 @@
+import 'package:buddish_project/constants.dart';
 import 'package:intl/intl.dart';
 
 String toBearer(String token) {
@@ -21,4 +22,13 @@ String toMysqlDateTime(DateTime datetime) {
 DateTime fromMysqlDateTime(String datetime) {
   DateFormat formatter = DateFormat(mysqlDateTimeFormat);
   return formatter.parse(datetime);
+}
+
+List<String> fromTagsString(String tags) {
+  return tags.split(",").toList();
+}
+
+String toThaiDate(DateTime datetime) {
+  final formatter = DateFormat(AppString.datetimeTextField, 'th_TH');
+  return formatter.format(datetime);
 }

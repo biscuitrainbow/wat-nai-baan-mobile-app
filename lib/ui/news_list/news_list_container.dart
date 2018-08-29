@@ -14,7 +14,6 @@ class NewsListContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector(
       converter: NewsListViewModel.fromStore,
-      onInit: (Store<AppState> store) => store.dispatch(FetchNews()),
       onDispose: (Store<AppState> store) {},
       builder: (BuildContext context, NewsListViewModel viewModel) {
         return NewsListScreen(

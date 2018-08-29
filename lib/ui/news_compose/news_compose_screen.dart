@@ -136,6 +136,7 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
         initialTime: TimeOfDay.now(),
       );
 
+
       if (pickedTime != null && pickedDate != null) {
         final datetime = DateTime(
           pickedDate.year,
@@ -192,8 +193,6 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Locale myLocale = Localizations.localeOf(context);
-
     final inputStyle = InputDecoration(
       border: InputBorder.none,
       labelStyle: TextStyle(
