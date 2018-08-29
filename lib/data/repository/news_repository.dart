@@ -18,16 +18,14 @@ class NewsRepository {
         HttpHeaders.authorizationHeader: toBearer(token),
       },
       body: {
-        Field.title: news.title,
-        Field.content: news.content,
-        Field.dueDate: toMysqlDateTime(news.dueDate),
-        Field.location: news.location,
-        Field.category: news.category,
-        Field.cover: news.cover,
+        NewsField.title: news.title,
+        NewsField.content: news.content,
+        NewsField.dueDate: toMysqlDateTime(news.dueDate),
+        NewsField.location: news.location,
+        NewsField.category: news.category,
+        NewsField.cover: news.cover,
       },
     );
-
-    print(response.body);
   }
 
   Future<List<News>> fetchNews(String token) async {

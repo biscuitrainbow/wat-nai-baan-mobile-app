@@ -7,10 +7,10 @@ class RadioItem extends StatelessWidget {
   final Function(String) onChanged;
 
   const RadioItem({
-    this.groupValue,
-    this.value,
     this.label,
-    this.onChanged,
+    @required this.groupValue,
+    @required this.value,
+    @required this.onChanged,
   });
 
   @override

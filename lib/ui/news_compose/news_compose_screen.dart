@@ -10,6 +10,7 @@ import 'package:buddish_project/ui/common/radio_item.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_container.dart';
 import 'package:buddish_project/utils/news_compose_util.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:zefyr/zefyr.dart';
 
@@ -126,7 +127,8 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime.now().subtract(Duration(days: 30)),
-        lastDate: new DateTime(2101),
+        lastDate: DateTime(2101),
+        locale: Locale('th', 'TH'),
       );
 
       final pickedTime = await showTimePicker(
@@ -147,7 +149,7 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
           _datetime = datetime;
         });
 
-        final formatter = DateFormat(AppString.datetimeTextField);
+        final formatter = DateFormat(AppString.datetimeTextField, 'th_TH');
         _datetimeController.text = formatter.format(datetime);
       }
 
@@ -183,11 +185,15 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
 
     category = News.categoryGeneral;
 
+    initializeDateFormatting("th_TH");
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    Locale myLocale = Localizations.localeOf(context);
+
     final inputStyle = InputDecoration(
       border: InputBorder.none,
       labelStyle: TextStyle(

@@ -19,12 +19,14 @@ Future<Store<AppState>> createStore() async {
   var youtubeRepository = YoutubeRepository();
   var newsRepository = NewsRepository();
 
-  return Store<AppState>(appReducer,
-      initialState: AppState.initial(),
-      middleware: []
-        ..add(LoggingMiddleware.printer())
-        ..addAll(createAppMiddleware(userRepository, sharedPreferencesRepository))
-        ..addAll(createUserMiddleware(userRepository, sharedPreferencesRepository))
-        ..addAll(createNewsMiddleware(newsRepository))
-        ..addAll(createVideoMiddleware(youtubeRepository)));
+  return Store<AppState>(
+    appReducer,
+    initialState: AppState.initial(),
+    middleware: []
+      ..add(LoggingMiddleware.printer())
+      ..addAll(createAppMiddleware(userRepository, sharedPreferencesRepository))
+      ..addAll(createUserMiddleware(userRepository, sharedPreferencesRepository))
+      ..addAll(createNewsMiddleware(newsRepository))
+      ..addAll(createVideoMiddleware(youtubeRepository)),
+  );
 }

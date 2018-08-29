@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 class LoadingContent extends StatelessWidget {
   final String text;
 
-  const LoadingContent({
-    Key key,
+  LoadingContent({
     this.text = 'กำลังโหลด',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +16,8 @@ class LoadingContent extends StatelessWidget {
         Center(
           child: new CircularProgressIndicator(),
         ),
-        SizedBox(
-          height: 16.0,
-        ),
-        Text(
-          text,
-          style: new TextStyle(
-            color: Colors.grey,
-          ),
-        )
+        SizedBox(height: 16.0),
+        Text(text, style: new TextStyle(color: Colors.grey))
       ],
     );
   }

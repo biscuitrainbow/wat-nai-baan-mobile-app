@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class LoadingDialog extends StatelessWidget {
   final String title;
 
-  const LoadingDialog({Key key, this.title}) : super(key: key);
+  LoadingDialog({
+    this.title = 'กำลังโหลด',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +17,9 @@ class LoadingDialog extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            new CircularProgressIndicator(),
+            CircularProgressIndicator(),
             SizedBox(width: 16.0),
-            Text('อัพโหลด...'),
+            Text(title),
           ],
         ),
         SizedBox(height: 16.0),

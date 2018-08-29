@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:buddish_project/data/model/user.dart';
-import 'package:buddish_project/data/repository/user_repository.dart';
-import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 class UserParser {
   static User parse(dynamic json) {
@@ -12,13 +11,24 @@ class UserParser {
     var formatter = DateFormat('yyyy-MM-dd', 'th');
 
     return User(
-      id: json[UserRepository.fieldId],
-      email: json[UserRepository.fieldEmail],
-      name: json[UserRepository.fieldName],
-      tel: json[UserRepository.fieldTel] ?? null,
-      dateOfBirth: formatter.parse(json[UserRepository.fieldDateOfBirth]) ?? null,
-      gender: json[UserRepository.fieldGender] ?? null,
-      token: json[UserRepository.fieldToken] ?? null,
+      id: json[UserField.id],
+      email: json[UserField.email],
+      name: json[UserField.name],
+      tel: json[UserField.tel] ?? null,
+      dateOfBirth: formatter.parse(json[UserField.birthday]) ?? null,
+      gender: json[UserField.gender] ?? null,
+      token: json[UserField.token] ?? null,
     );
   }
+}
+
+abstract class UserField {
+  static final String id = 'id';
+  static final String email = 'email';
+  static final String password = 'password';
+  static final String name = 'name';
+  static final String tel = 'tel';
+  static final String birthday = 'date_of_birth';
+  static final String gender = 'gender';
+  static final String token = 'token';
 }

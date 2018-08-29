@@ -14,7 +14,7 @@ class SermonVideoScreenState {
   factory SermonVideoScreenState.initial() {
     return SermonVideoScreenState(
       loadingStatus: LoadingStatus.initial,
-      videos: [],
+      videos: Video.generate(),
     );
   }
 

@@ -12,19 +12,10 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 class UserRepository {
-  static final String fieldId = 'id';
-  static final String fieldEmail = 'email';
-  static final String fieldPassword = 'password';
-  static final String fieldName = 'name';
-  static final String fieldTel = 'tel';
-  static final String fieldDateOfBirth = 'date_of_birth';
-  static final String fieldGender = 'gender';
-  static final String fieldToken = 'token';
-
   Future<User> login(String email, String password) async {
     final response = await http.post('${Environment.apiUrl}/login', body: {
-      fieldEmail: email,
-      fieldPassword: password,
+      UserField.email: email,
+      UserField.password: password,
     });
 
     if (response.statusCode == 401) {
@@ -39,12 +30,12 @@ class UserRepository {
 
   Future<User> register(User user) async {
     final response = await http.post('${Environment.apiUrl}/register', body: {
-      fieldEmail: user.email,
-      fieldPassword: user.password,
-      fieldName: user.name,
-      fieldTel: user.tel,
-      fieldDateOfBirth: user.dateOfBirth,
-      fieldGender: user.gender,
+      UserField.email: user.email,
+      UserField.password: user.password,
+      UserField.name: user.name,
+      UserField.tel: user.tel,
+      UserField.birthday: user.dateOfBirth,
+      UserField.gender: user.gender,
     });
 
     final jsonResponse = json.decode(response.body);
@@ -55,7 +46,7 @@ class UserRepository {
 
   Future<User> fetchUser(String token) async {
     final response = await http.get('${Environment.apiUrl}/user', headers: {
-      HttpHeaders.AUTHORIZATION: toBearer(token),
+      HttpHeaders.authorizationHeader: toBearer(token),
     });
 
     final jsonResponse = json.decode(response.body);
@@ -70,14 +61,14 @@ class UserRepository {
     final response = await http.put(
       '${Environment.apiUrl}/user',
       body: {
-        fieldName: user.name,
-        fieldDateOfBirth: formatter.format(user.dateOfBirth),
-        fieldTel: user.tel,
-        fieldGender: user.gender,
+        UserField.name: user.name,
+        UserField.birthday: formatter.format(user.dateOfBirth),
+        UserField.tel: user.tel,
+        UserField.gender: user.gender,
       },
       headers: {
-        HttpHeaders.ACCEPT: AppString.httpApplicationJson,
-        HttpHeaders.AUTHORIZATION: toBearer(token),
+        HttpHeaders.acceptHeader: AppString.httpApplicationJson,
+        HttpHeaders.authorizationHeader: toBearer(token),
       },
     );
   }

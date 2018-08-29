@@ -2,8 +2,8 @@ import 'package:buddish_project/redux/token/token_action.dart';
 import 'package:redux/redux.dart';
 
 final tokenReducers = combineReducers<String>([
-  new TypedReducer<String, SaveToken>(_saveToken),
-  new TypedReducer<String, DeleteToken>(_deleteToken),
+  TypedReducer<String, SaveToken>(_saveToken),
+  TypedReducer<String, DeleteToken>(_deleteToken),
 ]);
 
 String _saveToken(

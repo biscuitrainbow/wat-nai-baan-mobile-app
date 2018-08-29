@@ -1,20 +1,19 @@
 import 'package:buddish_project/constants.dart';
-import 'package:buddish_project/data/loading_status.dart';
 import 'package:buddish_project/data/model/video.dart';
 import 'package:buddish_project/data/repository/youtube_repository.dart';
-import 'package:buddish_project/ui/common/loading_content.dart';
+import 'package:buddish_project/ui/common/filter_bar.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_container.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:buddish_project/ui/sermon_video/video_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube/flutter_youtube.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SermonVideoScreen extends StatefulWidget {
+  static final String route = '/sermonVideos';
+
   final SermonVideoViewModel viewModel;
-  final String title;
 
   SermonVideoScreen({
-    this.title,
     this.viewModel,
   });
 
@@ -23,112 +22,99 @@ class SermonVideoScreen extends StatefulWidget {
 }
 
 class _SermonVideoScreenState extends State<SermonVideoScreen> {
+  List<String> selectedCategories = [];
+
+  List<Video> _getFilterVideos() {
+    if (selectedCategories.isEmpty) {
+      return widget.viewModel.state.videos;
+    }
+
+    return widget.viewModel.state.videos.where((Video video) => video.isInCategories(selectedCategories)).toList();
+  }
+
   Widget _buildAppBar() {
-    return SliverAppBar(
-      snap: true,
-      floating: true,
+    return AppBar(
       elevation: 1.0,
-      forceElevated: true,
       title: Text(
-        widget.title,
+        'ฟังเทศน์ ฟังธรรม',
         style: AppStyle.appbarTitle,
       ),
       iconTheme: IconThemeData(color: AppColors.main),
     );
   }
 
+  Widget _buildFilter() {
+    return Expanded(
+      flex: 2,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 8.0,
+          vertical: 8.0,
+        ),
+        child: Row(
+          children: <Widget>[
+            Container(
+              child: Row(
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.filter, size: 16.0, color: Colors.black54),
+                  SizedBox(width: 4.0),
+                  Text('หมวดหมู่', style: TextStyle(color: Colors.black54)),
+                ],
+              ),
+            ),
+            SizedBox(width: Dimension.screenHorizonPadding),
+            FilterBar(
+              items: Video.category,
+              textColor: Colors.black,
+              backgroundColor: Colors.white,
+              activeTextColor: Colors.white,
+              activeBackgroundColor: AppColors.main,
+              onChanged: (selected) {
+                setState(() => selectedCategories = selected);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _buildAppBar(),
-          widget.viewModel.state.loadingStatus == LoadingStatus.loading
-              ? SliverFillRemaining(
-                  child: LoadingContent(
-                    text: 'กำลังโหลด',
-                  ),
-                )
-              : SliverPadding(
-                  padding: EdgeInsets.only(top: Dimension.screenVerticalPadding),
-                  sliver: SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        final video = widget.viewModel.state.videos[index];
-                        return _buildVideoItem(video);
-                      },
-                      childCount: widget.viewModel.state.videos.length,
-                    ),
-                  ),
-                )
+      appBar: _buildAppBar(),
+      body: Column(
+        children: <Widget>[
+          _buildFilter(),
+          _buildVideoList(),
         ],
+      ),
+    );
+  }
+
+  Expanded _buildVideoList() {
+    return Expanded(
+      flex: 13,
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          final video = _getFilterVideos()[index];
+          return _buildVideoItem(video);
+        },
+        itemCount: _getFilterVideos().length,
       ),
     );
   }
 
   void _showVideo(String videoId) {
     FlutterYoutube.playYoutubeVideoByUrl(
-      apiKey: YoutubeRepository.apiKey, videoUrl: 'https://www.youtube.com/watch?v=$videoId', fullScreen: false, autoPlay: true, //default false
+      apiKey: YoutubeRepository.apiKey,
+      videoUrl: 'https://www.youtube.com/watch?v=$videoId',
+      fullScreen: false,
+      autoPlay: true,
     );
   }
 
   Widget _buildVideoItem(Video video) {
     return VideoItem(video: video, onPressed: () => _showVideo(video.id));
-  }
-}
-
-class VideoItem extends StatelessWidget {
-  final Video video;
-  final VoidCallback onPressed;
-
-  VideoItem({
-    this.video,
-    this.onPressed,
-  });
-
-  Widget _buildImagePlaceholder() {
-    return Shimmer.fromColors(
-      baseColor: Colors.grey.shade200,
-      highlightColor: Colors.grey.shade100,
-      child: Container(
-        height: 180.0,
-        width: 320.0,
-        color: Colors.grey,
-      ),
-    );
-  }
-
-  Widget _buildVideoTitle() {
-    return Row(children: <Widget>[
-      Expanded(
-        child: Text(
-          video.name,
-          textAlign: TextAlign.start,
-          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: AppColors.main),
-        ),
-      ),
-    ]);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            CachedNetworkImage(
-              imageUrl: video.thumbnailUrl,
-              placeholder: _buildImagePlaceholder(),
-            ),
-            SizedBox(height: 4.0),
-            _buildVideoTitle(),
-            SizedBox(height: 28.0),
-          ],
-        ),
-      ),
-    );
   }
 }

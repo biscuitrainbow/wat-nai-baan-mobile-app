@@ -5,11 +5,10 @@ class NoContent extends StatelessWidget {
   final String title;
   final IconData icon;
 
-  const NoContent({
-    Key key,
+  NoContent({
     @required this.title,
     this.icon = FontAwesomeIcons.meh,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +16,12 @@ class NoContent extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Icon(
+          Icon(
             icon,
             size: 46.0,
           ),
           SizedBox(height: 16.0),
-          new Text(title)
+          Text(title)
         ],
       ),
     );

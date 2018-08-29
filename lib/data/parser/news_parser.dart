@@ -8,14 +8,27 @@ class NewsParser {
 
   static News parse(dynamic json) {
     return News(
-      title: json[Field.title],
-      content: json[Field.content],
-      cover: json[Field.cover],
-      category: json[Field.category],
-      dueDate: fromMysqlDateTime(json[Field.dueDate]),
-      dateCreated: fromMysqlDateTime(json[Field.createdAt]),
-      diff: json[Field.diff],
-      location: json[Field.location],
+      title: json[NewsField.title],
+      content: json[NewsField.content],
+      cover: json[NewsField.cover],
+      category: json[NewsField.category],
+      dueDate: fromMysqlDateTime(json[NewsField.dueDate]),
+      dateCreated: fromMysqlDateTime(json[NewsField.createdAt]),
+      diff: json[NewsField.diff],
+      location: json[NewsField.location],
     );
   }
 }
+
+
+abstract class NewsField {
+  static final String title = 'title';
+  static final String content = 'content';
+  static final String dueDate = 'due_date';
+  static final String category = 'category';
+  static final String cover = 'cover';
+  static final String createdAt = 'created_at';
+  static final String diff = 'diff';
+  static final String location = 'location';
+}
+

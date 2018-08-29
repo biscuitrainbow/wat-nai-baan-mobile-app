@@ -13,18 +13,10 @@ List<Middleware<AppState>> createUserMiddleware(
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, Login>(
-      _login(userRepository, sharedPrefRepository),
-    ),
-    new TypedMiddleware<AppState, Logout>(
-      _logout(userRepository, sharedPrefRepository),
-    ),
-    new TypedMiddleware<AppState, UpdateUser>(
-      _update(userRepository),
-    ),
-    new TypedMiddleware<AppState, FetchUserDetail>(
-      _fetchUser(userRepository),
-    ),
+    TypedMiddleware<AppState, Login>(_login(userRepository, sharedPrefRepository)),
+    TypedMiddleware<AppState, Logout>(_logout(userRepository, sharedPrefRepository)),
+    TypedMiddleware<AppState, UpdateUser>(_update(userRepository)),
+    TypedMiddleware<AppState, FetchUserDetail>(_fetchUser(userRepository)),
   ];
 }
 

@@ -6,6 +6,7 @@ import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
 import 'package:buddish_project/ui/sermon/sermon_screen.dart';
+import 'package:buddish_project/ui/sermon_video/sermon_video_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -83,7 +84,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: 'ฟังเทศน์ ฟังธรรม',
                 titleColor: Color(0xFF363C72),
                 backgroundColor: Color(0xFFAEDED5),
-                onPressed: () => Navigator.of(context).pushNamed(SermonScreen.route),
+                onPressed: () => Navigator.of(context).pushNamed(SermonVideoScreen.route),
               ),
               new Menu(
                 title: 'สวดมนต์',

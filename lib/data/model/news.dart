@@ -115,14 +115,3 @@ class News {
     ];
   }
 }
-
-abstract class Field {
-  static final String title = 'title';
-  static final String content = 'content';
-  static final String dueDate = 'due_date';
-  static final String category = 'category';
-  static final String cover = 'cover';
-  static final String createdAt = 'created_at';
-  static final String diff = 'diff';
-  static final String location = 'location';
-}

@@ -24,11 +24,10 @@ class _NewsScreenState extends State<NewsScreen> {
 
   @override
   void initState() {
-    _firebaseImageDelegate = FirebaseImageDelegate();
-
     final document = NotusDocument.fromJson(json.decode(widget.news.content));
     _controller = ZefyrController(document);
     _focusNode = FocusNode();
+    _firebaseImageDelegate = FirebaseImageDelegate();
 
     super.initState();
   }

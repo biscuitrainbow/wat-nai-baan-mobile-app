@@ -67,10 +67,6 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
       key: _generalRefreshIndicatorKey,
       onRefresh: () async {
         Completer<Null> completer = Completer();
-        completer.future.then((_) {
-          print('completer');
-        });
-
         widget.viewModel.onRefresh(_activityRefreshIndicatorKey.currentState, completer);
 
         return completer.future;
@@ -103,7 +99,6 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
       key: _activityRefreshIndicatorKey,
       onRefresh: () async {
         Completer<Null> completer = Completer();
-
         widget.viewModel.onRefresh(_activityRefreshIndicatorKey.currentState, completer);
 
         return completer.future;
@@ -234,7 +229,11 @@ class NewsActivityItem extends StatelessWidget {
                 _buildDueDate(),
                 Text(
                   news.title,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: AppColors.main),
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.main,
+                  ),
                 ),
               ],
             ),

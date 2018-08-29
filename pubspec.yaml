@@ -4,6 +4,8 @@ description: A new Flutter application.
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -34,12 +36,11 @@ dependencies:
 
 
 dev_dependencies:
-#  flutter_stetho: 0.1.1
+#  intl_translation: "^0.16.7"
   flutter_driver:
     sdk: flutter
   flutter_test:
     sdk: flutter
-
 dependency_overrides:
     uuid: ^1.0.3
 
