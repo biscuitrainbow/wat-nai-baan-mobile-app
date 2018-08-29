@@ -9,6 +9,7 @@ class Asset {
   static final String lgoMjr = 'asset/logo/mjr.png';
 
   static final String iconLotus = 'asset/icon/lotus.png';
+  static final String iconLotusWithText = 'asset/icon/lotus_with_text.png';
 
   static final String audioBundle = 'asset/audio';
   static final String audio1 = '1.mp3';

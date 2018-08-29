@@ -21,7 +21,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         title: "ไตรสิกขา",
         subTitle: 'คือ',
         description: 'ข้อสำหรับศึกษา\nการศึกษาข้อปฏิบัติที่พึงศึกษา\nการฝึกฝนอบรมตน\nในเรื่องที่พึงศึกษา 3 อย่าง',
-        pathImage: Asset.iconLotus,
+        pathImage: Asset.iconLotusWithText,
       ),
     );
     slides.add(
@@ -29,7 +29,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         title: "ศีล",
         subTitle: 'อธิสีลสิกขา',
         description: 'การศึกษาเรื่องศีล\nอบรมปฏิบัติให้ถูกต้องดีงาม\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิสีลสิกขา',
-        pathImage: Asset.iconLotus,
+        pathImage: Asset.iconLotusWithText,
       ),
     );
     slides.add(
@@ -37,7 +37,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         title: "ปัญญา",
         subTitle: 'อธิปัญญหาสิกขา',
         description: 'การศึกษาเรื่องศีล\nอบรมปฏิบัติให้ถูกค้องดีงาม\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิปัญญาสิกขา',
-        pathImage: Asset.iconLotus,
+        pathImage: Asset.iconLotusWithText,
       ),
     );
     slides.add(
@@ -45,7 +45,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         title: "สมาธิ",
         subTitle: 'อธิจิตตสิกขา',
         description: 'การศึกษาเรื่องจิต\nอบรมจิตให้สงบมั่นคงเป็นสมาธิ\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิจิตตสิกขา',
-        pathImage: Asset.iconLotus,
+        pathImage: Asset.iconLotusWithText,
       ),
     );
   }

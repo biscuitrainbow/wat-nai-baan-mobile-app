@@ -376,7 +376,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
 
   Widget renderTab(Slide slide) {
     return Container(
-      padding: EdgeInsets.only(top: 16.0, bottom: 64.0),
+      padding: EdgeInsets.only(top: 48.0, bottom: 64.0),
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
