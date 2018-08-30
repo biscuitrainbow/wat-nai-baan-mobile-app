@@ -414,6 +414,66 @@ class Video {
         thumbnailUrl: "https://i.ytimg.com/vi/GF3J0KjTbZM/maxresdefault.jpg",
         categories: [categoryKhammuang],
       ),
+      Video(
+        id: "AuNrBMhlcRA",
+        title: "เริ่มฝึกวิปัสสนา ง่าย ๆ 10 นาที",
+        thumbnailUrl: "https://i.ytimg.com/vi/AuNrBMhlcRA/sddefault.jpg",
+        categories: [categoryPatebatTham],
+      ),
+      Video(
+        id: "9YygEyLaIr8",
+        title: "สาธิตวิธีเดินจงกรม ๑-๖ ระยะ",
+        thumbnailUrl: "https://i.ytimg.com/vi/9YygEyLaIr8/sddefault.jpg",
+        categories: [categoryPatebatTham],
+      ),
+      Video(
+        id: "mKLGYgov3fA",
+        title: "การสาธิตการปฏิบัติวิปัสสนากรรมฐาน ตามแนว สติปัฏฐาน ๔",
+        thumbnailUrl: "https://i.ytimg.com/vi/mKLGYgov3fA/sddefault.jpg",
+        categories: [categoryPatebatTham],
+      ),
+      Video(
+        id: "gYrJw0pdqkE",
+        title: "เทศน์คำเมือง ล้านนา",
+        thumbnailUrl: "https://i.ytimg.com/vi/gYrJw0pdqkE/sddefault.jpg",
+        categories: [categoryLanna],
+      ),
+      Video(
+        id: "eSNMlKuGmCw",
+        title: "มหาวิบาก เทสน์โดย ท่านชินวร วัดบ้านโซ้ พะเยา",
+        thumbnailUrl: "https://i.ytimg.com/vi/eSNMlKuGmCw/sddefault.jpg",
+        categories: [categoryLanna],
+      ),
+      Video(
+        id: "wm8QQAT_A4Q",
+        title: "เทศน์ บะเก่าฉบับล้านนา 4 ฮ้องขวัญ มัทรี",
+        thumbnailUrl: "https://i.ytimg.com/vi/wm8QQAT_A4Q/sddefault.jpg",
+        categories: [categoryLanna],
+      ),
+      Video(
+        id: "TzesdRiDSeA",
+        title: "เทศน์คำเมืองล้านนา กินข้าวแล้วก็ขี้ ทำความดีกันหรือยัง",
+        thumbnailUrl: "https://i.ytimg.com/vi/TzesdRiDSeA/sddefault.jpg",
+        categories: [categoryLanna],
+      ),
+      Video(
+        id: "JL6KAtoyw1s",
+        title: "เทศน์คำเมืองล้านนาธรรมะตลก ชุดที่ 5 พระคุณพ่อ พระคุณแม่",
+        thumbnailUrl: "https://i.ytimg.com/vi/JL6KAtoyw1s/sddefault.jpg",
+        categories: [categoryLanna],
+      ),
+      Video(
+        id: "9p8K2Gz8he4",
+        title: "เทศน์คำเมือง ธรรมตลก 1",
+        thumbnailUrl: "https://i.ytimg.com/vi/9p8K2Gz8he4/sddefault.jpg",
+        categories: [categoryLanna],
+      ),
+      Video(
+        id: "GF3J0KjTbZM",
+        title: "ธรรมบรรยาย ฮาเฮ พระอธิการโอฬาร เทศนาธรรม",
+        thumbnailUrl: "https://i.ytimg.com/vi/GF3J0KjTbZM/sddefault.jpg",
+        categories: [categoryLanna],
+      ),
     ];
   }
 }

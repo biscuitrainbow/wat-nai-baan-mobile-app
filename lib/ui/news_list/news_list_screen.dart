@@ -146,6 +146,7 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: _showNewsCompose,
+        elevation: 1.0,
         child: Icon(
           Icons.add,
           color: AppColors.main,

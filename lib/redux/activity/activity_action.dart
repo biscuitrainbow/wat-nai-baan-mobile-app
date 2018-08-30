@@ -16,8 +16,8 @@ class FetchActivities {
 }
 
 class AddActivity {
-  final News news;
+  final Activity activity;
   final Completer<Null> completer;
 
-  AddActivity(this.news, this.completer);
+  AddActivity(this.activity, this.completer);
 }

@@ -10,7 +10,7 @@ class ActivityParser {
     return Activity(
       title: json[ActivityField.title],
       datetime: fromMysqlDateTime(json[ActivityField.datetime]),
-      tags: fromTagsString(json[ActivityField.tags]),
+      tags: json[ActivityField.tags] != null ? fromTagsString(json[ActivityField.tags]) : [],
       point: json[ActivityField.point],
     );
   }

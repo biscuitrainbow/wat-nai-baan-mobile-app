@@ -1,8 +1,6 @@
 import 'package:buddish_project/data/repository/activity_repository.dart';
 import 'package:buddish_project/redux/activity/activity_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
-import 'package:buddish_project/redux/news/news_action.dart';
-import 'package:buddish_project/redux/ui/news_list_screen/news_list_screen_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createActivityMiddleware(
@@ -19,16 +17,16 @@ List<Middleware<AppState>> createActivityMiddleware(
 }
 
 Middleware<AppState> _addActivity(
-  ActivityRepository newsRepository,
+  ActivityRepository activityRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddActivity) {
       try {
-//        final token = store.state.token;
-//        await newsRepository.addNews(token, action.news);
-//
-//        action.completer.complete(null);
-//        next(FetchNews());
+        final token = store.state.token;
+        await activityRepository.addActivity(token, action.activity);
+
+        action.completer.complete(null);
+        next(FetchActivities());
       } catch (error) {
         print(error);
       }
@@ -46,7 +44,6 @@ Middleware<AppState> _fetchActivities(
       try {
         final token = store.state.token;
         final activities = await activityRepository.fetchActivities(token);
-        print(activities);
 
         action.completer?.complete(null);
         next(FetchActivitiesSuccess(activities));

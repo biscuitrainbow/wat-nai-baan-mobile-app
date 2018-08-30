@@ -18,5 +18,5 @@ class Activity {
     return 'Activity{title: $title, datetime: $datetime, tags: $tags, point: $point}';
   }
 
-
+  static List<String> tag = ['ทำบุญ', 'ปล่อยสัตว์', 'ช่วยเหลือสังคม', 'ทำสมาธิ'];
 }

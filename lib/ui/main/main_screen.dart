@@ -31,8 +31,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: widget.viewModel.token == null ? LoginContainer() : MenuScreen(),
-    );
+    return widget.viewModel.token == null ? LoginContainer() : MenuScreen();
   }
 }

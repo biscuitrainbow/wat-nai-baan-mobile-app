@@ -70,6 +70,7 @@ class AppStyle {
 class AppString {
   static final String dateOfBirthFormat = 'dd-MM-yyyy';
   static final String datetimeTextField = 'dd MMM yyyy HH:mm';
+  static final String dateTextField = 'dd MMM yyyy';
 
   static final String httpApplicationJson = 'application/json';
 }

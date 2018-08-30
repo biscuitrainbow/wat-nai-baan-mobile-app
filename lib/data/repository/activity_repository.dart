@@ -17,7 +17,12 @@ class ActivityRepository {
         HttpHeaders.acceptHeader: AppString.httpApplicationJson,
         HttpHeaders.authorizationHeader: toBearer(token),
       },
-      body: {},
+      body: {
+        ActivityField.title: activity.title,
+        ActivityField.datetime: toMysqlDateTime(activity.datetime),
+        ActivityField.point: activity.point.toString(),
+        ActivityField.tags: activity.tags.isNotEmpty ? fromTagsList(activity.tags) : '',
+      },
     );
   }
 

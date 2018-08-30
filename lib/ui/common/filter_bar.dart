@@ -8,6 +8,7 @@ class FilterBar extends StatefulWidget {
   final Color activeTextColor;
   final Color activeBackgroundColor;
   final EdgeInsets itemMargin;
+  final bool warped;
 
   FilterBar({
     @required this.items,
@@ -17,6 +18,7 @@ class FilterBar extends StatefulWidget {
     this.activeTextColor,
     this.activeBackgroundColor,
     this.itemMargin = const EdgeInsets.only(right: 8.0),
+    this.warped = false,
   });
 
   @override
@@ -55,11 +57,16 @@ class _FilterBarState extends State<FilterBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: widget.items.map((text) => _buildChip(text)).toList(),
-      ),
-    );
+    return widget.warped
+        ? Wrap(
+            direction: Axis.horizontal,
+            children: widget.items.map((text) => _buildChip(text)).toList(),
+          )
+        : Expanded(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: widget.items.map((text) => _buildChip(text)).toList(),
+            ),
+          );
   }
 }

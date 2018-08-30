@@ -1,5 +1,6 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/activity.dart';
+import 'package:buddish_project/ui/activity_compose/activity_composer_screen.dart';
 import 'package:buddish_project/ui/activity_list/activity_item.dart';
 import 'package:buddish_project/ui/activity_list/activity_list_container.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +89,10 @@ class _ActivityListScreenState extends State<ActivityListScreen> {
     );
   }
 
+  void _showActivityComposer() {
+    Navigator.of(context).pushNamed(ActivityComposeScreen.route);
+  }
+
   @override
   Widget build(BuildContext context) {
     final listContent = [
@@ -103,6 +108,14 @@ class _ActivityListScreenState extends State<ActivityListScreen> {
         elevation: 0.0,
         title: Text('กิจกรรมสะสมแต้มบุญ', style: AppStyle.appbarTitle),
         iconTheme: IconThemeData(color: AppColors.main),
+      ),
+      floatingActionButton: FloatingActionButton(
+        elevation: 1.0,
+        onPressed: () => _showActivityComposer(),
+        child: Icon(
+          Icons.add,
+          color: AppColors.main,
+        ),
       ),
       backgroundColor: Colors.grey.shade50,
       body: Container(

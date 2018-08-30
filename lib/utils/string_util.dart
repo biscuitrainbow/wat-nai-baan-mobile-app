@@ -28,6 +28,10 @@ List<String> fromTagsString(String tags) {
   return tags.split(",").toList();
 }
 
+String fromTagsList(List<String> tags) {
+  return tags.join(",");
+}
+
 String toThaiDate(DateTime datetime) {
   final formatter = DateFormat(AppString.datetimeTextField, 'th_TH');
   return formatter.format(datetime);

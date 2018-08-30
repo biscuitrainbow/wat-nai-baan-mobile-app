@@ -134,9 +134,8 @@ class ResultWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildHeader(),
-          _buildResultItem('มากกว่าคนทั่วไป (Good)', score < 6),
-          _buildResultItem('เท่ากับคนทั่วไป (Fair)', false),
-          _buildResultItem('ต่ำกว่าคนทั่วไป (Bad)', score > 6),
+          _buildResultItem('คุณมีสุขภาพจิตปกติ', score < 6),
+          _buildResultItem('คุณมีสุขภาพจิตผิดปกติ ', score >= 6),
         ],
       ),
     );
