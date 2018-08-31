@@ -46,7 +46,7 @@ class _NewsScreenState extends State<NewsScreen> {
       appBar: AppBar(
         elevation: 1.0,
         title: Text('ข่าวสาร', style: AppStyle.appbarTitle),
-        iconTheme: IconThemeData(color: AppColors.main),
+        iconTheme: IconThemeData(color: AppColors.primary),
       ),
       body: Column(
         children: <Widget>[

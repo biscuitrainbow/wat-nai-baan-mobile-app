@@ -76,6 +76,9 @@ flutter:
     - asset/audio/4.mp3
     - asset/audio/5.mp3
     - asset/icon/seen.svg
+    - asset/icon/samathi.svg
+    - asset/icon/panya.svg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
@@ -88,6 +91,15 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+  - family: icon-pray
+    fonts:
+      - asset: fonts/pray.ttf
+  - family: icon-prayer
+    fonts:
+      - asset: fonts/prayer.ttf
+  - family: icon-menu
+    fonts:
+      - asset: fonts/menu-icon.ttf
   - family: Kanit
     fonts:
       - asset: fonts/Kanit-Black.ttf

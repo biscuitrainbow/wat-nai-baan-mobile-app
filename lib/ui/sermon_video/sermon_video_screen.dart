@@ -39,7 +39,7 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
         'ฟังเทศน์ ฟังธรรม',
         style: AppStyle.appbarTitle,
       ),
-      iconTheme: IconThemeData(color: AppColors.main),
+      iconTheme: IconThemeData(color: AppColors.primary),
     );
   }
 
@@ -68,7 +68,7 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
               textColor: Colors.black,
               backgroundColor: Colors.white,
               activeTextColor: Colors.white,
-              activeBackgroundColor: AppColors.main,
+              activeBackgroundColor: AppColors.primary,
               onChanged: (selected) {
                 setState(() => selectedCategories = selected);
               },

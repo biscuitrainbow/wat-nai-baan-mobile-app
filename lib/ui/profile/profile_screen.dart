@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: AppColors.main),
+        iconTheme: IconThemeData(color: AppColors.primary),
         elevation: 1.0,
         title: Text('ข้อมูลส่วนตัว', style: AppStyle.appbarTitle),
       ),
@@ -150,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(height: Dimension.fieldVerticalMargin * 2),
                   Button(
                     title: 'บันทึก',
-                    titleColor: AppColors.main,
+                    titleColor: AppColors.primary,
                     backgroundColor: Colors.yellow,
                     onPressed: () => _update(scaffoldContext),
                   ),

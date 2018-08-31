@@ -93,7 +93,7 @@ class _PrayingScreenState extends State<PrayingScreen> {
             'สวดมนต์',
             style: AppStyle.appbarTitle,
           ),
-          iconTheme: IconThemeData(color: AppColors.main),
+          iconTheme: IconThemeData(color: AppColors.primary),
           elevation: 1.0,
         ),
         body: ListView.builder(
@@ -109,13 +109,13 @@ class _PrayingScreenState extends State<PrayingScreen> {
                 padding: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin - 8),
                 child: MantraPlayer(
                   title: mantra.name,
-                  titleColor: AppColors.main,
+                  titleColor: AppColors.primary,
                   backgroundColor: AppColors.secondary,
                   isPlaying: mantra.isPlaying,
                   onPressed: () async {
                     if (!mantra.isPlaying) {
                       final dir = await getApplicationDocumentsDirectory();
-                      final localAssetFile = await copyLocalAsset(dir, Asset.audioBundle, mantra.url);
+                      final localAssetFile = await copyLocalAsset(dir, AppAsset.audioBundle, mantra.url);
 
                       _audioPlugin.play(localAssetFile.path, isLocal: true);
                       widget.viewModel.onPlay(index);
@@ -173,7 +173,7 @@ class MantraPlayer extends StatelessWidget {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              color: isPlaying ? AppColors.main : Color(0xFFFCDE4C),
+              color: isPlaying ? AppColors.primary : Color(0xFFFCDE4C),
               shape: BoxShape.circle,
             ),
             child: IconButton(

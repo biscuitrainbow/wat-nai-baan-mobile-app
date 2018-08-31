@@ -46,24 +46,24 @@ class _SermonScreenState extends State<SermonScreen> {
           'ฟังเทศน์ ฟังธรรม',
           style: AppStyle.appbarTitle,
         ),
-        iconTheme: IconThemeData(color: AppColors.main),
+        iconTheme: IconThemeData(color: AppColors.primary),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
-          child: Column(
-            children: categories
-                ?.map(
-                  (SermonCategory category) => Menu(
-                        title: category.title,
-                        titleColor: AppColors.main,
-                        backgroundColor: AppColors.secondary,
-                        onPressed: () => _showSermonVideos(category),
-                      ),
-                )
-                ?.toList(),
-          ),
-        ),
+//        child: Container(
+//          padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
+//          child: Column(
+//            children: categories
+//                ?.map(
+//                  (SermonCategory category) => MenuItem(
+//                        title: category.title,
+//                        titleColor: AppColors.main,
+//                        backgroundColor: AppColors.secondary,
+//                        onPressed: () => _showSermonVideos(category),
+//                      ),
+//                )
+//                ?.toList(),
+//          ),
+//        ),
       ),
     );
   }

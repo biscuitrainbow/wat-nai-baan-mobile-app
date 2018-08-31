@@ -6,7 +6,7 @@ Widget buildAppBar({@required String title, List<Widget> actions = const []}) {
   return AppBar(
     elevation: 1.0,
     title: Text(title, style: AppStyle.appbarTitle),
-    iconTheme: IconThemeData(color: AppColors.main),
+    iconTheme: IconThemeData(color: AppColors.primary),
     actions: actions,
   );
 }

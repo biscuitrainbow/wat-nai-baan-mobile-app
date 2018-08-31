@@ -217,7 +217,7 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
       appBar: AppBar(
         elevation: 1.0,
         title: Text('สร้างข่าวสาร', style: AppStyle.appbarTitle),
-        iconTheme: IconThemeData(color: AppColors.main),
+        iconTheme: IconThemeData(color: AppColors.primary),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.done),

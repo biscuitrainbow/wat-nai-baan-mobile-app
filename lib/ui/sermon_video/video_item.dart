@@ -34,7 +34,7 @@ class VideoItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w600,
-            color: AppColors.main,
+            color: AppColors.primary,
           ),
         ),
       ),

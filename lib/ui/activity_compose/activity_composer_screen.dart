@@ -161,7 +161,7 @@ class _ActivityComposeScreenState extends State<ActivityComposeScreen> {
                           textColor: Colors.black,
                           backgroundColor: Colors.white,
                           activeTextColor: Colors.white,
-                          activeBackgroundColor: AppColors.main,
+                          activeBackgroundColor: AppColors.primary,
                           warped: true,
                           onChanged: (selected) {
                             setState(() => tags = selected);
@@ -174,7 +174,7 @@ class _ActivityComposeScreenState extends State<ActivityComposeScreen> {
                   SizedBox(height: Dimension.fieldVerticalMargin * 2),
                   Button(
                     title: 'บันทึก',
-                    titleColor: AppColors.main,
+                    titleColor: AppColors.primary,
                     backgroundColor: Colors.yellow,
                     onPressed: () => _onSave(context),
                   ),

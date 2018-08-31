@@ -342,7 +342,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
         Text(
           title,
           style: TextStyle(
-            color: AppColors.main,
+            color: AppColors.primary,
             fontWeight: FontWeight.w500,
             fontFamily: 'Kanit',
             fontSize: 48.0,
@@ -351,7 +351,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
         Text(
           subtitle,
           style: TextStyle(
-            color: AppColors.main,
+            color: AppColors.primary,
             fontWeight: FontWeight.w500,
             fontFamily: 'Kanit',
             fontSize: 32.0,
@@ -401,7 +401,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
             slide.description,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: AppColors.main,
+              color: AppColors.primary,
               fontWeight: FontWeight.w300,
               fontFamily: 'Kanit',
               fontSize: 24.0,

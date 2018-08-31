@@ -29,13 +29,13 @@ class _ActivityListScreenState extends State<ActivityListScreen> {
           Text(
             totalPoint.toString(),
             textAlign: TextAlign.center,
-            style: TextStyle(color: AppColors.main, fontSize: 45.0),
+            style: TextStyle(color: AppColors.primary, fontSize: 45.0),
           ),
           SizedBox(width: 8.0),
           Text(
             "แต้ม",
             textAlign: TextAlign.center,
-            style: TextStyle(color: AppColors.main, fontSize: 20.0),
+            style: TextStyle(color: AppColors.primary, fontSize: 20.0),
           ),
         ],
       ),
@@ -107,14 +107,14 @@ class _ActivityListScreenState extends State<ActivityListScreen> {
       appBar: AppBar(
         elevation: 0.0,
         title: Text('กิจกรรมสะสมแต้มบุญ', style: AppStyle.appbarTitle),
-        iconTheme: IconThemeData(color: AppColors.main),
+        iconTheme: IconThemeData(color: AppColors.primary),
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 1.0,
         onPressed: () => _showActivityComposer(),
         child: Icon(
           Icons.add,
-          color: AppColors.main,
+          color: AppColors.primary,
         ),
       ),
       backgroundColor: Colors.grey.shade50,

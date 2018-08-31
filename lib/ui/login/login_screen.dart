@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildInitialContent() {
     return Stack(
       children: <Widget>[
-        Positioned.fill(child: Image.asset(Asset.imageLoginBg, fit: BoxFit.cover)),
+        Positioned.fill(child: Image.asset(AppAsset.imageLoginBg, fit: BoxFit.cover)),
         Container(
           padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
           child: Column(
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Button(
                 title: 'เข้าสู่ระบบ',
-                titleColor: AppColors.main,
+                titleColor: AppColors.primary,
                 backgroundColor: Colors.yellow,
                 onPressed: _login,
               ),
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: Dimension.fieldVerticalMargin),
               Button(
                 title: 'ลงทะเบียน',
-                titleColor: AppColors.main,
+                titleColor: AppColors.primary,
                 backgroundColor: Colors.white,
                 onPressed: () => print('login'),
               ),

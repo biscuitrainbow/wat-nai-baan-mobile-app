@@ -63,7 +63,7 @@ class MyAppState extends State<MyApp> {
         theme: ThemeData(
           fontFamily: 'Kanit',
           primarySwatch: Colors.yellow,
-          textSelectionColor: AppColors.main,
+          textSelectionColor: AppColors.primary,
         ),
         home: SplashScreen(),
         routes: {

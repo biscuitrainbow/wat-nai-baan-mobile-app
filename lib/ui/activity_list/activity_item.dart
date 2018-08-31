@@ -18,7 +18,7 @@ class ActivityItem extends StatelessWidget {
           backgroundColor: AppColors.secondary,
           label: Text(
             tag,
-            style: TextStyle(color: AppColors.main, fontSize: 12.0, fontWeight: FontWeight.w500),
+            style: TextStyle(color: AppColors.primary, fontSize: 12.0, fontWeight: FontWeight.w500),
           ),
         ),
         SizedBox(width: 4.0),
@@ -54,7 +54,7 @@ class ActivityItem extends StatelessWidget {
                 Text(
                   activity.point.toString(),
                   style: TextStyle(
-                    color: AppColors.main,
+                    color: AppColors.primary,
                     fontSize: 40.0,
                   ),
                 ),
@@ -78,7 +78,7 @@ class ActivityItem extends StatelessWidget {
                   ),
                   Text(
                     activity.title,
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: AppColors.main),
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: AppColors.primary),
                   ),
                   Row(
                     children: activity.tags.map((String tag) => _buildChip(tag)).toList(),

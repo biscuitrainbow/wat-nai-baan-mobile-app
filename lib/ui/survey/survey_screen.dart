@@ -69,7 +69,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
           'แบบสอบถาม',
           style: AppStyle.appbarTitle,
         ),
-        iconTheme: IconThemeData(color: AppColors.main),
+        iconTheme: IconThemeData(color: AppColors.primary),
       ),
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
@@ -83,7 +83,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
 class ResultWidget extends StatelessWidget {
   final int score;
-  final TextStyle titleStyle = TextStyle(color: AppColors.main, fontSize: 22.0, fontWeight: FontWeight.w500);
+  final TextStyle titleStyle = TextStyle(color: AppColors.primary, fontSize: 22.0, fontWeight: FontWeight.w500);
 
   ResultWidget({
     @required this.score,
@@ -167,7 +167,7 @@ class SurveyWidgetState extends State<SurveyWidget> {
   String selectedAnswer = '';
 
   Widget _buildAnswer(String answer) {
-    var titleStyle = TextStyle(color: AppColors.main, fontSize: 22.0, fontWeight: FontWeight.w500);
+    var titleStyle = TextStyle(color: AppColors.primary, fontSize: 22.0, fontWeight: FontWeight.w500);
     var title = Expanded(child: Text(answer, style: titleStyle));
 
     return GestureDetector(
@@ -200,7 +200,7 @@ class SurveyWidgetState extends State<SurveyWidget> {
     return Center(
       child: Text(
         widget.survey.question,
-        style: TextStyle(color: AppColors.main, fontSize: 20.0, fontWeight: FontWeight.w600),
+        style: TextStyle(color: AppColors.primary, fontSize: 20.0, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -236,7 +236,7 @@ class SurveyWidgetState extends State<SurveyWidget> {
         minWidth: MediaQuery.of(context).size.width * 0.4,
         child: Text(
           'ต่อไป',
-          style: TextStyle(fontSize: 22.0, color: AppColors.main, fontWeight: FontWeight.w600),
+          style: TextStyle(fontSize: 22.0, color: AppColors.primary, fontWeight: FontWeight.w600),
         ),
         color: selectedAnswer.isNotEmpty ? AppColors.secondary : Colors.grey.shade200,
         onPressed: selectedAnswer.isNotEmpty ? _next : null,

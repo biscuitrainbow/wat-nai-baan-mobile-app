@@ -43,14 +43,14 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
         style: AppStyle.appbarTitle,
       ),
       bottom: TabBar(
-        labelColor: AppColors.main,
+        labelColor: AppColors.primary,
         controller: _tabController,
         tabs: [
           Tab(text: 'ข่าวสารทั่วไป'),
           Tab(text: 'นัดหมายกิจกรรม'),
         ],
       ),
-      iconTheme: IconThemeData(color: AppColors.main),
+      iconTheme: IconThemeData(color: AppColors.primary),
     );
   }
 
@@ -149,7 +149,7 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
         elevation: 1.0,
         child: Icon(
           Icons.add,
-          color: AppColors.main,
+          color: AppColors.primary,
         ),
       ),
       body: NestedScrollView(
@@ -225,7 +225,7 @@ class NewsActivityItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.w500,
-            color: AppColors.main,
+            color: AppColors.primary,
           ),
         ),
       ],
@@ -299,7 +299,7 @@ class NewsGeneralItem extends StatelessWidget {
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w500,
-              color: AppColors.main,
+              color: AppColors.primary,
             ),
           ),
         ),

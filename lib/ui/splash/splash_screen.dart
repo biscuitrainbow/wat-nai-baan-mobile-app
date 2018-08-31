@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Positioned.fill(child: Image.asset(Asset.imageLoginBg, fit: BoxFit.cover)),
+          Positioned.fill(child: Image.asset(AppAsset.imageLoginBg, fit: BoxFit.cover)),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               Text(
                 'ด้วยความร่วมมือจาก',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16.0, color: AppColors.main, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 16.0, color: AppColors.primary, fontWeight: FontWeight.w600),
               ),
               SizedBox(height: Dimension.fieldVerticalMargin),
               Row(
@@ -60,22 +60,22 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Image.asset(
-                    Asset.logoCmu,
+                    AppAsset.logoCmu,
                     width: MediaQuery.of(context).size.width * .2,
                     fit: BoxFit.cover,
                   ),
                   Image.asset(
-                    Asset.logoCamt,
+                    AppAsset.logoCamt,
                     width: MediaQuery.of(context).size.width * .24,
                     fit: BoxFit.cover,
                   ),
                   Image.asset(
-                    Asset.logoMed,
+                    AppAsset.logoMed,
                     width: MediaQuery.of(context).size.width * .24,
                     fit: BoxFit.cover,
                   ),
                   Image.asset(
-                    Asset.lgoMjr,
+                    AppAsset.logoMjr,
                     width: MediaQuery.of(context).size.width * .2,
                     fit: BoxFit.cover,
                   )
