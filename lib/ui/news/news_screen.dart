@@ -11,7 +11,7 @@ class NewsScreen extends StatefulWidget {
 
   final News news;
 
-  const NewsScreen({this.news});
+  NewsScreen({this.news});
 
   @override
   _NewsScreenState createState() => _NewsScreenState();
@@ -30,6 +30,14 @@ class _NewsScreenState extends State<NewsScreen> {
     _firebaseImageDelegate = FirebaseImageDelegate();
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+
+    super.dispose();
   }
 
   @override

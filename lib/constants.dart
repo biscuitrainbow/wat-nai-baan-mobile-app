@@ -8,6 +8,8 @@ class Asset {
   static final String logoMed = 'asset/logo/med.png';
   static final String lgoMjr = 'asset/logo/mjr.png';
 
+  static final String iconSeen = 'asset/icon/seen.svg';
+
   static final String iconLotus = 'asset/icon/lotus.png';
   static final String iconLotusWithText = 'asset/icon/lotus_with_text.png';
 

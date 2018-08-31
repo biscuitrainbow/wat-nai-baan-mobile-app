@@ -216,6 +216,23 @@ class NewsActivityItem extends StatelessWidget {
   }
 
   Widget _buildDetail() {
+    final content = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildDueDate(),
+        Text(
+          news.title,
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+            color: AppColors.main,
+          ),
+        ),
+      ],
+    );
+
+    final location = news.location != null ? _buildLocation() : Container();
+
     return Flexible(
       flex: 3,
       child: Padding(
@@ -224,21 +241,8 @@ class NewsActivityItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                _buildDueDate(),
-                Text(
-                  news.title,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.main,
-                  ),
-                ),
-              ],
-            ),
-            news.location != null ? _buildLocation() : Container(),
+            content,
+            location,
           ],
         ),
       ),
@@ -313,7 +317,7 @@ class NewsGeneralItem extends StatelessWidget {
     );
   }
 
-  Widget _buildDiff() {
+  Widget _buildDiffDate() {
     return Text(
       news.diff,
       style: TextStyle(color: Colors.black54),
@@ -331,7 +335,7 @@ class NewsGeneralItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             //  _buildDateCreated(),
-            _buildDiff(),
+            _buildDiffDate(),
             _buildVideoTitle(),
             SizedBox(height: 4.0),
             CachedNetworkImage(

@@ -6,11 +6,11 @@ import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
-import 'package:buddish_project/ui/sermon/sermon_screen.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:redux/redux.dart';
 
@@ -65,15 +65,17 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
       ),
       appBar: AppBar(
-        leading: Builder(builder: (BuildContext scaffoldContext) {
-          return IconButton(
-            icon: Icon(
-              Icons.menu,
-              color: AppColors.main,
-            ),
-            onPressed: () => _openDrawer(scaffoldContext),
-          );
-        }),
+        leading: Builder(
+          builder: (BuildContext scaffoldContext) {
+            return IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: AppColors.main,
+              ),
+              onPressed: () => _openDrawer(scaffoldContext),
+            );
+          },
+        ),
         elevation: 1.0,
         title: Text(
           'หน้าหลัก',
@@ -82,7 +84,10 @@ class _MenuScreenState extends State<MenuScreen> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
+          padding: EdgeInsets.symmetric(
+            horizontal: Dimension.screenHorizonPadding,
+            vertical: Dimension.screenVerticalPadding,
+          ),
           child: Column(
             children: <Widget>[
               Menu(
@@ -137,17 +142,18 @@ class DrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-        onPressed: onPressed,
-        child: Row(
-          children: <Widget>[
-            Icon(this.icon, color: Colors.grey[600]),
-            SizedBox(width: 8.0),
-            Text(
-              this.title,
-              style: TextStyle(color: Colors.grey[600], fontSize: 18.0),
-            )
-          ],
-        ));
+      onPressed: onPressed,
+      child: Row(
+        children: <Widget>[
+          Icon(this.icon, color: Colors.grey[600]),
+          SizedBox(width: 8.0),
+          Text(
+            this.title,
+            style: TextStyle(color: Colors.grey[600], fontSize: 18.0),
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -157,6 +163,11 @@ class Menu extends StatelessWidget {
   final Color backgroundColor;
   final VoidCallback onPressed;
   final double fontSize;
+
+  final Widget svgIcon = SvgPicture.asset(
+    Asset.iconSeen,
+    color: Colors.red,
+  );
 
   Menu({
     @required this.title,
@@ -175,17 +186,18 @@ class Menu extends StatelessWidget {
         height: 100.0,
         width: double.infinity,
         color: backgroundColor,
-        child: Center(
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: titleColor,
-              fontSize: fontSize,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+//        child: Center(
+//          child: Text(
+//            title,
+//            textAlign: TextAlign.center,
+//            style: TextStyle(
+//              color: titleColor,
+//              fontSize: fontSize,
+//              fontWeight: FontWeight.w600,
+//            ),
+//          ),
+//        ),
+        child: svgIcon,
       ),
     );
   }

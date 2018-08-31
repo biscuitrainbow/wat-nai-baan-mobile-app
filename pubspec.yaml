@@ -33,6 +33,7 @@ dependencies:
   firebase_storage: ^1.0.2
   uuid: ^1.0.3
   image: ^2.0.4
+  flutter_svg: ^0.5.5+1
 
 
 dev_dependencies:
@@ -74,7 +75,7 @@ flutter:
     - asset/audio/3.mp3
     - asset/audio/4.mp3
     - asset/audio/5.mp3
-
+    - asset/icon/seen.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

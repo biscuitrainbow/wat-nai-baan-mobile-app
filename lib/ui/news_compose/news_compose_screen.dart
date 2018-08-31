@@ -49,12 +49,12 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
       return;
     }
 
-    final encoded = json.encode(_controller.document.toJson());
+    final encodedContent = json.encode(_controller.document.toJson());
     final cover = getFirstImage(_controller.document);
 
     final news = News(
       title: _titleController.text,
-      content: encoded,
+      content: encodedContent,
       category: category,
       cover: cover ?? '',
       dateCreated: DateTime.now(),
@@ -136,7 +136,6 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
         initialTime: TimeOfDay.now(),
       );
 
-
       if (pickedTime != null && pickedDate != null) {
         final datetime = DateTime(
           pickedDate.year,
@@ -189,6 +188,19 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
     initializeDateFormatting("th_TH");
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _titleController.dispose();
+    _datetimeController.dispose();
+    _locationController.dispose();
+
+    _editorFocusNode.dispose();
+    _datetimeFocusNode.dispose();
+    _editorFocusNode.dispose();
   }
 
   @override
