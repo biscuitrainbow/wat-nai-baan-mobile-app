@@ -2,6 +2,7 @@ import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/menu.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
+import 'package:buddish_project/ui/common/filter_bar.dart';
 import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,11 @@ class MenuScreen extends StatefulWidget {
 }
 
 class _MenuScreenState extends State<MenuScreen> {
+  List<MenuCategory> _categories = [];
+  String _selectedCategory = null;
+
+  List<Menu> _menus = [];
+
   void _openDrawer(BuildContext scaffoldContext) {
     Scaffold.of(scaffoldContext).openDrawer();
   }
@@ -64,6 +70,26 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    _categories = MenuCategory.category;
+    _menus = Menu.menus;
+  }
+
+  List<Menu> _getFilteredMenus() {
+    print(_selectedCategory);
+
+    if (_selectedCategory != null) {
+      final selectedMenuCategory = _categories.firstWhere((MenuCategory category) => category.title == _selectedCategory);
+
+      return _menus.where((Menu menu) => menu.categories.contains(selectedMenuCategory)).toList();
+    }
+
+    return _menus;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: _buildDrawer(),
@@ -86,47 +112,50 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
       ),
       backgroundColor: Colors.grey.shade50,
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: Dimension.screenHorizonPadding,
-            vertical: Dimension.screenVerticalPadding,
-          ),
-          child: Column(
-//            children: <Widget>[
-//              MenuItem(
-//                title: 'ข่าวสาร\nทางพระพุทธศาสนา',
-//                titleColor: Color(0xFFAD4C3C),
-//                backgroundColor: Color(0xFFF9BFB9),
-//                onPressed: () => Navigator.of(context).pushNamed(NewsListScreen.route),
-//              ),
-//              MenuItem(
-//                title: 'ฟังเทศน์ ฟังธรรม',
-//                titleColor: Color(0xFF363C72),
-//                backgroundColor: Color(0xFFAEDED5),
-//                onPressed: () => Navigator.of(context).pushNamed(SermonVideoScreen.route),
-//              ),
-//              MenuItem(
-//                title: 'สวดมนต์',
-//                titleColor: Color(0xFFA23825),
-//                backgroundColor: Color(0xFFF9A479),
-//                onPressed: () => Navigator.of(context).pushNamed(PrayingScreen.route),
-//              ),
-//              MenuItem(
-//                title: 'กิจกรรมสะสมบุญ',
-//                titleColor: Color(0xFF2A733A),
-//                backgroundColor: Color(0xFF8AC96F),
-//                onPressed: () => Navigator.of(context).pushNamed(ActivityListScreen.route),
-//              ),
-//              MenuItem(
-//                title: 'แบบทดสอบสุขภาพจิต',
-//                titleColor: Color(0xFF8856A4),
-//                backgroundColor: Color(0xFFDEC1DC),
-//                onPressed: () => Navigator.of(context).pushNamed(SurveyScreen.route),
-//              ),
-//            ],
-            children: Menu.menus.map((Menu menu) => MenuItem(menu: menu, onPressed: () => _navigateToScreen(menu.route))).toList(),
-          ),
+      body: Container(
+        padding: EdgeInsets.only(
+//          top: Dimension.screenHorizonPadding,
+          left: Dimension.screenHorizonPadding,
+          right: Dimension.screenHorizonPadding,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(height: 8.0),
+            FilterBar.singleSelection(
+              warped: true,
+              items: _categories
+                  .map((MenuCategory category) => FilterItem(
+                        title: category.title,
+                        selectedAvatar: category.primaryIcon,
+                        deselectedAvatar: category.secondaryIcon,
+                      ))
+                  .toList(),
+              textColor: Colors.black,
+              backgroundColor: Colors.white,
+              activeTextColor: Colors.white,
+              activeBackgroundColor: AppColors.primary,
+              onItemSelected: ((selected) {
+                setState(() {
+                  _selectedCategory = selected;
+                });
+              }),
+            ),
+            SizedBox(height: 8.0),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _getFilteredMenus().length,
+                itemBuilder: (BuildContext context, int index) {
+                  final menu = _getFilteredMenus()[index];
+                  return MenuItem(
+                    menu: menu,
+                    onPressed: () => _navigateToScreen(menu.route),
+                  );
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -191,7 +220,7 @@ class MenuItem extends StatelessWidget {
       width: 32.0,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: menu.categories.map((MenuCategory category) => category.icon).toList(),
+        children: menu.categories.map((MenuCategory category) => category.primaryIcon).toList(),
       ),
     );
   }

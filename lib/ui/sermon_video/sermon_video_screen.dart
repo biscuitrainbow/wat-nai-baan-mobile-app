@@ -64,12 +64,12 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
             ),
             SizedBox(width: Dimension.screenHorizonPadding),
             FilterBar(
-              items: Video.category,
+              items: Video.category.map((String category) => FilterItem(title: category)).toList(),
               textColor: Colors.black,
               backgroundColor: Colors.white,
               activeTextColor: Colors.white,
               activeBackgroundColor: AppColors.primary,
-              onChanged: (selected) {
+              onItemsSelected: (selected) {
                 setState(() => selectedCategories = selected);
               },
             ),

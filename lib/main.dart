@@ -88,14 +88,6 @@ class MyAppState extends State<MyApp> {
           const Locale('en'),
           const Locale('th'),
         ],
-//        localizationsDelegates: [
-//          GlobalMaterialLocalizations.delegate,
-//          GlobalWidgetsLocalizations.delegate,
-//        ],
-//        supportedLocales: [
-//          Locale('en', 'US'), // English
-//          Locale('th', 'TH'), // Hebrew
-//        ],
       ),
     );
   }

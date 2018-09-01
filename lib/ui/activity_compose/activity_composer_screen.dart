@@ -125,7 +125,6 @@ class _ActivityComposeScreenState extends State<ActivityComposeScreen> {
       body: Builder(
         builder: (BuildContext scaffoldContext) {
           return LoadingView(
-            //loadingStatus: widget.viewModel.profileScreenState.loadingStatus,
             loadingStatus: LoadingStatus.initial,
             loadingContent: LoadingContent(text: 'กำลังบันทึก'),
             initialContent: Container(
@@ -157,13 +156,13 @@ class _ActivityComposeScreenState extends State<ActivityComposeScreen> {
                         SizedBox(height: Dimension.fieldVerticalMargin),
                         Text('ประเภท', style: TextStyle(color: Colors.black54, fontSize: 12.0)),
                         FilterBar(
-                          items: Activity.tag,
+                          items: Activity.tag.map((String activity) => FilterItem(title: activity)).toList(),
                           textColor: Colors.black,
                           backgroundColor: Colors.white,
                           activeTextColor: Colors.white,
                           activeBackgroundColor: AppColors.primary,
                           warped: true,
-                          onChanged: (selected) {
+                          onItemsSelected: (selected) {
                             setState(() => tags = selected);
                           },
                         ),

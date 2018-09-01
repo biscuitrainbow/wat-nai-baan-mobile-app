@@ -26,8 +26,9 @@ Middleware<AppState> _login(
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is Login) {
+      next(ShowLoginLoading());
+
       try {
-        next(ShowLoginLoading());
         User user = await userRepository.login(action.email, action.password);
         await sharedPrefRepository.saveToken(user.token);
 
@@ -84,8 +85,9 @@ Middleware<AppState> _update(
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is UpdateUser) {
+      next(ShowProfileLoading());
+
       try {
-        next(ShowProfileLoading());
         final token = store.state.token;
         await userRepository.update(token, action.user);
         next(FetchUserDetail());

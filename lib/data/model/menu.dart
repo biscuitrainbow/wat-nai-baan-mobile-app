@@ -33,7 +33,7 @@ class Menu {
         primaryColor: Color(0xFFAD4C3C),
         secondaryColor: Color(0xFFF9BFB9),
         categories: [
-          MenuCategory.panya(primaryColor: Color(0xFFAD4C3C)),
+          MenuCategory.panya(primaryColor: Color(0xFFAD4C3C), secondaryColor: Colors.white),
         ],
       ),
       Menu(
@@ -43,7 +43,7 @@ class Menu {
         primaryColor: Color(0xFF363C72),
         secondaryColor: Color(0xFFAEDED5),
         categories: [
-          MenuCategory.samathi(primaryColor: Color(0xFF363C72)),
+          MenuCategory.samathi(primaryColor: Color(0xFF363C72), secondaryColor: Colors.white),
         ],
       ),
       Menu(
@@ -53,7 +53,7 @@ class Menu {
         primaryColor: Color(0xFFA23825),
         secondaryColor: Color(0xFFF9A479),
         categories: [
-          MenuCategory.samathi(primaryColor: Color(0xFFA23825)),
+          MenuCategory.samathi(primaryColor: Color(0xFFA23825), secondaryColor: Colors.white),
         ],
       ),
       Menu(
@@ -63,7 +63,7 @@ class Menu {
         primaryColor: Color(0xFF2A733A),
         secondaryColor: Color(0xFF8AC96F),
         categories: [
-          MenuCategory.seen(primaryColor: Color(0xFF2A733A)),
+          MenuCategory.seen(primaryColor: Color(0xFF2A733A), secondaryColor: Colors.white),
         ],
       ),
       Menu(
@@ -73,7 +73,7 @@ class Menu {
         primaryColor: Color(0xFF8856A4),
         secondaryColor: Color(0xFFDEC1DC),
         categories: [
-          MenuCategory.seen(primaryColor: Color(0xFF8856A4)),
+          MenuCategory.seen(primaryColor: Color(0xFF8856A4), secondaryColor: Colors.white),
         ],
       ),
     ];
@@ -85,21 +85,25 @@ class MenuCategory {
   static final Color iconColor = AppColors.primary;
 
   static const String categorySeen = 'ศีล';
-  static const String categoryPanya = 'ปัญหา';
+  static const String categoryPanya = 'ปัญญา';
   static const String categorySamathi = 'สมาธิ';
-  static const List<String> category = [
-    categorySeen,
-    categorySamathi,
-    categoryPanya,
+
+  static final List<MenuCategory> category = [
+    MenuCategory.seen(primaryColor: AppColors.primary, secondaryColor: Colors.white),
+    MenuCategory.samathi(primaryColor: AppColors.primary, secondaryColor: Colors.white),
+    MenuCategory.panya(primaryColor: AppColors.primary, secondaryColor: Colors.white),
   ];
 
   final String title;
-  final Widget icon;
-  final Color primaryColor;
+  final Widget primaryIcon;
+  final Widget secondaryIcon;
 
-  static Widget _buildIcon(String icon, Color color) {
+  final Color primaryColor;
+  final Color secondaryColor;
+
+  static Widget buildIcon(String icon, [Color color = Colors.grey]) {
     return SvgPicture.asset(
-      AppAsset.iconSeen,
+      icon,
       color: color,
       height: size,
       width: size,
@@ -108,16 +112,33 @@ class MenuCategory {
 
   MenuCategory.seen({
     this.title = categorySeen,
+    @required this.secondaryColor,
     @required this.primaryColor,
-  }) : this.icon = _buildIcon(AppAsset.iconSeen, primaryColor);
+  })  : this.primaryIcon = buildIcon(AppAsset.iconSeen, primaryColor),
+        this.secondaryIcon = buildIcon(AppAsset.iconSeen, secondaryColor);
 
   MenuCategory.samathi({
     this.title = categorySamathi,
+    @required this.secondaryColor,
     @required this.primaryColor,
-  }) : this.icon = _buildIcon(AppAsset.iconSamathi, primaryColor);
+  })  : this.primaryIcon = buildIcon(AppAsset.iconSamathi, primaryColor),
+        this.secondaryIcon = buildIcon(AppAsset.iconSamathi, secondaryColor);
 
   MenuCategory.panya({
     this.title = categoryPanya,
+    @required this.secondaryColor,
     @required this.primaryColor,
-  }) : this.icon = _buildIcon(AppAsset.iconPanya, primaryColor);
+  })  : this.primaryIcon = buildIcon(AppAsset.iconPanya, primaryColor),
+        this.secondaryIcon = buildIcon(AppAsset.iconPanya, secondaryColor);
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is MenuCategory && runtimeType == other.runtimeType && title == other.title;
+
+  @override
+  int get hashCode => title.hashCode ^ primaryIcon.hashCode;
+
+  @override
+  String toString() {
+    return 'MenuCategory{title: $title, icon: $primaryIcon, primaryColor: $primaryColor}';
+  }
 }
