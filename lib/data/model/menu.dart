@@ -3,7 +3,7 @@ import 'package:buddish_project/ui/activity_list/activity_list_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_screen.dart';
-import 'package:buddish_project/ui/survey/survey_screen.dart';
+import 'package:buddish_project/ui/wipasana_list/wipasana_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -37,6 +37,16 @@ class Menu {
         ],
       ),
       Menu(
+        title: 'วิปัสสนา',
+        route: WipasanaListScreen.route,
+        icon: AppAsset.iconPrayer,
+        primaryColor: Color(0xFF8856A4),
+        secondaryColor: Color(0xFFDEC1DC),
+        categories: [
+          MenuCategory.seen(primaryColor: Color(0xFF8856A4), secondaryColor: Colors.white),
+        ],
+      ),
+      Menu(
         title: 'ฟังเทศน์ ฟังธรรม',
         route: SermonVideoScreen.route,
         icon: AppAsset.iconBuddha,
@@ -66,16 +76,6 @@ class Menu {
           MenuCategory.seen(primaryColor: Color(0xFF2A733A), secondaryColor: Colors.white),
         ],
       ),
-      Menu(
-        title: 'รับศีล',
-        route: SurveyScreen.route,
-        icon: AppAsset.iconPrayer,
-        primaryColor: Color(0xFF8856A4),
-        secondaryColor: Color(0xFFDEC1DC),
-        categories: [
-          MenuCategory.seen(primaryColor: Color(0xFF8856A4), secondaryColor: Colors.white),
-        ],
-      ),
     ];
   }
 }
@@ -85,8 +85,8 @@ class MenuCategory {
   static final Color iconColor = AppColors.primary;
 
   static const String categorySeen = 'ศีล';
-  static const String categoryPanya = 'ปัญญา';
   static const String categorySamathi = 'สมาธิ';
+  static const String categoryPanya = 'ปัญญา';
 
   static final List<MenuCategory> category = [
     MenuCategory.seen(primaryColor: AppColors.primary, secondaryColor: Colors.white),

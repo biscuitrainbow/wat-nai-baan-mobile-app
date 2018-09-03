@@ -6,6 +6,7 @@ import 'package:buddish_project/data/model/news.dart';
 import 'package:buddish_project/ui/news/news_screen.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_container.dart';
+import 'package:buddish_project/utils/string_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -144,6 +145,7 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       floatingActionButton: FloatingActionButton(
         onPressed: _showNewsCompose,
         elevation: 1.0,
@@ -180,8 +182,7 @@ class NewsActivityItem extends StatelessWidget {
   });
 
   Widget _buildDueDate() {
-    final formatter = DateFormat('dd MMM yyy');
-    final date = formatter.format(news.dateCreated);
+    final date = toThaiDate(news.dueDate);
 
     return Text(
       date,
@@ -235,7 +236,11 @@ class NewsActivityItem extends StatelessWidget {
 
     return Flexible(
       flex: 3,
-      child: Padding(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: AppStyle.boxShadow,
+        ),
         padding: EdgeInsets.all(Dimension.screenVerticalPadding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

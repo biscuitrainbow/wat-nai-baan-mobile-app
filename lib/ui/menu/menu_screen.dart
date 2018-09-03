@@ -5,6 +5,8 @@ import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/common/filter_bar.dart';
 import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
+import 'package:buddish_project/ui/rub_seen/rub_seen_screen.dart';
+import 'package:buddish_project/ui/survey/survey_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,33 +37,60 @@ class _MenuScreenState extends State<MenuScreen> {
     return Drawer(
       child: Container(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            SizedBox(height: 48.0),
-            DrawerItem(
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.of(context).pushNamed(ProfileScreen.route);
-              },
-              icon: Icons.person,
-              title: 'ข้อมูลผู้ใช้',
+            Column(
+              children: <Widget>[
+                SizedBox(height: 48.0),
+                DrawerItem(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(ProfileScreen.route);
+                  },
+                  icon: Icons.person,
+                  title: 'ข้อมูลผู้ใช้',
+                ),
+                DrawerItem(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(RubSeenScreen.route);
+                  },
+                  icon: FontAwesomeIcons.handHolding,
+                  title: 'อาราธนาศีล',
+                ),
+                SizedBox(height: 16.0),
+                DrawerItem(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(OnBoardingScreen.route);
+                  },
+                  icon: FontAwesomeIcons.stackOverflow,
+                  title: 'ไตรสิกขา',
+                ),
+                SizedBox(height: 16.0),
+                DrawerItem(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(SurveyScreen.route);
+                  },
+                  icon: Icons.format_list_bulleted,
+                  title: 'แบบทดสอบสุขภาพจิต',
+                ),
+                SizedBox(height: 16.0),
+              ],
             ),
-            SizedBox(height: 16.0),
-            DrawerItem(
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.of(context).pushNamed(OnBoardingScreen.route);
-              },
-              icon: FontAwesomeIcons.stackOverflow,
-              title: 'ไตรสิขา',
-            ),
-            SizedBox(height: 16.0),
-            DrawerItem(
-              icon: Icons.call_missed_outgoing,
-              title: 'ลงชื่ออก',
-              onPressed: () {
-                final Store<AppState> store = StoreProvider.of(context);
-                store.dispatch(Logout());
-              },
+            Column(
+              children: <Widget>[
+                DrawerItem(
+                  icon: Icons.call_missed_outgoing,
+                  title: 'ลงชื่ออก',
+                  onPressed: () {
+                    final Store<AppState> store = StoreProvider.of(context);
+                    store.dispatch(Logout());
+                  },
+                ),
+                SizedBox(height: 8.0),
+              ],
             )
           ],
         ),
@@ -78,8 +107,6 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   List<Menu> _getFilteredMenus() {
-    print(_selectedCategory);
-
     if (_selectedCategory != null) {
       final selectedMenuCategory = _categories.firstWhere((MenuCategory category) => category.title == _selectedCategory);
 
@@ -126,11 +153,13 @@ class _MenuScreenState extends State<MenuScreen> {
             FilterBar.singleSelection(
               warped: true,
               items: _categories
-                  .map((MenuCategory category) => FilterItem(
-                        title: category.title,
-                        selectedAvatar: category.primaryIcon,
-                        deselectedAvatar: category.secondaryIcon,
-                      ))
+                  .map(
+                    (MenuCategory category) => FilterItem(
+                          title: category.title,
+                          selectedAvatar: category.primaryIcon,
+                          deselectedAvatar: category.secondaryIcon,
+                        ),
+                  )
                   .toList(),
               textColor: Colors.black,
               backgroundColor: Colors.white,

@@ -9,6 +9,7 @@ class Video {
   static final String categoryPatebatTham = 'การปฏิบัติธรรม';
   static final String categoryWipassana = 'วิปัสสนา';
   static final String categoryKhammuang = 'เทศน์คำเมือง';
+  static final String categoryRubSeen = 'รับศีล';
 
   static final List<String> category = [
     categoryThammaBanYai,
@@ -47,6 +48,30 @@ class Video {
     return matched;
   }
 
+  static List<Video> getWipasanaVideos() {
+    final wipasanaCategory = [categoryWipassana];
+    return generate().where((Video video) => video.isInCategories(wipasanaCategory)).toList();
+  }
+
+  static List<Video> getRubSeenVideos() {
+    final videos = [
+      Video(
+        id: '2qqxd3wHW08',
+        title: "บทสวดสมาทานศีล ๕",
+        thumbnailUrl: "https://i.ytimg.com/vi/2qqxd3wHW08/sddefault.jpg",
+        categories: [categoryRubSeen],
+      ),
+      Video(
+        id: 'vlT1X-LXy3Y',
+        title: "บทสวดสมาทานศีล ๘",
+        thumbnailUrl: "https://i.ytimg.com/vi/vlT1X-LXy3Y/sddefault.jpg",
+        categories: [categoryRubSeen],
+      )
+    ];
+
+    return videos;
+  }
+
   @override
   String toString() {
     return '$categories';
@@ -54,6 +79,12 @@ class Video {
 
   static List<Video> generate() {
     return [
+      Video(
+        id: "2OyiVofe5OM",
+        title: "3 เดินจงกรมระยะ 1 - สติปัฏฐาน4",
+        thumbnailUrl: "https://i.ytimg.com/vi/2OyiVofe5OM/sddefault.jpg",
+        categories: [categoryWipassana],
+      ),
       Video(
         id: 'A8CZCErrb5M',
         title: 'มีความสุข..ได้ทุกวัน ธรรมบรรยาย โดย ท่าน ว.วชิรเมธี',

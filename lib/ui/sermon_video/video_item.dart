@@ -32,8 +32,8 @@ class VideoItem extends StatelessWidget {
           video.title,
           textAlign: TextAlign.start,
           style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w600,
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
             color: AppColors.primary,
           ),
         ),
@@ -46,6 +46,15 @@ class VideoItem extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
+        decoration: BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.grey.shade200,
+              offset: Offset(10.0, 10.0),
+              blurRadius: 30.0,
+            ),
+          ],
+        ),
         padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

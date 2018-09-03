@@ -12,7 +12,6 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   List<Slide> slides = [];
 
-
   @override
   void initState() {
     super.initState();
@@ -33,19 +32,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         pathImage: AppAsset.iconLotusWithText,
       ),
     );
-    slides.add(
-      Slide(
-        title: "ปัญญา",
-        subTitle: 'อธิปัญญหาสิกขา',
-        description: 'การศึกษาเรื่องศีล\nอบรมปฏิบัติให้ถูกค้องดีงาม\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิปัญญาสิกขา',
-        pathImage: AppAsset.iconLotusWithText,
-      ),
-    );
+
     slides.add(
       Slide(
         title: "สมาธิ",
         subTitle: 'อธิจิตตสิกขา',
         description: 'การศึกษาเรื่องจิต\nอบรมจิตให้สงบมั่นคงเป็นสมาธิ\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิจิตตสิกขา',
+        pathImage: AppAsset.iconLotusWithText,
+      ),
+    );
+    slides.add(
+      Slide(
+        title: "ปัญญา",
+        subTitle: 'อธิปัญญหาสิกขา',
+        description: 'การศึกษาเรื่องศีล\nอบรมปฏิบัติให้ถูกค้องดีงาม\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิปัญญาสิกขา',
         pathImage: AppAsset.iconLotusWithText,
       ),
     );

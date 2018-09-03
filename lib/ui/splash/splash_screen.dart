@@ -1,8 +1,12 @@
 import 'package:buddish_project/constants.dart';
+import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/ui/main/main_screen.dart';
 import 'package:buddish_project/ui/onboarding/onboarding_screen.dart';
+import 'package:buddish_project/ui/rub_seen/rub_seen_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/src/store.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,6 +16,24 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
   AnimationController animationController;
 
+  void _showRubSeenScreen() {
+    Navigator.of(context, rootNavigator: true).push(
+      CupertinoPageRoute<bool>(
+        fullscreenDialog: true,
+        builder: (BuildContext context) => RubSeenScreen(),
+      ),
+    );
+  }
+
+  void _showOnBoardingScreen() {
+    Navigator.of(context, rootNavigator: true).push(
+      CupertinoPageRoute<bool>(
+        fullscreenDialog: true,
+        builder: (BuildContext context) => OnBoardingScreen(),
+      ),
+    );
+  }
+
   @override
   void initState() {
     animationController = new AnimationController(duration: Duration(seconds: 3), vsync: this)
@@ -19,14 +41,15 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           Navigator.of(context).pushReplacementNamed(MainScreen.route);
-//          Navigator.of(context).pushNamed(OnBoardingScreen.route);
 
-          Navigator.of(context, rootNavigator: true).push(
-            CupertinoPageRoute<bool>(
-              fullscreenDialog: true,
-              builder: (BuildContext context) => new OnBoardingScreen(),
-            ),
-          );
+          final Store<AppState> store = StoreProvider.of(context);
+          final token = store.state.token;
+
+          if (token != null) {
+            _showRubSeenScreen();
+          }
+
+          _showOnBoardingScreen();
         }
       });
 

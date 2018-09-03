@@ -20,10 +20,12 @@ import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
 import 'package:buddish_project/ui/profile/profile_container.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
+import 'package:buddish_project/ui/rub_seen/rub_seen_screen.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_container.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_screen.dart';
 import 'package:buddish_project/ui/splash/splash_screen.dart';
 import 'package:buddish_project/ui/survey/survey_screen.dart';
+import 'package:buddish_project/ui/wipasana_list/wipasana_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -79,6 +81,8 @@ class MyAppState extends State<MyApp> {
           ActivityListScreen.route: (context) => ActivityListContainer(),
           ActivityComposeScreen.route: (context) => ActivityComposeContainer(),
           OnBoardingScreen.route: (context) => OnBoardingScreen(),
+          WipasanaListScreen.route: (context) => WipasanaListScreen(),
+          RubSeenScreen.route: (context) => RubSeenScreen(),
         },
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,

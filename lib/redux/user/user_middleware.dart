@@ -1,6 +1,7 @@
 import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/repository/prefs_repository.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
+import 'package:buddish_project/redux/app/app_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/token/token_action.dart';
 import 'package:buddish_project/redux/ui/login_screen/login_screen_action.dart';
@@ -37,6 +38,8 @@ Middleware<AppState> _login(
         next(SaveToken(user.token));
         next(LoginSuccess(user));
         next(HideLoginLoading());
+
+        store.dispatch(Init());
       } catch (error) {
         action.completer.completeError(error);
         next(HideLoginLoading());

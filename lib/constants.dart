@@ -73,11 +73,21 @@ class AppStyle {
     fillColor: Colors.grey.shade200,
     filled: true,
   );
+
+  static final boxShadow = [
+    BoxShadow(
+      color: Colors.grey.shade200,
+      offset: Offset(4.0, 4.0),
+      blurRadius: 10.0,
+    )
+  ];
 }
 
 class AppString {
   static final String dateOfBirthFormat = 'dd-MM-yyyy';
   static final String datetimeTextField = 'dd MMM yyyy HH:mm';
+  static final String diffDateFormat = 'dd MMM yyyy';
+
   static final String dateTextField = 'dd MMM yyyy';
 
   static final String httpApplicationJson = 'application/json';

@@ -241,7 +241,11 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
                         controller: _titleController,
                         textInputAction: TextInputAction.next,
                         autofocus: true,
-                        style: Theme.of(context).textTheme.subhead.copyWith(fontSize: 20.0),
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .subhead
+                            .copyWith(fontSize: 20.0),
                         validator: (String value) => value.isEmpty ? 'กรุณากรอกชื่อเรื่อง' : null,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration.collapsed(hintText: 'ชื่อเรื่อง'),

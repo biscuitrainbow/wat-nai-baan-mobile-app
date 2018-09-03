@@ -1,4 +1,3 @@
-import 'package:buddish_project/constants.dart';
 import 'package:intl/intl.dart';
 
 String toBearer(String token) {
@@ -32,7 +31,11 @@ String fromTagsList(List<String> tags) {
   return tags.join(",");
 }
 
-String toThaiDate(DateTime datetime) {
-  final formatter = DateFormat(AppString.datetimeTextField, 'th_TH');
+String toThaiDate(DateTime datetime, [String format = 'dd MMM yyyy']) {
+  final formatter = DateFormat(format, 'th_TH');
   return formatter.format(datetime);
+}
+
+String getFirstCharacter(String text) {
+  return text[0];
 }

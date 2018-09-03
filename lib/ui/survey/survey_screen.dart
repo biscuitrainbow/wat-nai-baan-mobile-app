@@ -1,5 +1,7 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/survey.dart';
+import 'package:buddish_project/ui/common/confirm_dialog.dart';
+import 'package:buddish_project/utils/string_util.dart';
 import 'package:flutter/material.dart';
 
 class SurveyScreen extends StatefulWidget {
@@ -20,10 +22,40 @@ class _SurveyScreenState extends State<SurveyScreen> {
     super.initState();
   }
 
+  Widget _showAskResultDialog() {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return ConfirmDialog(
+            title: 'ต้องการทำแบบสอบถามต่อหรือไม่',
+            description: 'ข้อมูลของคุณเพียงพอต่อการสรุปผลแล้ว',
+            confirmText: 'สรุปผล',
+            cancelText: 'ทำต่อ',
+            onCancel: () {
+              surveyController.nextPage(
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeOut,
+              );
+              Navigator.of(context).pop();
+            },
+            onConfirm: () {
+              surveyController.jumpToPage(28);
+              Navigator.of(context).pop();
+            },
+          );
+        });
+  }
+
   void _next(int score) {
     setState(() {
       totalScore += score;
     });
+
+    if (totalScore == 6) {
+      _showAskResultDialog();
+      return;
+    }
 
     surveyController.nextPage(
       duration: Duration(milliseconds: 400),
@@ -41,22 +73,15 @@ class _SurveyScreenState extends State<SurveyScreen> {
         .map(
           (Survey survey) => SurveyWidget(
                 survey: survey,
-                onAnswerChanged: (int score) {
-                  print(score);
-                },
                 onNext: _next,
                 isResult: false,
                 score: totalScore,
               ),
         )
-        .take(7)
         .toList();
 
     pages.add(SurveyWidget(
       survey: null,
-      onAnswerChanged: (int score) {
-        print(score);
-      },
       onNext: _next,
       isResult: true,
       score: totalScore,
@@ -145,21 +170,19 @@ class ResultWidget extends StatelessWidget {
 class SurveyWidget extends StatefulWidget {
   SurveyWidget({
     @required this.survey,
-    @required this.onAnswerChanged,
     @required this.onNext,
     @required this.isResult,
     @required this.score,
   });
 
   final Survey survey;
-  final Function(int) onAnswerChanged;
   final Function(int) onNext;
   final bool isResult;
   final int score;
 
   @override
   SurveyWidgetState createState() {
-    return new SurveyWidgetState();
+    return SurveyWidgetState();
   }
 }
 
@@ -172,11 +195,6 @@ class SurveyWidgetState extends State<SurveyWidget> {
 
     return GestureDetector(
       onTap: () {
-        if (answer[0] == 'ค' || answer[0] == 'ง')
-          widget.onAnswerChanged(1);
-        else
-          widget.onAnswerChanged(0);
-
         setState(() {
           selectedAnswer = answer;
         });
@@ -184,7 +202,11 @@ class SurveyWidgetState extends State<SurveyWidget> {
       child: Container(
         margin: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
         height: 50.0,
-        color: answer == selectedAnswer ? AppColors.secondary : Colors.grey.shade200,
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: answer == selectedAnswer ? AppColors.secondary : Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(4.0),
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -197,16 +219,20 @@ class SurveyWidgetState extends State<SurveyWidget> {
   }
 
   Widget _buildQuestion(String question) {
-    return Center(
-      child: Text(
-        widget.survey.question,
-        style: TextStyle(color: AppColors.primary, fontSize: 20.0, fontWeight: FontWeight.w600),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Text(
+          widget.survey.question,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: AppColors.primary, fontSize: 20.0, fontWeight: FontWeight.w600),
+        ),
       ),
     );
   }
 
   void _next() {
-    if (selectedAnswer[0] == 'ค' || selectedAnswer[0] == 'ง')
+    if (getFirstCharacter(selectedAnswer) == 'ค' || getFirstCharacter(selectedAnswer) == 'ง')
       widget.onNext(1);
     else
       widget.onNext(0);
@@ -224,23 +250,31 @@ class SurveyWidgetState extends State<SurveyWidget> {
     var children = <Widget>[]
       ..add(Container(
         height: 100.0,
-        color: AppColors.secondary,
         child: question,
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: AppColors.secondary,
+          borderRadius: BorderRadius.circular(4.0),
+          boxShadow: AppStyle.boxShadow,
+        ),
       ))
       ..add(SizedBox(height: 20.0))
       ..addAll(answers)
       ..add(SizedBox(height: 20.0))
-      ..add(MaterialButton(
-        elevation: .5,
-        padding: EdgeInsets.symmetric(vertical: 8.0),
-        minWidth: MediaQuery.of(context).size.width * 0.4,
-        child: Text(
-          'ต่อไป',
-          style: TextStyle(fontSize: 22.0, color: AppColors.primary, fontWeight: FontWeight.w600),
+      ..add(
+        MaterialButton(
+
+          elevation: 0.2,
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          minWidth: MediaQuery.of(context).size.width * 0.4,
+          child: Text(
+            'ต่อไป',
+            style: TextStyle(fontSize: 22.0, color: AppColors.primary, fontWeight: FontWeight.w600),
+          ),
+          color: selectedAnswer.isNotEmpty ? AppColors.secondary : Colors.grey.shade200,
+          onPressed: selectedAnswer.isNotEmpty ? _next : null,
         ),
-        color: selectedAnswer.isNotEmpty ? AppColors.secondary : Colors.grey.shade200,
-        onPressed: selectedAnswer.isNotEmpty ? _next : null,
-      ));
+      );
 
     return GestureDetector(
       child: Container(

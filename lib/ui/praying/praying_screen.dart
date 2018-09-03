@@ -29,7 +29,6 @@ class _PrayingScreenState extends State<PrayingScreen> {
 
   ZefyrController _controller;
   FocusNode _editorFocusNode;
-  PersistentBottomSheetController _bottomSheetController;
 
   Future<File> copyLocalAsset(Directory localDir, String bundleDir, String assetName) async {
     final data = await rootBundle.load('$bundleDir/$assetName');
@@ -41,31 +40,32 @@ class _PrayingScreenState extends State<PrayingScreen> {
 
   void _showLyric() {
     showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return Container(
-            height: MediaQuery.of(context).size.height * .45,
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 8.0),
-                Text(
-                  'บทสวด',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                  ),
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height * .45,
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 8.0),
+              Text(
+                'บทสวด',
+                style: TextStyle(
+                  fontSize: 20.0,
                 ),
-                SizedBox(height: 8.0),
-                Expanded(
-                  child: ZefyrEditor(
-                    enabled: false,
-                    controller: _controller,
-                    focusNode: _editorFocusNode,
-                  ),
-                )
-              ],
-            ),
-          );
-        });
+              ),
+              SizedBox(height: 8.0),
+              Expanded(
+                child: ZefyrEditor(
+                  enabled: false,
+                  controller: _controller,
+                  focusNode: _editorFocusNode,
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -120,7 +120,7 @@ class _PrayingScreenState extends State<PrayingScreen> {
                       _audioPlugin.play(localAssetFile.path, isLocal: true);
                       widget.viewModel.onPlay(index);
 
-                      _showLyric();
+                      // _showLyric();
 
                       return;
                     }
@@ -167,7 +167,17 @@ class MantraPlayer extends StatelessWidget {
       margin: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
       height: 80.0,
       width: double.infinity,
-      color: backgroundColor,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        color: backgroundColor,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.grey.shade200,
+            offset: Offset(4.0, 4.0),
+            blurRadius: 5.0,
+          ),
+        ],
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
