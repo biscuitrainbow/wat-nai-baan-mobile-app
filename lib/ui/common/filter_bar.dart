@@ -52,7 +52,6 @@ class _FilterBarState extends State<FilterBar> {
   FilterItem selectedItem = null;
 
   bool _isSelected(FilterItem item) {
-    print(item);
     return selectedItems.contains(item) || selectedItem == item;
   }
 

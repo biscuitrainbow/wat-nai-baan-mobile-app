@@ -32,10 +32,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 void main() async {
-//  Future.wait([initializeDateFormatting('th', null)]);
+  final store = await createStore();
 
-  var store = await createStore();
-  runApp(new MyApp(store: store));
+  runApp(MyApp(store: store));
 }
 
 class MyApp extends StatefulWidget {
@@ -45,7 +44,7 @@ class MyApp extends StatefulWidget {
 
   @override
   MyAppState createState() {
-    return new MyAppState();
+    return MyAppState();
   }
 }
 

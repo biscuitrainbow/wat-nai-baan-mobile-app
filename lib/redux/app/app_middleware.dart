@@ -6,21 +6,24 @@ import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/news/news_action.dart';
 import 'package:buddish_project/redux/token/token_action.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
+import 'package:buddish_project/service/notification_service.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createAppMiddleware(
   UserRepository userRepository,
+  NotificationService notificationService,
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return [
     new TypedMiddleware<AppState, Init>(
-      init(userRepository, sharedPrefRepository),
+      init(userRepository, notificationService, sharedPrefRepository),
     ),
   ];
 }
 
 Middleware<AppState> init(
   UserRepository userRepository,
+  NotificationService notificationService,
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
@@ -33,6 +36,8 @@ Middleware<AppState> init(
           next(FetchUserDetail());
           next(FetchNews());
           next(FetchActivities());
+
+          notificationService.initPushNotification();
         }
       } catch (error) {}
 

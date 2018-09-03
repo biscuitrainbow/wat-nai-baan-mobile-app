@@ -3,16 +3,18 @@ import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/news/news_action.dart';
 import 'package:buddish_project/redux/ui/news_compose_screen/news_compose_screen_action.dart';
 import 'package:buddish_project/redux/ui/news_list_screen/news_list_screen_action.dart';
+import 'package:buddish_project/service/notification_service.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createNewsMiddleware(
   NewsRepository newsRepository,
+  NotificationService notificationService,
 ) {
   return [
-    new TypedMiddleware<AppState, AddNews>(
-      _addNews(newsRepository),
+    TypedMiddleware<AppState, AddNews>(
+      _addNews(newsRepository, notificationService),
     ),
-    new TypedMiddleware<AppState, FetchNews>(
+    TypedMiddleware<AppState, FetchNews>(
       _fetchNews(newsRepository),
     ),
   ];
@@ -20,6 +22,7 @@ List<Middleware<AppState>> createNewsMiddleware(
 
 Middleware<AppState> _addNews(
   NewsRepository newsRepository,
+  NotificationService notificationService,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddNews) {
@@ -28,6 +31,7 @@ Middleware<AppState> _addNews(
       try {
         final token = store.state.token;
         await newsRepository.addNews(token, action.news);
+        await notificationService.sendNewsPushNotification('แจ้งเตือนข่าวสาร', action.news.title);
 
         action.completer.complete(null);
         next(FetchNews());
