@@ -16,11 +16,18 @@ PODS:
     - FirebaseAnalytics (= 5.0.1)
   - Firebase/CoreOnly (5.4.0):
     - FirebaseCore (= 5.0.5)
+  - Firebase/Messaging (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.3)
   - Firebase/Storage (5.4.0):
     - Firebase/CoreOnly
     - FirebaseStorage (= 3.0.0)
   - firebase_core (0.0.1):
     - Firebase/Core
+    - Flutter
+  - firebase_messaging (0.0.1):
+    - Firebase/Core
+    - Firebase/Messaging
     - Flutter
   - firebase_storage (0.0.1):
     - Firebase/Storage
@@ -34,6 +41,11 @@ PODS:
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseInstanceID (3.1.1):
     - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.3):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - FirebaseStorage (3.0.0):
     - FirebaseCore (~> 5.0)
     - GTMSessionFetcher/Core (~> 1.1)
@@ -47,6 +59,8 @@ PODS:
   - fluttertoast (0.0.2):
     - Flutter
   - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
@@ -59,6 +73,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - path_provider (0.0.1):
     - Flutter
+  - Protobuf (3.6.0)
   - shared_preferences (0.0.1):
     - Flutter
   - url_launcher (0.0.1):
@@ -68,8 +83,9 @@ PODS:
 DEPENDENCIES:
   - audioplayer (from `.symlinks/plugins/audioplayer/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
+  - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `.symlinks/flutter/ios-release`)
   - flutter_facebook_login (from `.symlinks/plugins/flutter_facebook_login/ios`)
   - flutter_youtube (from `.symlinks/plugins/flutter_youtube/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
@@ -87,10 +103,12 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseStorage
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - nanopb
+    - Protobuf
     - XCDYouTubeKit
 
 EXTERNAL SOURCES:
@@ -98,10 +116,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/audioplayer/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
+  firebase_messaging:
+    :path: ".symlinks/plugins/firebase_messaging/ios"
   firebase_storage:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: ".symlinks/flutter/ios-release"
   flutter_facebook_login:
     :path: ".symlinks/plugins/flutter_facebook_login/ios"
   flutter_youtube:
@@ -124,10 +144,12 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
   firebase_core: c96aa8b2fcf7f5167d32f22034f502f9304952b8
+  firebase_messaging: a5f5d4a9491b660f33a1f94bd0596558f820bad1
   firebase_storage: e34d30ff8bb57e691191b70e9d255ec2eba2351f
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
   FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
+  FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
   FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
   flutter_facebook_login: e3d2f0a348889fe0f49c302bc044b8cc66c691be
@@ -138,6 +160,7 @@ SPEC CHECKSUMS:
   image_picker: ee00aab0487cedc80a304085219503cc6d0f2e22
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   path_provider: 09407919825bfe3c2deae39453b7a5b44f467873
+  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   shared_preferences: 5a1d487c427ee18fcd3ea1f2a131569481834b53
   url_launcher: 92b89c1029a0373879933c21642958c874539095
   XCDYouTubeKit: dccfe0c17dd5c5187969ec27e93069573badb08f
