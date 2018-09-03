@@ -304,7 +304,7 @@ class NewsGeneralItem extends StatelessWidget {
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.w500,
-              color: AppColors.primary,
+              color: AppColors.primary
             ),
           ),
         ),
@@ -339,7 +339,6 @@ class NewsGeneralItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            //  _buildDateCreated(),
             _buildDiffDate(),
             _buildVideoTitle(),
             SizedBox(height: 4.0),

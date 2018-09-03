@@ -15,7 +15,9 @@ class ActivityComposeContainer extends StatelessWidget {
     return StoreConnector(
       converter: ActivityComposerViewModel.fromStore,
       builder: (BuildContext context, ActivityComposerViewModel viewModel) {
-        return ActivityComposeScreen(viewModel: viewModel);
+        return ActivityComposeScreen(
+          viewModel: viewModel,
+        );
       },
     );
   }

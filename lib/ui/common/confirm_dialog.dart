@@ -33,13 +33,13 @@ class _ConfirmDialogState extends State<ConfirmDialog> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "ต้องการทำแบบสอบถามต่อหรือไม่",
+                widget.title,
                 textAlign: TextAlign.left,
                 style: TextStyle(fontSize: 18.0, color: AppColors.primary, fontWeight: FontWeight.w500),
               ),
               SizedBox(height: 12.0),
               Text(
-                "ข้อมูลของคุณเพียงพอต่อการสรุปผลแล้ว",
+                widget.description,
                 style: TextStyle(fontSize: 16.0, color: Colors.grey.shade500),
               ),
               SizedBox(height: 16.0),
@@ -48,11 +48,11 @@ class _ConfirmDialogState extends State<ConfirmDialog> {
                 children: <Widget>[
                   FlatButton(
                     onPressed: widget.onCancel,
-                    child: Text('ทำต่อ', style: TextStyle(color: AppColors.primary)),
+                    child: Text(widget.cancelText, style: TextStyle(color: AppColors.primary)),
                   ),
                   FlatButton(
                     onPressed: widget.onConfirm,
-                    child: Text('สรุปผล', style: TextStyle(color: AppColors.primary)),
+                    child: Text(widget.confirmText, style: TextStyle(color: AppColors.primary)),
                     color: AppColors.secondary,
                   ),
                 ],
