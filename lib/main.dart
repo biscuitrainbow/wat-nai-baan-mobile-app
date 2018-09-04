@@ -11,7 +11,7 @@ import 'package:buddish_project/ui/login/login_screen.dart';
 import 'package:buddish_project/ui/main/main_container.dart';
 import 'package:buddish_project/ui/main/main_screen.dart';
 import 'package:buddish_project/ui/menu/menu_screen.dart';
-import 'package:buddish_project/ui/news_compose/news_compose_container.dart';
+import 'package:buddish_project/ui/news_compose/news_add_container.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_container.dart';
 import 'package:buddish_project/ui/news_list/news_list_screen.dart';

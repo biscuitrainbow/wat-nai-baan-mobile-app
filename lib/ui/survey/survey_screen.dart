@@ -149,8 +149,6 @@ class ResultWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(score);
-
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: Dimension.screenHorizonPadding,

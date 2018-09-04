@@ -20,3 +20,17 @@ class AddNews {
 
   AddNews(this.news, this.completer);
 }
+
+class UpdateNews {
+  final News news;
+  final Completer<Null> completer;
+
+  UpdateNews(this.news, this.completer);
+}
+
+class DeleteNews {
+  final int newsId;
+  final Completer<Null> completer;
+
+  DeleteNews(this.newsId, this.completer);
+}

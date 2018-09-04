@@ -8,6 +8,7 @@ class NewsParser {
 
   static News parse(dynamic json) {
     return News(
+      id: json[NewsField.id],
       title: json[NewsField.title],
       content: json[NewsField.content],
       cover: json[NewsField.cover],
@@ -20,8 +21,8 @@ class NewsParser {
   }
 }
 
-
 abstract class NewsField {
+  static final String id = 'id';
   static final String title = 'title';
   static final String content = 'content';
   static final String dueDate = 'due_date';
@@ -31,4 +32,3 @@ abstract class NewsField {
   static final String diff = 'diff';
   static final String location = 'location';
 }
-

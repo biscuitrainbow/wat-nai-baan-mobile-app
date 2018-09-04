@@ -7,6 +7,7 @@ import 'package:buddish_project/redux/ui/activity_list_screen/activity_list_scre
 import 'package:buddish_project/redux/ui/login_screen/login_screen_reducers.dart';
 import 'package:buddish_project/redux/ui/news_compose_screen/news_compose_screen_reducers.dart';
 import 'package:buddish_project/redux/ui/news_list_screen/news_list_screen_reducers.dart';
+import 'package:buddish_project/redux/ui/news_screen/news_screen_reducers.dart';
 import 'package:buddish_project/redux/ui/profile_screen/profile_screen_reducers.dart';
 import 'package:buddish_project/redux/ui/sermon_videos_screen/sermon_video_screen_reducer.dart';
 import 'package:buddish_project/redux/user/user_reducer.dart';
@@ -24,6 +25,7 @@ AppState appReducer(AppState state, action) {
     newsComposeScreenState: newsComposeReducers(state.newsComposeScreenState, action),
     newsListScreenState: newsListReducers(state.newsListScreenState, action),
     activityListScreenState: activityListReducers(state.activityListScreenState, action),
+    newsScreenState: newsScreenReducers(state.newsScreenState, action),
   );
 
   return appState;

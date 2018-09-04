@@ -4,39 +4,27 @@ import 'package:buddish_project/data/model/news.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/news/news_action.dart';
 import 'package:buddish_project/redux/ui/news_compose_screen/news_compose_screen_state.dart';
-import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/utils/widget_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:redux/redux.dart';
 
-class NewsComposeContainer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return StoreConnector(
-      converter: NewsComposeViewModel.fromStore,
-      builder: (BuildContext context, NewsComposeViewModel viewModel) {
-        return NewsComposeScreen(viewModel: viewModel);
-      },
-    );
-  }
-}
-
 class NewsComposeViewModel {
-  final Function(News, BuildContext) onSave;
+  final Function(News, BuildContext) onCreate;
+  final Function(News, BuildContext) onUpdate;
+
   final Function onUploadImage;
   final NewsComposeScreenState state;
 
   NewsComposeViewModel({
-    @required this.onSave,
+    @required this.onUpdate,
+    @required this.onCreate,
     @required this.onUploadImage,
     @required this.state,
   });
 
   static NewsComposeViewModel fromStore(Store<AppState> store) {
     return NewsComposeViewModel(
-      onSave: (News news, BuildContext context) {
+      onCreate: (News news, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
           showToast("ข่าวสารเผยแพร่แล้ว");
@@ -44,6 +32,16 @@ class NewsComposeViewModel {
         });
 
         store.dispatch(AddNews(news, completer));
+      },
+      onUpdate: (News news, BuildContext context) {
+        Completer<Null> completer = Completer();
+        completer.future.then((_) {
+          showToast("บันทึกข่าวสารแล้ว");
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        });
+
+        store.dispatch(UpdateNews(news, completer));
       },
       state: store.state.newsComposeScreenState,
       onUploadImage: () {},

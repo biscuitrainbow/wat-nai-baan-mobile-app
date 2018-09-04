@@ -7,6 +7,7 @@ class News {
   static final String categoryGeneralTH = 'ทั่วไป';
   static final String categoryActivityTH = 'นัดหมายกิจกรรม';
 
+  final int id;
   final String title;
   final String cover;
   final String category;
@@ -17,6 +18,7 @@ class News {
   final String location;
 
   News({
+    this.id,
     this.title,
     this.cover,
     this.category,
@@ -28,6 +30,7 @@ class News {
   });
 
   News copyWith({
+    int id,
     String title,
     String cover,
     String category,
@@ -38,6 +41,7 @@ class News {
     String diff,
   }) {
     return News(
+      id: id ?? this.id,
       title: title ?? this.title,
       cover: cover ?? this.cover,
       category: category ?? this.category,
@@ -53,6 +57,8 @@ class News {
   String toString() {
     return 'News{title: $title, cover: $cover, category: $category, dateCreated: $dateCreated, dueDate: $dueDate, content: $content, diff: $diff, location: $location}';
   }
+
+  String get thaiCategory => category == categoryGeneral ? categoryGeneralTH : categoryActivityTH;
 
   static String getRandomImage() {
     final images = [

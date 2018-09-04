@@ -22,7 +22,7 @@ class LoadingDialog extends StatelessWidget {
             Text(title),
           ],
         ),
-        SizedBox(height: 16.0),
+        SizedBox(height: 20.0),
       ],
     );
   }

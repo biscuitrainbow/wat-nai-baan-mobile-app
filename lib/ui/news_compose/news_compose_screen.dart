@@ -7,7 +7,7 @@ import 'package:buddish_project/ui/common/loading_content.dart';
 import 'package:buddish_project/ui/common/loading_dialog.dart';
 import 'package:buddish_project/ui/common/loading_view.dart';
 import 'package:buddish_project/ui/common/radio_item.dart';
-import 'package:buddish_project/ui/news_compose/news_compose_container.dart';
+import 'package:buddish_project/ui/news_compose/news_compose_view_model.dart';
 import 'package:buddish_project/utils/news_compose_util.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -18,9 +18,13 @@ class NewsComposeScreen extends StatefulWidget {
   static final String route = '/newCompose';
 
   final NewsComposeViewModel viewModel;
+  final News news;
+  final bool isEditing;
 
   NewsComposeScreen({
     this.viewModel,
+    this.news,
+    this.isEditing = false,
   });
 
   @override
@@ -42,7 +46,7 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
   FocusNode _datetimeFocusNode;
 
   FirebaseImageDelegate _imageDelegate;
-  String category;
+  String _category = 'general';
 
   void _save() {
     if (!_formKey.currentState.validate()) {
@@ -53,20 +57,26 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
     final cover = getFirstImage(_controller.document);
 
     final news = News(
+      id: widget.isEditing ? widget.news.id : null,
       title: _titleController.text,
       content: encodedContent,
-      category: category,
+      category: _category,
       cover: cover ?? '',
       dateCreated: DateTime.now(),
       dueDate: _datetime ?? DateTime.now(),
       location: _locationController.text ?? '',
     );
 
-    widget.viewModel.onSave(news, context);
+    if (!widget.isEditing) {
+      widget.viewModel.onCreate(news, context);
+    } else {
+      widget.viewModel.onUpdate(news, context);
+    }
   }
 
   void _onStartUpload() {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return LoadingDialog(title: 'กำลังอัพโหลดรูปภาพ');
@@ -92,17 +102,17 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
         RadioItem(
           value: News.categoryGeneral,
           label: News.categoryGeneralTH,
-          groupValue: category,
+          groupValue: _category,
           onChanged: (String value) {
-            setState(() => category = value);
+            setState(() => _category = value);
           },
         ),
         RadioItem(
           value: News.categoryActivity,
           label: News.categoryActivityTH,
-          groupValue: category,
+          groupValue: _category,
           onChanged: (String value) {
-            setState(() => category = value);
+            setState(() => _category = value);
           },
         )
       ],
@@ -165,6 +175,14 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
     _locationController = TextEditingController();
     _datetimeController = TextEditingController();
 
+    if (widget.isEditing) {
+      _titleController.text = widget.news.title;
+      final formatter = DateFormat(AppString.datetimeTextField, 'th_TH');
+      _datetimeController.text = formatter.format(widget.news.dueDate);
+      _locationController.text = widget.news.location;
+      _category = widget.news.category;
+    }
+
     _locationFocusNode = FocusNode();
     _editorFocusNode = FocusNode();
     _datetimeFocusNode = FocusNode();
@@ -175,15 +193,13 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
       }
     });
 
-    final document = NotusDocument();
+    final document = widget.isEditing ? NotusDocument.fromJson(json.decode(widget.news.content)) : NotusDocument();
     _controller = ZefyrController(document);
 
     _imageDelegate = FirebaseImageDelegate(
       onCompleteUpload: _onCompleteUpload,
       onStartUploading: _onStartUpload,
     );
-
-    category = News.categoryGeneral;
 
     initializeDateFormatting("th_TH");
 
@@ -216,7 +232,7 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1.0,
-        title: Text('สร้างข่าวสาร', style: AppStyle.appbarTitle),
+        title: Text(widget.isEditing ? 'แก้ไขข่าวสาร' : 'สร้างข่าวสาร', style: AppStyle.appbarTitle),
         iconTheme: IconThemeData(color: AppColors.primary),
         actions: <Widget>[
           IconButton(
@@ -251,7 +267,7 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
                     children: <Widget>[
                       _buildCategoryField(),
                       Offstage(
-                        offstage: category == News.categoryGeneral,
+                        offstage: _category == News.categoryGeneral,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
                           child: TextFormField(
@@ -268,7 +284,7 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
                         ),
                       ),
                       Offstage(
-                        offstage: category == News.categoryGeneral,
+                        offstage: _category == News.categoryGeneral,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
                           child: TextFormField(

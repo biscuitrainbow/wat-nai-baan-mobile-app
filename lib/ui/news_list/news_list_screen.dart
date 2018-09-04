@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:after_layout/after_layout.dart';
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/news.dart';
-import 'package:buddish_project/ui/news/news_screen.dart';
+import 'package:buddish_project/ui/common/no_content.dart';
+import 'package:buddish_project/ui/news/news_container.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_container.dart';
 import 'package:buddish_project/utils/string_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -60,7 +62,7 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
   }
 
   void _showNews(News news) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => NewsScreen(news: news)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => NewsContainer(news: news)));
   }
 
   Widget _buildGeneralNews() {
@@ -72,26 +74,31 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
 
         return completer.future;
       },
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverPadding(
-            padding: EdgeInsets.only(top: 8.0),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  final news = widget.viewModel.generalNews[index];
+      child: widget.viewModel.generalNews.isNotEmpty
+          ? CustomScrollView(
+              slivers: <Widget>[
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        final news = widget.viewModel.generalNews[index];
 
-                  return NewsGeneralItem(
-                    news: news,
-                    onPressed: () => _showNews(news),
-                  );
-                },
-                childCount: widget.viewModel.generalNews.length,
-              ),
+                        return NewsGeneralItem(
+                          news: news,
+                          onPressed: () => _showNews(news),
+                        );
+                      },
+                      childCount: widget.viewModel.generalNews.length,
+                    ),
+                  ),
+                )
+              ],
+            )
+          : NoContent(
+              title: 'ยังไม่มีข่าวสารในหมวดนี้',
+              icon: FontAwesomeIcons.newspaper,
             ),
-          )
-        ],
-      ),
     );
   }
 
@@ -104,26 +111,31 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
 
         return completer.future;
       },
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverPadding(
-            padding: EdgeInsets.only(top: 8.0),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  final news = widget.viewModel.activityNews[index];
+      child: widget.viewModel.activityNews.isNotEmpty
+          ? CustomScrollView(
+              slivers: <Widget>[
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        final news = widget.viewModel.activityNews[index];
 
-                  return NewsActivityItem(
-                    news: news,
-                    onPressed: () => _showNews(news),
-                  );
-                },
-                childCount: widget.viewModel.activityNews.length,
-              ),
+                        return NewsActivityItem(
+                          news: news,
+                          onPressed: () => _showNews(news),
+                        );
+                      },
+                      childCount: widget.viewModel.activityNews.length,
+                    ),
+                  ),
+                )
+              ],
+            )
+          : NoContent(
+              title: 'ยังไม่มีข่าวสารในหมวดนี้',
+              icon: FontAwesomeIcons.newspaper,
             ),
-          )
-        ],
-      ),
     );
   }
 
@@ -301,11 +313,7 @@ class NewsGeneralItem extends StatelessWidget {
           child: Text(
             news.title,
             textAlign: TextAlign.start,
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.w500,
-              color: AppColors.primary
-            ),
+            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w500, color: AppColors.primary),
           ),
         ),
       ],

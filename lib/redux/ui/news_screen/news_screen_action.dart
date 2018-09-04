@@ -1,0 +1,3 @@
+class ShowNewsLoading {}
+
+class HideNewsLoading {}

@@ -6,6 +6,7 @@ import 'package:buddish_project/redux/ui/activity_list_screen/activity_list_scre
 import 'package:buddish_project/redux/ui/login_screen/login_screen_state.dart';
 import 'package:buddish_project/redux/ui/news_compose_screen/news_compose_screen_state.dart';
 import 'package:buddish_project/redux/ui/news_list_screen/news_list_screen_state.dart';
+import 'package:buddish_project/redux/ui/news_screen/news_screen_state.dart';
 import 'package:buddish_project/redux/ui/profile_screen/profile_screen_state.dart';
 import 'package:buddish_project/redux/ui/sermon_videos_screen/sermon_video_screen_state.dart';
 
@@ -21,6 +22,7 @@ class AppState {
   final NewsComposeScreenState newsComposeScreenState;
   final NewsListScreenState newsListScreenState;
   final ActivityListScreenState activityListScreenState;
+  final NewsScreenState newsScreenState;
 
   AppState({
     this.user,
@@ -34,6 +36,7 @@ class AppState {
     this.newsComposeScreenState,
     this.newsListScreenState,
     this.activityListScreenState,
+    this.newsScreenState,
   });
 
   factory AppState.initial() {
@@ -49,6 +52,7 @@ class AppState {
       newsComposeScreenState: NewsComposeScreenState.initial(),
       newsListScreenState: NewsListScreenState.initial(),
       activityListScreenState: ActivityListScreenState.initial(),
+      newsScreenState: NewsScreenState.initial(),
     );
   }
 
@@ -64,6 +68,7 @@ class AppState {
     NewsComposeScreenState newsComposeScreenState,
     NewsListScreenState newsListScreenState,
     ActivityListScreenState activityListScreenState,
+    NewsComposeScreenState newsScreenState,
   }) {
     return AppState(
       user: user ?? this.user,
@@ -77,6 +82,7 @@ class AppState {
       newsComposeScreenState: newsComposeScreenState ?? this.newsComposeScreenState,
       newsListScreenState: newsListScreenState ?? this.newsListScreenState,
       activityListScreenState: activityListScreenState ?? this.activityListScreenState,
+      newsScreenState: newsScreenState ?? this.newsScreenState,
     );
   }
 
