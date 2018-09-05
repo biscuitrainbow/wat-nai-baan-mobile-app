@@ -1,8 +1,10 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/activity.dart';
 import 'package:buddish_project/ui/activity_compose/activity_composer_screen.dart';
+import 'package:buddish_project/ui/activity_compose/activity_edit_container.dart';
 import 'package:buddish_project/ui/activity_list/activity_item.dart';
 import 'package:buddish_project/ui/activity_list/activity_list_container.dart';
+import 'package:buddish_project/ui/common/confirm_dialog.dart';
 import 'package:flutter/material.dart';
 
 class ActivityListScreen extends StatefulWidget {
@@ -93,6 +95,31 @@ class _ActivityListScreenState extends State<ActivityListScreen> {
     Navigator.of(context).pushNamed(ActivityComposeScreen.route);
   }
 
+  void _showEditActivity(Activity activity) {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => ActivityEditContainer(activity: activity)));
+  }
+
+  void _delete(BuildContext context, Activity activity) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return ConfirmDialog(
+            title: 'ต้องการลบหรือไม่',
+            description: 'กิจกรรมจะหายไปและไม่สามารถกู้คืนได้',
+            confirmText: 'ลบ',
+            cancelText: 'ยกเลิก',
+            onCancel: () {
+              Navigator.of(context).pop();
+            },
+            onConfirm: () {
+              widget.viewModel.onDelete(context, activity.id);
+            },
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     final listContent = [
@@ -100,7 +127,15 @@ class _ActivityListScreenState extends State<ActivityListScreen> {
       SizedBox(height: 16.0),
     ];
 
-    final activityCards = widget.viewModel.activities.map((Activity activity) => ActivityItem(activity: activity)).toList();
+    final activityCards = widget.viewModel.activities
+        .map(
+          (Activity activity) => ActivityItem(
+                activity: activity,
+                onEditPressed: () => _showEditActivity(activity),
+                onDeletePressed: () => _delete(context, activity),
+              ),
+        )
+        .toList();
     listContent.addAll(activityCards);
 
     return Scaffold(

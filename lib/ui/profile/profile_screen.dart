@@ -69,8 +69,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _update(BuildContext scaffoldContext) {
     final user = widget.viewModel.user.copyWith(
       name: nameController.text,
-      tel: telController.text.replaceAll(RegExp(r'-'), ''),
-      dateOfBirth: formatter.parse(dateOfBirthController.text),
+      tel: telController.text.isNotEmpty ? telController.text.replaceAll(RegExp(r'-'), '') : null,
+      dateOfBirth: dateOfBirthController.text.isNotEmpty ? formatter.parse(dateOfBirthController.text) : null,
       gender: gender,
     );
 
@@ -83,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     nameController.text = user.name;
     telController.text = user.tel;
-    dateOfBirthController.text = formatter.format(user.dateOfBirth);
+    dateOfBirthController.text = user.dateOfBirth != null ? formatter.format(user.dateOfBirth) : '';
     gender = user.gender;
 
     super.initState();

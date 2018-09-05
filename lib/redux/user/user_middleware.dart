@@ -14,6 +14,7 @@ List<Middleware<AppState>> createUserMiddleware(
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return [
+    TypedMiddleware<AppState, Register>(_register(userRepository)),
     TypedMiddleware<AppState, Login>(_login(userRepository, sharedPrefRepository)),
     TypedMiddleware<AppState, Logout>(_logout(userRepository, sharedPrefRepository)),
     TypedMiddleware<AppState, UpdateUser>(_update(userRepository)),
@@ -41,6 +42,7 @@ Middleware<AppState> _login(
 
         store.dispatch(Init());
       } catch (error) {
+        print(error);
         action.completer.completeError(error);
         next(HideLoginLoading());
       }
@@ -58,9 +60,8 @@ Middleware<AppState> _logout(
     if (action is Logout) {
       try {
         await sharedPrefRepository.deleteToken();
-        next(DeleteToken());
+        next(ClearAppState());
       } catch (error) {}
-
       next(action);
     }
   };
@@ -77,6 +78,25 @@ Middleware<AppState> _fetchUser(
 
         next(LoginSuccess(user));
       } catch (error) {}
+
+      next(action);
+    }
+  };
+}
+
+Middleware<AppState> _register(
+  UserRepository userRepository,
+) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    if (action is Register) {
+      try {
+        final user = await userRepository.register(action.user);
+        next(SaveToken(user.token));
+        next(FetchUserDetail());
+        action.completer.complete(null);
+      } catch (error) {
+        action.completer.completeError(null);
+      }
 
       next(action);
     }

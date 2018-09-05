@@ -24,6 +24,12 @@ class Mantra {
     );
   }
 
+
+  @override
+  String toString() {
+    return 'Mantra{name: $name, url: $url, isPlaying: $isPlaying}';
+  }
+
   static List<Mantra> generate() {
     return [
       Mantra(name: 'สวดมนต์ทำวัตรเช้า', url: AppAsset.audio1, isPlaying: false),

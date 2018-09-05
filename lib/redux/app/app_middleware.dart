@@ -15,7 +15,7 @@ List<Middleware<AppState>> createAppMiddleware(
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, Init>(
+     TypedMiddleware<AppState, Init>(
       init(userRepository, notificationService, sharedPrefRepository),
     ),
   ];

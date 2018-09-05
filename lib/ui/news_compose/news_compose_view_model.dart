@@ -36,9 +36,10 @@ class NewsComposeViewModel {
       onUpdate: (News news, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
+          Navigator.of(context).pop();
           showToast("บันทึกข่าวสารแล้ว");
           Navigator.of(context).pop();
-          Navigator.of(context).pop();
+//          Navigator.of(context).pop();
         });
 
         store.dispatch(UpdateNews(news, completer));

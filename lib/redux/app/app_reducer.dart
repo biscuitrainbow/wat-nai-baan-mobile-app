@@ -1,4 +1,5 @@
 import 'package:buddish_project/redux/activity/activity_reducer.dart';
+import 'package:buddish_project/redux/app/app_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/mantra/mantra_reducer.dart';
 import 'package:buddish_project/redux/news/news_reducer.dart';
@@ -13,7 +14,11 @@ import 'package:buddish_project/redux/ui/sermon_videos_screen/sermon_video_scree
 import 'package:buddish_project/redux/user/user_reducer.dart';
 
 AppState appReducer(AppState state, action) {
-  var appState = new AppState(
+  if (action is ClearAppState) {
+    return AppState.initial();
+  }
+
+  var appState = AppState(
     user: userReducer(state.user, action),
     token: tokenReducers(state.token, action),
     news: newsReducers(state.news, action),

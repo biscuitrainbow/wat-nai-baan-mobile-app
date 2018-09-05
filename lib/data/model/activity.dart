@@ -1,12 +1,14 @@
 import 'package:meta/meta.dart';
 
 class Activity {
+  final int id;
   final String title;
   final DateTime datetime;
   final List<String> tags;
   final int point;
 
   Activity({
+    this.id,
     @required this.title,
     @required this.datetime,
     @required this.tags,

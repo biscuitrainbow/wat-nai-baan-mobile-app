@@ -8,6 +8,7 @@ class ActivityParser {
 
   static Activity parse(dynamic json) {
     return Activity(
+      id: json[ActivityField.id],
       title: json[ActivityField.title],
       datetime: fromMysqlDateTime(json[ActivityField.datetime]),
       tags: json[ActivityField.tags] != null ? fromTagsString(json[ActivityField.tags]) : [],
@@ -17,6 +18,7 @@ class ActivityParser {
 }
 
 abstract class ActivityField {
+  static final String id = 'id';
   static final String title = 'title';
   static final String datetime = 'datetime';
   static final String tags = 'tags';

@@ -249,58 +249,60 @@ class _NewsComposeScreenState extends State<NewsComposeScreen> {
             initialContent: Container(
               child: Column(
                 children: <Widget>[
-                  ExpansionTile(
-                    initiallyExpanded: true,
-                    title: Form(
-                      key: _formKey,
-                      child: TextFormField(
-                        controller: _titleController,
-                        textInputAction: TextInputAction.next,
-                        autofocus: true,
-                        style: Theme.of(context).textTheme.subhead.copyWith(fontSize: 20.0),
-                        validator: (String value) => value.isEmpty ? 'กรุณากรอกชื่อเรื่อง' : null,
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration.collapsed(hintText: 'ชื่อเรื่อง'),
-                        onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_datetimeFocusNode),
+                  SingleChildScrollView(
+                    child: ExpansionTile(
+                      initiallyExpanded: true,
+                      title: Form(
+                        key: _formKey,
+                        child: TextFormField(
+                          controller: _titleController,
+                          textInputAction: TextInputAction.next,
+                          autofocus: true,
+                          style: Theme.of(context).textTheme.subhead.copyWith(fontSize: 20.0),
+                          validator: (String value) => value.isEmpty ? 'กรุณากรอกชื่อเรื่อง' : null,
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration.collapsed(hintText: 'ชื่อเรื่อง'),
+                          onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_datetimeFocusNode),
+                        ),
                       ),
+                      children: <Widget>[
+                        _buildCategoryField(),
+                        Offstage(
+                          offstage: _category == News.categoryGeneral,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
+                            child: TextFormField(
+                              focusNode: _datetimeFocusNode,
+                              controller: _datetimeController,
+                              keyboardType: TextInputType.text,
+                              decoration: inputStyle.copyWith(
+                                labelText: 'วัน-เวลา',
+                                labelStyle: AppStyle.inputLabelStyle,
+                              ),
+                              textInputAction: TextInputAction.next,
+                              onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_locationFocusNode),
+                            ),
+                          ),
+                        ),
+                        Offstage(
+                          offstage: _category == News.categoryGeneral,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
+                            child: TextFormField(
+                              focusNode: _locationFocusNode,
+                              controller: _locationController,
+                              keyboardType: TextInputType.text,
+                              decoration: inputStyle.copyWith(
+                                labelText: 'สถานที่',
+                                labelStyle: AppStyle.inputLabelStyle,
+                              ),
+                              textInputAction: TextInputAction.next,
+                              onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_editorFocusNode),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    children: <Widget>[
-                      _buildCategoryField(),
-                      Offstage(
-                        offstage: _category == News.categoryGeneral,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
-                          child: TextFormField(
-                            focusNode: _datetimeFocusNode,
-                            controller: _datetimeController,
-                            keyboardType: TextInputType.text,
-                            decoration: inputStyle.copyWith(
-                              labelText: 'วัน-เวลา',
-                              labelStyle: AppStyle.inputLabelStyle,
-                            ),
-                            textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_locationFocusNode),
-                          ),
-                        ),
-                      ),
-                      Offstage(
-                        offstage: _category == News.categoryGeneral,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding),
-                          child: TextFormField(
-                            focusNode: _locationFocusNode,
-                            controller: _locationController,
-                            keyboardType: TextInputType.text,
-                            decoration: inputStyle.copyWith(
-                              labelText: 'สถานที่',
-                              labelStyle: AppStyle.inputLabelStyle,
-                            ),
-                            textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_editorFocusNode),
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                   Expanded(
                     child: ZefyrEditor(

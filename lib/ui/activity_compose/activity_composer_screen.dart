@@ -1,7 +1,7 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/loading_status.dart';
 import 'package:buddish_project/data/model/activity.dart';
-import 'package:buddish_project/ui/activity_compose/activity_composer_container.dart';
+import 'package:buddish_project/ui/activity_compose/activity_composer_view_model.dart';
 import 'package:buddish_project/ui/common/button.dart';
 import 'package:buddish_project/ui/common/filter_bar.dart';
 import 'package:buddish_project/ui/common/loading_content.dart';
@@ -14,9 +14,13 @@ class ActivityComposeScreen extends StatefulWidget {
   static final String route = '/activityCompose';
 
   final ActivityComposerViewModel viewModel;
+  final Activity activity;
+  final bool isEditing;
 
   const ActivityComposeScreen({
     this.viewModel,
+    this.activity,
+    this.isEditing = false,
   });
 
   @override
@@ -44,6 +48,12 @@ class _ActivityComposeScreenState extends State<ActivityComposeScreen> {
     _datetimeController = TextEditingController();
     _datetimeController.text = formatter.format(_datetime);
 
+    if (widget.isEditing) {
+      _titleController.text = widget.activity.title;
+      _datetimeController.text = formatter.format(widget.activity.datetime);
+      tags = widget.activity.tags;
+    }
+
     _titleFocusNode = FocusNode();
     _datetimeFocusNode = FocusNode();
 
@@ -69,13 +79,18 @@ class _ActivityComposeScreenState extends State<ActivityComposeScreen> {
 
   void _onSave(BuildContext context) {
     final activity = Activity(
+      id: widget.isEditing ? widget.activity.id : null,
       title: _titleController.text,
       datetime: _datetime,
       point: 5,
       tags: tags,
     );
 
-    widget.viewModel.onSave(activity, context);
+    if (widget.isEditing) {
+      widget.viewModel.onUpdate(activity, context);
+    } else {
+      widget.viewModel.onCreate(activity, context);
+    }
   }
 
   void _onDatetimeFocused() async {
@@ -127,57 +142,59 @@ class _ActivityComposeScreenState extends State<ActivityComposeScreen> {
           return LoadingView(
             loadingStatus: LoadingStatus.initial,
             loadingContent: LoadingContent(text: 'กำลังบันทึก'),
-            initialContent: Container(
-              padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
-              child: Column(
-                children: <Widget>[
-                  Form(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        TextFormField(
-                          style: textInputStyle,
-                          focusNode: _titleFocusNode,
-                          controller: _titleController,
-                          keyboardType: TextInputType.text,
-                          autofocus: true,
-                          onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_datetimeFocusNode),
-                          decoration: inputStyle.copyWith(labelText: 'คำอธิบาย'),
-                          maxLines: null,
-                        ),
-                        SizedBox(height: Dimension.fieldVerticalMargin),
-                        TextFormField(
-                          style: textInputStyle,
-                          focusNode: _datetimeFocusNode,
-                          controller: _datetimeController,
-                          keyboardType: TextInputType.number,
-                          decoration: inputStyle.copyWith(labelText: 'วันที่'),
-                        ),
-                        SizedBox(height: Dimension.fieldVerticalMargin),
-                        Text('ประเภท', style: TextStyle(color: Colors.black54, fontSize: 12.0)),
-                        FilterBar(
-                          items: Activity.tag.map((String activity) => FilterItem(title: activity)).toList(),
-                          textColor: Colors.black,
-                          backgroundColor: Colors.white,
-                          activeTextColor: Colors.white,
-                          activeBackgroundColor: AppColors.primary,
-                          warped: true,
-                          onItemsSelected: (selected) {
-                            setState(() => tags = selected);
-                          },
-                        ),
-                        SizedBox(height: Dimension.fieldVerticalMargin),
-                      ],
+            initialContent: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: Dimension.screenHorizonPadding, vertical: Dimension.screenVerticalPadding),
+                child: Column(
+                  children: <Widget>[
+                    Form(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          TextFormField(
+                            style: textInputStyle,
+                            focusNode: _titleFocusNode,
+                            controller: _titleController,
+                            keyboardType: TextInputType.text,
+                            autofocus: true,
+                            onFieldSubmitted: (String value) => FocusScope.of(context).requestFocus(_datetimeFocusNode),
+                            decoration: inputStyle.copyWith(labelText: 'คำอธิบาย'),
+                            maxLines: null,
+                          ),
+                          SizedBox(height: Dimension.fieldVerticalMargin),
+                          TextFormField(
+                            style: textInputStyle,
+                            focusNode: _datetimeFocusNode,
+                            controller: _datetimeController,
+                            keyboardType: TextInputType.number,
+                            decoration: inputStyle.copyWith(labelText: 'วันที่'),
+                          ),
+                          SizedBox(height: Dimension.fieldVerticalMargin),
+                          Text('ประเภท', style: TextStyle(color: Colors.black54, fontSize: 12.0)),
+                          FilterBar(
+                            items: Activity.tag.map((String activity) => FilterItem(title: activity)).toList(),
+                            textColor: Colors.black,
+                            backgroundColor: Colors.white,
+                            activeTextColor: Colors.white,
+                            activeBackgroundColor: AppColors.primary,
+                            warped: true,
+                            onItemsSelected: (selected) {
+                              setState(() => tags = selected);
+                            },
+                          ),
+                          SizedBox(height: Dimension.fieldVerticalMargin),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(height: Dimension.fieldVerticalMargin * 2),
-                  Button(
-                    title: 'บันทึก',
-                    titleColor: AppColors.primary,
-                    backgroundColor: Colors.yellow,
-                    onPressed: () => _onSave(context),
-                  ),
-                ],
+                    SizedBox(height: Dimension.fieldVerticalMargin * 2),
+                    Button(
+                      title: 'บันทึก',
+                      titleColor: AppColors.primary,
+                      backgroundColor: Colors.yellow,
+                      onPressed: () => _onSave(context),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

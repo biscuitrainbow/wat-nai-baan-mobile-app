@@ -1,6 +1,3 @@
-import 'dart:async';
-
-
 import 'package:buddish_project/data/repository/youtube_repository.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/ui/sermon_videos_screen/sermon_video_screen_action.dart';
@@ -11,7 +8,7 @@ List<Middleware<AppState>> createVideoMiddleware(
   YoutubeRepository youtubeRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, FetchSermonPlaylist>(
+    TypedMiddleware<AppState, FetchSermonPlaylist>(
       _fetchSermonPlaylist(youtubeRepository),
     ),
   ];

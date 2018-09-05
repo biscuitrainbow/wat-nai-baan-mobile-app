@@ -2,6 +2,8 @@ class Video {
   static final String categoryThammaBanYai = 'ธรรมบรรยาย';
   static final String categoryWor = 'ว.วชิรเมธี';
   static final String categorySomphong = 'พระมหาสมปอง';
+  static final String categoryPromBandit = 'พระพรหมบัณฑิต';
+  static final String categoryKosajan = 'สมเด็จพระพุทธโฆษาจารย์';
   static final String categoryPanya = 'หลวงพ่อปัญญานันทภิกขุ';
   static final String categoryJaran = 'หลวงพ่อจรัญ';
   static final String categoryLanna = 'เทศน์ล้านนา';
@@ -13,8 +15,9 @@ class Video {
 
   static final List<String> category = [
     categoryThammaBanYai,
-    categoryWipassana,
     categoryKhammuang,
+    categoryKosajan,
+    categoryPromBandit,
     categoryWor,
     categorySomphong,
     categoryPanya,
@@ -80,10 +83,28 @@ class Video {
   static List<Video> generate() {
     return [
       Video(
-        id: "2OyiVofe5OM",
-        title: "3 เดินจงกรมระยะ 1 - สติปัฏฐาน4",
-        thumbnailUrl: "https://i.ytimg.com/vi/2OyiVofe5OM/sddefault.jpg",
-        categories: [categoryWipassana],
+        id: "GWo2OGXRkCA",
+        title: "สุขทานกถา ว่าด้วยการให้ความสุข",
+        thumbnailUrl: "https://i.ytimg.com/vi/GWo2OGXRkCA/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPromBandit],
+      ),
+      Video(
+        id: "7WImsxpQefY",
+        title: "บุญนิธิกถา ว่าด้วยขุมทรัพย์คือบุญ",
+        thumbnailUrl: "https://i.ytimg.com/vi/GWo2OGXRkCA/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPromBandit],
+      ),
+      Video(
+        id: "uB4S4NDPJvs",
+        title: "สติพลกถา ว่าด้วยสติมาปัญญาเกิด",
+        thumbnailUrl: "https://i.ytimg.com/vi/uB4S4NDPJvs/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPromBandit],
+      ),
+      Video(
+        id: "mwm7qRlUsk4",
+        title: "ใช้ชีวิต..สุขที่สุด",
+        thumbnailUrl: "https://i.ytimg.com/vi/mwm7qRlUsk4/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryKosajan],
       ),
       Video(
         id: 'A8CZCErrb5M',
@@ -504,6 +525,12 @@ class Video {
         title: "ธรรมบรรยาย ฮาเฮ พระอธิการโอฬาร เทศนาธรรม",
         thumbnailUrl: "https://i.ytimg.com/vi/GF3J0KjTbZM/sddefault.jpg",
         categories: [categoryLanna],
+      ),
+      Video(
+        id: "2OyiVofe5OM",
+        title: "3 เดินจงกรมระยะ 1 - สติปัฏฐาน4",
+        thumbnailUrl: "https://i.ytimg.com/vi/2OyiVofe5OM/sddefault.jpg",
+        categories: [categoryWipassana],
       ),
     ];
   }

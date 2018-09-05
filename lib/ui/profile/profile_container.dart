@@ -5,6 +5,7 @@ import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/ui/profile_screen/profile_screen_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/profile/profile_screen.dart';
+import 'package:buddish_project/utils/widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -41,8 +42,7 @@ class ProfileScreenViewModel {
       onUpdate: (User user, BuildContext scaffoldContext) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
-          Scaffold.of(scaffoldContext).showSnackBar(SnackBar(content: Text("บันทึกสำเร็จ"), duration: Duration(seconds: 3)));
-          print("hello");
+          showToast('บันทึกสำเร็จ');
         }).catchError((error) {
           print(error);
         });

@@ -1,3 +1,7 @@
 class Init {
 
 }
+
+class ClearAppState {
+
+}

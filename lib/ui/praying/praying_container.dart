@@ -20,8 +20,8 @@ class PrayingContainer extends StatelessWidget {
 
 class PrayingScreenViewModel {
   final List<Mantra> mantras;
-  final Function(int index) onPlay;
-  final Function(int index) onStop;
+  final Function(int index, Mantra mantra) onPlay;
+  final Function(int index, Mantra mantra) onStop;
 
   PrayingScreenViewModel({
     @required this.mantras,
@@ -32,8 +32,8 @@ class PrayingScreenViewModel {
   static PrayingScreenViewModel fromStore(Store<AppState> store) {
     return PrayingScreenViewModel(
       mantras: store.state.mantras,
-      onPlay: (int index) => store.dispatch(Play(index)),
-      onStop: (int index) => store.dispatch(Stop(index)),
+      onPlay: (int index, Mantra mantra) => store.dispatch(Play(index,mantra)),
+      onStop: (int index, Mantra mantra) => store.dispatch(Stop(index,mantra)),
     );
   }
 }

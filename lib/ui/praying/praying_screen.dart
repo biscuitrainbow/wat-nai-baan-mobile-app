@@ -7,7 +7,6 @@ import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/ui/praying/praying_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:zefyr/zefyr.dart';
 
 class PrayingScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class PrayingScreen extends StatefulWidget {
 }
 
 class _PrayingScreenState extends State<PrayingScreen> {
-  final AudioPlayer _audioPlugin = new AudioPlayer();
+  final AudioPlayer _audioPlugin = AudioPlayer();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   ZefyrController _controller;
@@ -114,11 +113,11 @@ class _PrayingScreenState extends State<PrayingScreen> {
                   isPlaying: mantra.isPlaying,
                   onPressed: () async {
                     if (!mantra.isPlaying) {
-                      final dir = await getApplicationDocumentsDirectory();
-                      final localAssetFile = await copyLocalAsset(dir, AppAsset.audioBundle, mantra.url);
-
-                      _audioPlugin.play(localAssetFile.path, isLocal: true);
-                      widget.viewModel.onPlay(index);
+//                      final dir = await getApplicationDocumentsDirectory();
+//                      final localAssetFile = await copyLocalAsset(dir, AppAsset.audioBundle, mantra.url);
+//
+//                      _audioPlugin.play(localAssetFile.path, isLocal: true);
+                      widget.viewModel.onPlay(index, mantra);
 
                       // _showLyric();
 
@@ -128,8 +127,8 @@ class _PrayingScreenState extends State<PrayingScreen> {
                     try {
 //                      _bottomSheetController?.close();
 
-                      _audioPlugin.stop();
-                      widget.viewModel.onStop(index);
+//                      _audioPlugin.stop();
+                      widget.viewModel.onStop(index, mantra);
                     } catch (e) {
                       print(e);
                     }

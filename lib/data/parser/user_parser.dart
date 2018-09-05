@@ -15,7 +15,7 @@ class UserParser {
       email: json[UserField.email],
       name: json[UserField.name],
       tel: json[UserField.tel] ?? null,
-      dateOfBirth: formatter.parse(json[UserField.birthday]) ?? null,
+      dateOfBirth: json[UserField.birthday] != null ? formatter.parse(json[UserField.birthday]) : null,
       gender: json[UserField.gender] ?? null,
       token: json[UserField.token] ?? null,
     );

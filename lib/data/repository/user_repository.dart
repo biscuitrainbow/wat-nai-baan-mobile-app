@@ -6,8 +6,8 @@ import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/parser/user_parser.dart';
-import 'package:buddish_project/data/repository/constant.dart';
 import 'package:buddish_project/utils/string_util.dart';
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
@@ -29,17 +29,26 @@ class UserRepository {
   }
 
   Future<User> register(User user) async {
-    final response = await http.post('${Environment.apiUrl}/register', body: {
+    final body = {
       UserField.email: user.email,
       UserField.password: user.password,
       UserField.name: user.name,
-      UserField.tel: user.tel,
-      UserField.birthday: user.dateOfBirth,
       UserField.gender: user.gender,
-    });
+    };
 
-    final jsonResponse = json.decode(response.body);
-    final registeredUser = UserParser.parse(jsonResponse[ApiConstant.fieldData]);
+    final dio = new Dio();
+    final response = await dio.post(
+      '${Environment.apiUrl}/register',
+      options: Options(
+        contentType: ContentType.parse("application/x-www-form-urlencoded"),
+        headers: {
+          HttpHeaders.acceptHeader: AppString.httpApplicationJson,
+        },
+      ),
+      data: body,
+    );
+
+    final registeredUser = UserParser.parse(response.data);
 
     return registeredUser;
   }
@@ -58,17 +67,21 @@ class UserRepository {
   Future<Null> update(String token, User user) async {
     final DateFormat formatter = DateFormat('yyyy-MM-dd', 'th');
 
-    final response = await http.put(
+    final dio = new Dio();
+    final response = await dio.put(
       '${Environment.apiUrl}/user',
-      body: {
+      options: Options(
+        contentType: ContentType.parse("application/x-www-form-urlencoded"),
+        headers: {
+          HttpHeaders.acceptHeader: AppString.httpApplicationJson,
+          HttpHeaders.authorizationHeader: toBearer(token),
+        },
+      ),
+      data: {
         UserField.name: user.name,
-        UserField.birthday: formatter.format(user.dateOfBirth),
-        UserField.tel: user.tel,
+        UserField.birthday: user.dateOfBirth != null ? formatter.format(user.dateOfBirth) : '',
+        UserField.tel: user.tel ?? '',
         UserField.gender: user.gender,
-      },
-      headers: {
-        HttpHeaders.acceptHeader: AppString.httpApplicationJson,
-        HttpHeaders.authorizationHeader: toBearer(token),
       },
     );
   }

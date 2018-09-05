@@ -16,7 +16,9 @@ class LoginSuccess {
   LoginSuccess(this.user);
 }
 
-class FetchUserDetail {}
+class FetchUserDetail {
+
+}
 
 class UpdateUser {
   final User user;
@@ -29,6 +31,7 @@ class Logout {}
 
 class Register {
   final User user;
+  final Completer<Null> completer;
 
-  Register(this.user);
+  Register(this.user, this.completer);
 }

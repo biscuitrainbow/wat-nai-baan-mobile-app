@@ -3,6 +3,7 @@ import 'package:buddish_project/ui/common/button.dart';
 import 'package:buddish_project/ui/common/loading_content.dart';
 import 'package:buddish_project/ui/common/loading_view.dart';
 import 'package:buddish_project/ui/login/login_container.dart';
+import 'package:buddish_project/ui/register/register_screen.dart';
 import 'package:buddish_project/utils/string_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -23,7 +24,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
+  GlobalObjectKey<FormState> _formKey = GlobalObjectKey<FormState>('__login_form');
 
   final TextEditingController _emailController = TextEditingController(text: 'user@gmail.com');
   final TextEditingController _passwordController = TextEditingController(text: '123456');
@@ -58,23 +59,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 backgroundColor: Colors.yellow,
                 onPressed: _login,
               ),
-              SizedBox(height: Dimension.fieldVerticalMargin * 5),
-              Button(
-                title: 'เข้าสู่ระบบด้วย Facebook',
-                titleColor: Colors.white,
-                backgroundColor: AppColors.facebook,
-                onPressed: () async {
-                  var facebookLogin = new FacebookLogin();
-                  var result = await facebookLogin.logInWithReadPermissions(['email']);
-                  print(result.accessToken.token);
-                },
-              ),
-              SizedBox(height: Dimension.fieldVerticalMargin),
+//              SizedBox(height: Dimension.fieldVerticalMargin * 5),
+//              Button(
+//                title: 'เข้าสู่ระบบด้วย Facebook',
+//                titleColor: Colors.white,
+//                backgroundColor: AppColors.facebook,
+//                onPressed: () async {
+//                  var facebookLogin = new FacebookLogin();
+//                  var result = await facebookLogin.logInWithReadPermissions(['email']);
+//                  print(result.accessToken.token);
+//                },
+//              ),
+//              SizedBox(height: Dimension.fieldVerticalMargin),
               Button(
                 title: 'ลงทะเบียน',
                 titleColor: AppColors.primary,
                 backgroundColor: Colors.white,
-                onPressed: () => print('login'),
+                onPressed: () => Navigator.of(context).pushNamed(RegisterScreen.route),
               ),
             ],
           ),
@@ -116,7 +117,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
