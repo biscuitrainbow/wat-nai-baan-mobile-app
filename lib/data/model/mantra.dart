@@ -24,7 +24,6 @@ class Mantra {
     );
   }
 
-
   @override
   String toString() {
     return 'Mantra{name: $name, url: $url, isPlaying: $isPlaying}';
@@ -36,7 +35,7 @@ class Mantra {
       Mantra(name: 'สวดมนต์ทำวัตรเย็น', url: AppAsset.audio2, isPlaying: false),
       Mantra(name: 'สวดมนต์ประจำวัน', url: AppAsset.audio3, isPlaying: false),
       Mantra(name: 'สวดมนต์ก่อนนอน', url: AppAsset.audio4, isPlaying: false),
-      Mantra(name: 'สวดมนต์แผ่เมตตรา', url: AppAsset.audio5, isPlaying: false),
+      Mantra(name: 'สวดมนต์แผ่เมตรา', url: AppAsset.audio5, isPlaying: false),
     ];
   }
 }

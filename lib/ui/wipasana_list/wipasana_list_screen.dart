@@ -21,7 +21,7 @@ class _WipasanaListScreenState extends State<WipasanaListScreen> {
       appBar: AppBar(
         elevation: 1.0,
         title: Text(
-          'วิปัสสนา',
+          'วิปัสสนากรรมฐาน',
           style: AppStyle.appbarTitle,
         ),
         iconTheme: IconThemeData(color: AppColors.primary),

@@ -2,6 +2,7 @@ import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/ui/activity_list/activity_list_screen.dart';
 import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:buddish_project/ui/praying/praying_screen.dart';
+import 'package:buddish_project/ui/rub_seen/rub_seen_screen.dart';
 import 'package:buddish_project/ui/sermon_video/sermon_video_screen.dart';
 import 'package:buddish_project/ui/wipasana_list/wipasana_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -37,13 +38,23 @@ class Menu {
         ],
       ),
       Menu(
-        title: 'วิปัสสนา',
+        title: 'อาราธนาศีล',
+        route: RubSeenScreen.route,
+        icon: AppAsset.iconBuddha,
+        primaryColor: Color(0xFFA23825),
+        secondaryColor: Color(0xFFF9A479),
+        categories: [
+          MenuCategory.seen(primaryColor: Color(0xFFA23825), secondaryColor: Colors.white),
+        ],
+      ),
+      Menu(
+        title: 'วิปัสสนากรรมฐาน',
         route: WipasanaListScreen.route,
         icon: AppAsset.iconPrayer,
         primaryColor: Color(0xFF8856A4),
         secondaryColor: Color(0xFFDEC1DC),
         categories: [
-          MenuCategory.seen(primaryColor: Color(0xFF8856A4), secondaryColor: Colors.white),
+          MenuCategory.panya(primaryColor: Color(0xFF8856A4), secondaryColor: Colors.white),
         ],
       ),
       Menu(

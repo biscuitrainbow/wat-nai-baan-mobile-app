@@ -83,6 +83,12 @@ class Video {
   static List<Video> generate() {
     return [
       Video(
+        id: "mwm7qRlUsk4",
+        title: "ใช้ชีวิต..สุขที่สุด",
+        thumbnailUrl: "https://i.ytimg.com/vi/mwm7qRlUsk4/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryKosajan],
+      ),
+      Video(
         id: "GWo2OGXRkCA",
         title: "สุขทานกถา ว่าด้วยการให้ความสุข",
         thumbnailUrl: "https://i.ytimg.com/vi/GWo2OGXRkCA/sddefault.jpg",
@@ -91,7 +97,7 @@ class Video {
       Video(
         id: "7WImsxpQefY",
         title: "บุญนิธิกถา ว่าด้วยขุมทรัพย์คือบุญ",
-        thumbnailUrl: "https://i.ytimg.com/vi/GWo2OGXRkCA/sddefault.jpg",
+        thumbnailUrl: "https://i.ytimg.com/vi/7WImsxpQefY/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryPromBandit],
       ),
       Video(
@@ -99,18 +105,6 @@ class Video {
         title: "สติพลกถา ว่าด้วยสติมาปัญญาเกิด",
         thumbnailUrl: "https://i.ytimg.com/vi/uB4S4NDPJvs/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryPromBandit],
-      ),
-      Video(
-        id: "mwm7qRlUsk4",
-        title: "ใช้ชีวิต..สุขที่สุด",
-        thumbnailUrl: "https://i.ytimg.com/vi/mwm7qRlUsk4/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryKosajan],
-      ),
-      Video(
-        id: 'A8CZCErrb5M',
-        title: 'มีความสุข..ได้ทุกวัน ธรรมบรรยาย โดย ท่าน ว.วชิรเมธี',
-        thumbnailUrl: "https://i.ytimg.com/vi/A8CZCErrb5M/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
       ),
       Video(
         id: 'LSIvXvK2qWg',
@@ -324,7 +318,7 @@ class Video {
       ),
       Video(
         id: '3dwXZNG83ec',
-        title: "ชาวพุทธที่ดีไม่มีเรื่องไสยศาสตร์ ",
+        title: "ชาวพุทธที่ดีไม่��ีเรื่องไสยศาสตร์ ",
         thumbnailUrl: "https://i.ytimg.com/vi/3dwXZNG83ec/maxresdefault.jpg",
         categories: [categoryThammaBanYai, categoryPanya],
       ),
@@ -405,24 +399,6 @@ class Video {
         title: "เสียดายคนตายไม่ได้ฟัง คู่มือมนุษย์ท่านพุทธทาส ภิกขุ",
         thumbnailUrl: "https://i.ytimg.com/vi/0ujE2wkJ_iQ/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryPuthatart],
-      ),
-      Video(
-        id: 'AuNrBMhlcRA',
-        title: "เริ่มฝึกวิปัสสนา ง่าย ๆ 10 นาที",
-        thumbnailUrl: "https://i.ytimg.com/vi/AuNrBMhlcRA/maxresdefault.jpg",
-        categories: [categoryWipassana],
-      ),
-      Video(
-        id: '9YygEyLaIr8',
-        title: "สาธิตวิธีเดินจงกรม ๑-๖ ระยะ",
-        thumbnailUrl: "https://i.ytimg.com/vi/9YygEyLaIr8/hqdefault.jpg",
-        categories: [categoryWipassana],
-      ),
-      Video(
-        id: 'mKLGYgov3fA',
-        title: "การสาธิตการปฏิบัติวิปัสสนากรรมฐาน ตามแนว สติปัฏฐาน ๔",
-        thumbnailUrl: "https://i.ytimg.com/vi/mKLGYgov3fA/sddefault.jpg",
-        categories: [categoryWipassana],
       ),
       Video(
         id: 'gYrJw0pdqkE',
@@ -527,9 +503,27 @@ class Video {
         categories: [categoryLanna],
       ),
       Video(
+        id: 'AuNrBMhlcRA',
+        title: "เริ่มฝึกวิปัสสนา ง่าย ๆ 10 นาที",
+        thumbnailUrl: "https://i.ytimg.com/vi/AuNrBMhlcRA/maxresdefault.jpg",
+        categories: [categoryWipassana],
+      ),
+      Video(
+        id: 'mKLGYgov3fA',
+        title: "การสาธิตการปฏิบัติวิปัสสนากรรมฐาน ตามแนว สติปัฏฐาน ๔",
+        thumbnailUrl: "https://i.ytimg.com/vi/mKLGYgov3fA/sddefault.jpg",
+        categories: [categoryWipassana],
+      ),
+      Video(
         id: "2OyiVofe5OM",
         title: "3 เดินจงกรมระยะ 1 - สติปัฏฐาน4",
         thumbnailUrl: "https://i.ytimg.com/vi/2OyiVofe5OM/sddefault.jpg",
+        categories: [categoryWipassana],
+      ),
+      Video(
+        id: '9YygEyLaIr8',
+        title: "สาธิตวิธีเดินจงกรม ๑-๖ ระยะ",
+        thumbnailUrl: "https://i.ytimg.com/vi/9YygEyLaIr8/hqdefault.jpg",
         categories: [categoryWipassana],
       ),
     ];
