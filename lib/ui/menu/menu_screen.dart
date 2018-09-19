@@ -83,7 +83,7 @@ class _MenuScreenState extends State<MenuScreen> {
               children: <Widget>[
                 DrawerItem(
                   icon: Icons.call_missed_outgoing,
-                  title: 'ลงชื่ออก',
+                  title: 'ลงชื่อออก',
                   onPressed: () {
                     final Store<AppState> store = StoreProvider.of(context);
                     store.dispatch(Logout());
