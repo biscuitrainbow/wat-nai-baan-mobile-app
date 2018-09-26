@@ -45,7 +45,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       Slide(
         title: "ปัญญา",
         subTitle: 'อธิปัญญหาสิกขา',
-        description: 'การศึกษาเรื่องศีล\nอบรมปฏิบัติให้ถูกค้องดีงาม\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิปัญญาสิกขา',
+        description: 'การศึกษาเรื่องปัญญา\nอบรมตนให้เปิดปัญญาแจ่มแจ้ง\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิปัญญาสิกขา',
         pathImage: AppAsset.iconLotusWithText,
       ),
     );
