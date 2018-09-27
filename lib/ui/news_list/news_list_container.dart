@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:buddish_project/data/model/news.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/news/news_action.dart';
 import 'package:buddish_project/redux/ui/news_list_screen/news_list_screen_state.dart';
@@ -16,6 +17,8 @@ class NewsListContainer extends StatelessWidget {
       converter: NewsListViewModel.fromStore,
       onDispose: (Store<AppState> store) {},
       builder: (BuildContext context, NewsListViewModel viewModel) {
+        print(viewModel.user);
+
         return NewsListScreen(
           viewModel: viewModel,
         );
@@ -28,6 +31,7 @@ class NewsListViewModel {
   final List<News> news;
   final List<News> generalNews;
   final List<News> activityNews;
+  final User user;
 
   final NewsListScreenState state;
   final Function(RefreshIndicatorState refresherIndicatorState, Completer<Null> completer) onRefresh;
@@ -38,6 +42,7 @@ class NewsListViewModel {
     @required this.activityNews,
     @required this.state,
     @required this.onRefresh,
+    @required this.user,
   });
 
   static NewsListViewModel fromStore(Store<AppState> store) {
@@ -49,6 +54,7 @@ class NewsListViewModel {
       onRefresh: (RefreshIndicatorState refresherIndicatorState, Completer<Null> completer) {
         store.dispatch(FetchNews(completer: completer));
       },
+      user: store.state.user,
     );
   }
 }

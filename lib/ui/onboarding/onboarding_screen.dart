@@ -44,7 +44,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     slides.add(
       Slide(
         title: "ปัญญา",
-        subTitle: 'อธิปัญญหาสิกขา',
+        subTitle: 'อธิปัญญาสิกขา',
         description: 'การศึกษาเรื่องปัญญา\nอบรมตนให้เปิดปัญญาแจ่มแจ้ง\nเมื่อฝึกถึงจุดหนึ่ง\nจึงได้เรียกว่าเป็น อธิปัญญาสิกขา',
         pathImage: AppAsset.iconLotusWithText,
       ),

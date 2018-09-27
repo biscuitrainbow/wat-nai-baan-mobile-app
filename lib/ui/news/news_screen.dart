@@ -78,16 +78,18 @@ class _NewsScreenState extends State<NewsScreen> {
         elevation: 1.0,
         title: Text('ข่าวสาร', style: AppStyle.appbarTitle),
         iconTheme: IconThemeData(color: AppColors.primary),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.mode_edit),
-            onPressed: () => _showEditNews(widget.news),
-          ),
-          IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () => _delete(context),
-          ),
-        ],
+        actions: widget.viewModel.user.isAdmin
+            ? <Widget>[
+                IconButton(
+                  icon: Icon(Icons.mode_edit),
+                  onPressed: () => _showEditNews(widget.news),
+                ),
+                IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () => _delete(context),
+                ),
+              ]
+            : [],
       ),
       body: Column(
         children: <Widget>[

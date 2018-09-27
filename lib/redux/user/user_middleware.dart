@@ -1,8 +1,10 @@
+import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/data/repository/prefs_repository.dart';
 import 'package:buddish_project/data/repository/user_repository.dart';
 import 'package:buddish_project/redux/app/app_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
+import 'package:buddish_project/redux/notification/notification_action.dart';
 import 'package:buddish_project/redux/token/token_action.dart';
 import 'package:buddish_project/redux/ui/login_screen/login_screen_action.dart';
 import 'package:buddish_project/redux/ui/profile_screen/profile_screen_action.dart';
@@ -40,7 +42,7 @@ Middleware<AppState> _login(
         next(LoginSuccess(user));
         next(HideLoginLoading());
 
-        store.dispatch(Init());
+        store.dispatch(Init(action.context));
       } catch (error) {
         print(error);
         action.completer.completeError(error);
@@ -60,6 +62,8 @@ Middleware<AppState> _logout(
     if (action is Logout) {
       try {
         await sharedPrefRepository.deleteToken();
+
+        next(UnSubscribeTopic(Environment.notificationTopic));
         next(ClearAppState());
       } catch (error) {}
       next(action);

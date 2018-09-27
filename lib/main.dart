@@ -1,3 +1,4 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/redux/app/app_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
@@ -10,6 +11,7 @@ import 'package:buddish_project/ui/login/login_container.dart';
 import 'package:buddish_project/ui/login/login_screen.dart';
 import 'package:buddish_project/ui/main/main_container.dart';
 import 'package:buddish_project/ui/main/main_screen.dart';
+import 'package:buddish_project/ui/menu/menu_container.dart';
 import 'package:buddish_project/ui/menu/menu_screen.dart';
 import 'package:buddish_project/ui/news_compose/news_add_container.dart';
 import 'package:buddish_project/ui/news_compose/news_compose_screen.dart';
@@ -50,11 +52,15 @@ class MyApp extends StatefulWidget {
   }
 }
 
-class MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> with AfterLayoutMixin<MyApp> {
   @override
   void initState() {
-    widget.store.dispatch(Init());
     super.initState();
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    widget.store.dispatch(Init(context));
   }
 
   @override
@@ -71,7 +77,7 @@ class MyAppState extends State<MyApp> {
         home: SplashScreen(),
         routes: {
           MainScreen.route: (context) => MainContainer(),
-          MenuScreen.route: (context) => MenuScreen(),
+          MenuScreen.route: (context) => MenuContainer(),
           SermonVideoScreen.route: (context) => SermonVideoContainer(),
           LoginScreen.route: (context) => LoginContainer(),
           ProfileScreen.route: (context) => ProfileContainer(),

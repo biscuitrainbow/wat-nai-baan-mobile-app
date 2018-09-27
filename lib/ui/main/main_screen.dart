@@ -1,5 +1,6 @@
 import 'package:buddish_project/ui/login/login_container.dart';
 import 'package:buddish_project/ui/main/main_container.dart';
+import 'package:buddish_project/ui/menu/menu_container.dart';
 import 'package:buddish_project/ui/menu/menu_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.viewModel.token == null ? LoginContainer() : MenuScreen();
+    return widget.viewModel.token == null ? LoginContainer() : MenuContainer();
   }
 }

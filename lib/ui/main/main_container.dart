@@ -1,3 +1,4 @@
+import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/ui/main/main_screen.dart';

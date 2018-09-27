@@ -54,7 +54,7 @@ class LoginScreenViewModel {
             }
           });
 
-          store.dispatch(Login(email, password, completer));
+          store.dispatch(Login(email, password, completer, context));
         });
   }
 }

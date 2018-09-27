@@ -7,6 +7,7 @@ class User {
   final DateTime dateOfBirth;
   final String gender;
   final String token;
+  final bool isAdmin;
 
   User({
     this.id,
@@ -17,6 +18,7 @@ class User {
     this.tel,
     this.dateOfBirth,
     this.token,
+    this.isAdmin = false,
   });
 
   User copyWith({
@@ -26,6 +28,7 @@ class User {
     DateTime dateOfBirth,
     String gender,
     String token,
+    bool isAdmin,
   }) {
     return User(
       id: id ?? this.id,
@@ -36,11 +39,12 @@ class User {
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       gender: gender ?? this.gender,
       token: token ?? this.token,
+      isAdmin: isAdmin ?? this.isAdmin,
     );
   }
 
   @override
   String toString() {
-    return 'User{id: $id, email: $email, password: $password, name: $name, tel: $tel, dateOfBirth: $dateOfBirth, gender: $gender, token: $token}';
+    return 'User{email: $email, name: $name, isAdmin: $isAdmin}';
   }
 }

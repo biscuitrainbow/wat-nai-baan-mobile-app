@@ -15,7 +15,7 @@ List<Middleware<AppState>> createAppMiddleware(
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return [
-     TypedMiddleware<AppState, Init>(
+    TypedMiddleware<AppState, Init>(
       init(userRepository, notificationService, sharedPrefRepository),
     ),
   ];
@@ -36,8 +36,6 @@ Middleware<AppState> init(
           next(FetchUserDetail());
           next(FetchNews());
           next(FetchActivities());
-
-          notificationService.initPushNotification();
         }
       } catch (error) {}
 

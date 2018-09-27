@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/data/repository/news_repository.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/news/news_action.dart';
+import 'package:buddish_project/redux/notification/notification_action.dart';
 import 'package:buddish_project/redux/ui/news_compose_screen/news_compose_screen_action.dart';
 import 'package:buddish_project/redux/ui/news_list_screen/news_list_screen_action.dart';
 import 'package:buddish_project/redux/ui/news_screen/news_screen_action.dart';
@@ -40,9 +42,10 @@ Middleware<AppState> _addNews(
       try {
         final token = store.state.token;
         await newsRepository.addNews(token, action.news);
-        await notificationService.sendNewsPushNotification('แจ้งเตือนข่าวสาร', action.news.title);
 
         action.completer.complete(null);
+
+        next(BroadcastTopic('แจ้งเตือนข่าวสาร', action.news.title, Environment.notificationTopic));
         next(FetchNews());
       } catch (error) {
         print(error);

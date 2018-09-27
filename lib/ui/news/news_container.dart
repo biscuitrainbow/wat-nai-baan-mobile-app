@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:buddish_project/data/model/news.dart';
+import 'package:buddish_project/data/model/user.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/news/news_action.dart';
 import 'package:buddish_project/redux/ui/news_screen/news_screen_state.dart';
@@ -35,10 +36,12 @@ class NewsContainer extends StatelessWidget {
 class NewsViewModel {
   final NewsScreenState state;
   final Function(int, BuildContext context) onDelete;
+  final User user;
 
   NewsViewModel({
     this.state,
     this.onDelete,
+    this.user,
   });
 
   static NewsViewModel fromStore(Store<AppState> store) {
@@ -63,6 +66,7 @@ class NewsViewModel {
 
         store.dispatch(DeleteNews(newsId, completer));
       },
+      user: store.state.user,
     );
   }
 }

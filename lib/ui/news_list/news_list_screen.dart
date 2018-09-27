@@ -158,14 +158,16 @@ class _NewsListScreenState extends State<NewsListScreen> with AfterLayoutMixin<N
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
-      floatingActionButton: FloatingActionButton(
-        onPressed: _showNewsCompose,
-        elevation: 1.0,
-        child: Icon(
-          Icons.add,
-          color: AppColors.primary,
-        ),
-      ),
+      floatingActionButton: widget.viewModel.user.isAdmin
+          ? FloatingActionButton(
+              onPressed: _showNewsCompose,
+              elevation: 1.0,
+              child: Icon(
+                Icons.add,
+                color: AppColors.primary,
+              ),
+            )
+          : null,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
@@ -209,7 +211,13 @@ class NewsActivityItem extends StatelessWidget {
           Icons.pin_drop,
           color: Colors.black54,
         ),
-        Text(news.location, style: TextStyle(color: Colors.black54)),
+        Flexible(
+          child: Text(
+            news.location,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: Colors.black54),
+          ),
+        ),
       ],
     );
   }

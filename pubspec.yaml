@@ -32,9 +32,8 @@ dependencies:
   after_layout: ^1.0.4
   firebase_storage: ^1.0.2
   uuid: ^1.0.3
-  image: ^2.0.4
   flutter_svg: ^0.5.5+1
-  firebase_messaging: 1.0.5
+  firebase_messaging: 2.0.0
   dio: ^1.0.3
 
 

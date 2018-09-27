@@ -18,6 +18,7 @@ class UserParser {
       dateOfBirth: json[UserField.birthday] != null ? formatter.parse(json[UserField.birthday]) : null,
       gender: json[UserField.gender] ?? null,
       token: json[UserField.token] ?? null,
+      isAdmin: json[UserField.isAdmin],
     );
   }
 }
@@ -31,4 +32,5 @@ abstract class UserField {
   static final String birthday = 'date_of_birth';
   static final String gender = 'gender';
   static final String token = 'token';
+  static final String isAdmin = 'is_admin';
 }

@@ -49,7 +49,6 @@ class UserRepository {
     );
 
     final registeredUser = UserParser.parse(response.data);
-
     return registeredUser;
   }
 
