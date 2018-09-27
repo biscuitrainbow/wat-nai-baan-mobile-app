@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:buddish_project/.env.dart';
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/ui/news_list/news_list_screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -18,11 +19,11 @@ class NotificationService {
     _firebaseMessaging.subscribeToTopic(topic);
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
-        try {
-          Navigator.pushNamed(context, NewsListScreen.route);
-        } catch (e) {
-          print(e);
-        }
+        // try {
+        //   Navigator.pushNamed(context, NewsListScreen.route);
+        // } catch (e) {
+        //   print(e);
+        // }
       },
       onLaunch: (Map<String, dynamic> message) async {
         Navigator.of(context).pushNamed(NewsListScreen.route);
@@ -42,7 +43,7 @@ class NotificationService {
 
   Future<Null> sendNewsPushNotification(String title, String body) async {
     final payload = {
-      'to': '/topics/news',
+      'to': '/topics/${Environment.notificationTopic}',
       'priority': "high",
       'notification': {
         'body': body,

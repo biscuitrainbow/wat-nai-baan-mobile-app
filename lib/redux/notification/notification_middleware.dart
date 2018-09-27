@@ -35,7 +35,7 @@ Middleware<AppState> _broadcastTopic(
   return (Store store, action, NextDispatcher next) async {
     if (action is BroadcastTopic) {
       try {
-        notificationService.sendNewsPushNotification('title', 'body');
+        notificationService.sendNewsPushNotification(action.title, action.body);
       } catch (error) {
         print(error);
       }
