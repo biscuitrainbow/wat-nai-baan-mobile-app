@@ -2,6 +2,7 @@ import 'package:buddish_project/data/model/activity.dart';
 import 'package:buddish_project/data/model/mantra.dart';
 import 'package:buddish_project/data/model/news.dart';
 import 'package:buddish_project/data/model/user.dart';
+import 'package:buddish_project/redux/audio_player/audio_player_state.dart';
 import 'package:buddish_project/redux/ui/activity_list_screen/activity_list_screen_state.dart';
 import 'package:buddish_project/redux/ui/login_screen/login_screen_state.dart';
 import 'package:buddish_project/redux/ui/news_compose_screen/news_compose_screen_state.dart';
@@ -24,6 +25,8 @@ class AppState {
   final ActivityListScreenState activityListScreenState;
   final NewsScreenState newsScreenState;
 
+  final AudioPlayerState audioPlayerState;
+
   AppState({
     this.user,
     this.token,
@@ -37,6 +40,7 @@ class AppState {
     this.newsListScreenState,
     this.activityListScreenState,
     this.newsScreenState,
+    this.audioPlayerState,
   });
 
   factory AppState.initial() {
@@ -53,6 +57,7 @@ class AppState {
       newsListScreenState: NewsListScreenState.initial(),
       activityListScreenState: ActivityListScreenState.initial(),
       newsScreenState: NewsScreenState.initial(),
+      audioPlayerState: AudioPlayerState.initial(),
     );
   }
 
@@ -69,6 +74,7 @@ class AppState {
     NewsListScreenState newsListScreenState,
     ActivityListScreenState activityListScreenState,
     NewsComposeScreenState newsScreenState,
+    Duration duration,
   }) {
     return AppState(
       user: user ?? this.user,
@@ -83,6 +89,7 @@ class AppState {
       newsListScreenState: newsListScreenState ?? this.newsListScreenState,
       activityListScreenState: activityListScreenState ?? this.activityListScreenState,
       newsScreenState: newsScreenState ?? this.newsScreenState,
+      audioPlayerState: duration ?? this.audioPlayerState,
     );
   }
 

@@ -56,7 +56,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     Navigator.of(context).pushNamed(RubSeenScreen.route);
                   },
                   icon: FontAwesomeIcons.handHolding,
-                  title: 'อาราธนาศีล',
+                  title: 'อาราธนาศีล รับศีล',
                 ),
                 SizedBox(height: 16.0),
                 DrawerItem(

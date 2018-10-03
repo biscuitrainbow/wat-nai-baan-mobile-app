@@ -19,11 +19,12 @@ class AudioService {
     return localAssetFile;
   }
 
-  void play(String url) async {
+  Future<Stream<Duration>> play(String url) async {
     final dir = await getApplicationDocumentsDirectory();
     final localAssetFile = await copyLocalAsset(dir, AppAsset.audioBundle, url);
 
     audioPlugin.play(localAssetFile.path, isLocal: true);
+    return audioPlugin.onAudioPositionChanged;
   }
 
   void stop() {

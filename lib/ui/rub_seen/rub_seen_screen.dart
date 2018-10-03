@@ -31,7 +31,7 @@ class _RubSeenScreenState extends State<RubSeenScreen> {
     return AppBar(
       elevation: 1.0,
       title: Text(
-        'อาราธนาศีล',
+        'อาราธนาศีล รับศีล',
         style: AppStyle.appbarTitle,
       ),
       iconTheme: IconThemeData(color: AppColors.primary),

@@ -1,6 +1,7 @@
 import 'package:buddish_project/redux/activity/activity_reducer.dart';
 import 'package:buddish_project/redux/app/app_action.dart';
 import 'package:buddish_project/redux/app/app_state.dart';
+import 'package:buddish_project/redux/audio_player/audio_duration_reducers.dart';
 import 'package:buddish_project/redux/mantra/mantra_reducer.dart';
 import 'package:buddish_project/redux/news/news_reducer.dart';
 import 'package:buddish_project/redux/token/token_reducers.dart';
@@ -31,6 +32,7 @@ AppState appReducer(AppState state, action) {
     newsListScreenState: newsListReducers(state.newsListScreenState, action),
     activityListScreenState: activityListReducers(state.activityListScreenState, action),
     newsScreenState: newsScreenReducers(state.newsScreenState, action),
+    audioPlayerState: audioDurationReducers(state.audioPlayerState, action),
   );
 
   return appState;

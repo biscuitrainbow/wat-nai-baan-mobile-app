@@ -27,6 +27,9 @@ class AppAsset {
   static final String audio3 = '3.mp3';
   static final String audio4 = '4.mp3';
   static final String audio5 = '5.mp3';
+  static final String audio6 = '6.mp3';
+  static final String audio7 = '7.mp3';
+
 }
 
 class Dimension {

@@ -38,7 +38,7 @@ class Menu {
         ],
       ),
       Menu(
-        title: 'อาราธนาศีล',
+        title: 'อาราธนาศีล รับศีล',
         route: RubSeenScreen.route,
         icon: AppAsset.iconBuddha,
         primaryColor: Color(0xFFA23825),

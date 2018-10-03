@@ -12,6 +12,9 @@ class Video {
   static final String categoryWipassana = 'วิปัสสนา';
   static final String categoryKhammuang = 'เทศน์คำเมือง';
   static final String categoryRubSeen = 'รับศีล';
+  static final String categoryThamatee = 'พระธรรมธีรราชมหามุนี ';
+  static final String categoryPomMaYarn = 'พระราชพรหมยาน';
+  static final String categoryRachaPariyakorn = 'พระราชปริยัตยากร';
 
   static final List<String> category = [
     categoryThammaBanYai,
@@ -24,6 +27,9 @@ class Video {
     categoryJaran,
     categoryLanna,
     categoryPuthatart,
+    categoryThamatee,
+    categoryPomMaYarn,
+    categoryRachaPariyakorn,
     categoryPatebatTham,
   ];
 
@@ -83,10 +89,118 @@ class Video {
   static List<Video> generate() {
     return [
       Video(
-        id: "mwm7qRlUsk4",
-        title: "ใช้ชีวิต..สุขที่สุด",
-        thumbnailUrl: "https://i.ytimg.com/vi/mwm7qRlUsk4/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryKosajan],
+        id: "PlP2B89V9wQ",
+        title: "006 วิปัสสนาเบื้องต้น 1 พระธรรมธีรราชมหามุนี (โชดก ญาณสิทธิ ป.ธ.๙)",
+        thumbnailUrl: "https://i.ytimg.com/vi/PlP2B89V9wQ/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryThamatee],
+      ),
+      Video(
+        id: "1yIQMhMEJik",
+        title: "วิปัสสนาที่ถูกต้อง พระธรรมธีรราชมหามุนี (โชดก ญาณสิทธิ ป.ธ.๙) ",
+        thumbnailUrl: "https://i.ytimg.com/vi/1yIQMhMEJik/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryThamatee],
+      ),
+      Video(
+        id: "X9aYtjJUXIU",
+        title: "อนิสงส์ของการเจริญวิปัสสนากรรมฐาน ท่านเจ้าคุณโชดก ญาณสิทธิเถร",
+        thumbnailUrl: "https://i.ytimg.com/vi/X9aYtjJUXIU/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryThamatee],
+      ),
+      Video(
+        id: "MGODpCvmSLI",
+        title: "วิปัสสนาญาณ ๑๖ – ท่านเจ้าคุณโชดก",
+        thumbnailUrl: "https://i.ytimg.com/vi/MGODpCvmSLI/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryThamatee],
+      ),
+      Video(
+        id: "XVlcnpup3fo",
+        title: "การสร้างบารมีเป็นพระโสดาบัน หลวงพ่อฤาษีลิงดำ",
+        thumbnailUrl: "https://i.ytimg.com/vi/XVlcnpup3fo/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPomMaYarn],
+      ),
+      Video(
+        id: "J0ySbdExn3k",
+        title: "วิธีนั่งสามธิ เจริญภาวนา ให้ได้ผลดี",
+        thumbnailUrl: "https://i.ytimg.com/vi/J0ySbdExn3k/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPomMaYarn],
+      ),
+      Video(
+        id: "lECNEemjUwM",
+        title: "ลักษณะของบุคคลที่จะได้บรรลุธรรม ",
+        thumbnailUrl: "https://i.ytimg.com/vi/lECNEemjUwM/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPomMaYarn],
+      ),
+      Video(
+        id: "xuigMPjr7oM",
+        title: "ฟังธรรม หลวงพ่อฤาษีลิงดำ อานิสงส์ของการนึกถึงพระพุทธเจ้าบ่อยๆ",
+        thumbnailUrl: "https://i.ytimg.com/vi/xuigMPjr7oM/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPomMaYarn],
+      ),
+      Video(
+        id: "X2jHTkLkroM",
+        title: "ฟังธรรม หลวงพ่อฤาษีลิงดำ สอนพระกรรมฐาน พรหมวิหาร 4 เป็นมงคลแก่ชีวิต",
+        thumbnailUrl: "https://i.ytimg.com/vi/X2jHTkLkroM/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPomMaYarn],
+      ),
+      Video(
+        id: "6uqQ6HO55HY",
+        title: "การพัฒนาจิต - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท) ",
+        thumbnailUrl: "https://i.ytimg.com/vi/6uqQ6HO55HY/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "zt3asETW1W8",
+        title: "อานิสงส์ของการเจริญวิปัสสนา - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท) ",
+        thumbnailUrl: "https://i.ytimg.com/vi/zt3asETW1W8/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "1xe8YE36yrs",
+        title: "อริยทรัพย์ ๗ ประการ - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท) ",
+        thumbnailUrl: "https://i.ytimg.com/vi/1xe8YE36yrs/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "R-h4LjpWVhU",
+        title: "สิ่งขวางกั้นการปฏิบัติธรรม - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท)",
+        thumbnailUrl: "https://i.ytimg.com/vi/R-h4LjpWVhU/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "KAD8fRKLOq4",
+        title: "สติปัฏฐาน ๔ - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท)",
+        thumbnailUrl: "https://i.ytimg.com/vi/KAD8fRKLOq4/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "fvsLr_9g8uk",
+        title: "อินทรีย์ ๕ ประการ - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท) ",
+        thumbnailUrl: "https://i.ytimg.com/vi/fvsLr_9g8uk/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "lYd9kv-fDPw",
+        title: "อริยมรรคมีองค์ ๘ - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท) ",
+        thumbnailUrl: "https://i.ytimg.com/vi/lYd9kv-fDPw/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "Og75z2Id7sY",
+        title: "วิสุทธิ ๗ - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท)",
+        thumbnailUrl: "https://i.ytimg.com/vi/Og75z2Id7sY/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "q8ZnuNtD2L0",
+        title: "วิปัสสนาญาณ ๑๖ (โสฬสญาณ) - หลวงพ่อพระราชปริยัตยากร (บุญเรือง สารโท) ",
+        thumbnailUrl: "https://i.ytimg.com/vi/q8ZnuNtD2L0/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryRachaPariyakorn],
+      ),
+      Video(
+        id: "LJl41VosKJ0",
+        title: "เรื่อง หัวใจของพุทธศาสนา The Heart of Buddhism",
+        thumbnailUrl: "https://i.ytimg.com/vi/LJl41VosKJ0/sddefault.jpg",
+        categories: [categoryThammaBanYai, categoryPuthatart],
       ),
       Video(
         id: "GWo2OGXRkCA",
@@ -105,12 +219,6 @@ class Video {
         title: "สติพลกถา ว่าด้วยสติมาปัญญาเกิด",
         thumbnailUrl: "https://i.ytimg.com/vi/uB4S4NDPJvs/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryPromBandit],
-      ),
-      Video(
-        id: 'LSIvXvK2qWg',
-        title: "\"ประตูสู่ความสุข\" ธรรมบรรยาย โดย ท่าน ว.วชิรเมธี",
-        thumbnailUrl: "https://i.ytimg.com/vi/LSIvXvK2qWg/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
       ),
       Video(
         id: 'PWMG9ouNtX8',
@@ -136,24 +244,24 @@ class Video {
         thumbnailUrl: "https://i.ytimg.com/vi/2w63r5hTDn8/maxresdefault.jpg",
         categories: [categoryThammaBanYai, categoryWor],
       ),
-      Video(
-        id: '1_e6V34svhg',
-        title: "หลุมพรางของชีวิต โดย ท่าน ว.วชิรเมธี",
-        thumbnailUrl: "https://i.ytimg.com/vi/1_e6V34svhg/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
-      ),
-      Video(
-        id: 'MqLIXw5SRQg',
-        title: "หัวร้อนไป..ก็เผาใจตัวเอง โดย ท่าน ว.วชิรเมธี",
-        thumbnailUrl: "https://i.ytimg.com/vi/MqLIXw5SRQg/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
-      ),
-      Video(
-        id: '1-uy3Dyy9bA',
-        title: "\"คิดเป็น..ก็เห็นสุข\" โดย ท่าน ว.วชิรเมธี",
-        thumbnailUrl: "https://i.ytimg.com/vi/1-uy3Dyy9bA/hqdefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
-      ),
+//      Video(
+//        id: '1_e6V34svhg',
+//        title: "หลุมพรางของชีวิต โดย ท่าน ว.วชิรเมธี",
+//        thumbnailUrl: "https://i.ytimg.com/vi/1_e6V34svhg/sddefault.jpg",
+//        categories: [categoryThammaBanYai, categoryWor],
+//      ),
+//      Video(
+//        id: 'MqLIXw5SRQg',
+//        title: "หัวร้อนไป..ก็เผาใจตัวเอง โดย ท่าน ว.วชิรเมธี",
+//        thumbnailUrl: "https://i.ytimg.com/vi/MqLIXw5SRQg/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categoryWor],
+//      ),
+//      Video(
+//        id: '1-uy3Dyy9bA',
+//        title: "\"คิดเป็น..ก็เห็นสุข\" โดย ท่าน ว.วชิรเมธี",
+//        thumbnailUrl: "https://i.ytimg.com/vi/1-uy3Dyy9bA/hqdefault.jpg",
+//        categories: [categoryThammaBanYai, categoryWor],
+//      ),
       Video(
         id: 'fCtPnjO_r2g',
         title: "ธรรมบรรยาย ขอบคุณความทุกข์ โดย ท่าน ว.วชิรเมธี",
@@ -178,24 +286,24 @@ class Video {
         thumbnailUrl: "https://i.ytimg.com/vi/ofTFQo9NrMU/maxresdefault.jpg",
         categories: [categoryThammaBanYai, categoryWor],
       ),
-      Video(
-        id: 'ilNWrqqCUxA',
-        title: "ชีวิตที่พ้นไปจากทุกข์ โดย ท่าน ว.วชิรเมธี (ธรรมะวันวิสาขบูชา)",
-        thumbnailUrl: "https://i.ytimg.com/vi/ilNWrqqCUxA/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
-      ),
+//      Video(
+//        id: 'ilNWrqqCUxA',
+//        title: "ชีวิตที่พ้นไปจากทุกข์ โดย ท่าน ว.วชิรเมธี (ธรรมะวันวิสาขบูชา)",
+//        thumbnailUrl: "https://i.ytimg.com/vi/ilNWrqqCUxA/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categoryWor],
+//      ),
       Video(
         id: 'T1-jfAGyIXk',
         title: "เมตตาภาวนาเยียวยาทุกอย่าง โดย ท่าน ว.วชิรเมธี",
         thumbnailUrl: "https://i.ytimg.com/vi/T1-jfAGyIXk/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryWor],
       ),
-      Video(
-        id: 'arc6DmPEnoQ',
-        title: "ปล่อยลง ปลงเป็น เห็นสุข โดย ท่าน ว.วชิรเมธี",
-        thumbnailUrl: "https://i.ytimg.com/vi/arc6DmPEnoQ/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
-      ),
+//      Video(
+//        id: 'arc6DmPEnoQ',
+//        title: "ปล่อยลง ปลงเป็น เห็นสุข โดย ท่าน ว.วชิรเมธี",
+//        thumbnailUrl: "https://i.ytimg.com/vi/arc6DmPEnoQ/sddefault.jpg",
+//        categories: [categoryThammaBanYai, categoryWor],
+//      ),
       Video(
         id: 'CJMXj00x_gM',
         title: "หลักคิด ชีวิตดีมีสุข  โดย ท่าน ว.วชิรเมธี",
@@ -220,12 +328,12 @@ class Video {
         thumbnailUrl: "https://i.ytimg.com/vi/dERl6Bx7byE/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryWor],
       ),
-      Video(
-        id: '1AKKlMv1dmw',
-        title: "บอกชีวิตให้เข้าใจ โดย ท่าน ว.วชิรเมธี",
-        thumbnailUrl: "https://i.ytimg.com/vi/1AKKlMv1dmw/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categoryWor],
-      ),
+//      Video(
+//        id: '1AKKlMv1dmw',
+//        title: "บอกชีวิตให้เข้าใจ โดย ท่าน ว.วชิรเมธี",
+//        thumbnailUrl: "https://i.ytimg.com/vi/1AKKlMv1dmw/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categoryWor],
+//      ),
       Video(
         id: 'w_n-VZ9Rfaw',
         title: "ธรรมบรรยาย \"บันไดแห่งความสุข\" โดย ท่าน ว.วชิรเมธี",
@@ -238,66 +346,66 @@ class Video {
         thumbnailUrl: "https://i.ytimg.com/vi/qD3hiyMNtsU/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryWor],
       ),
-      Video(
-        id: 'SCp5AJUWsSY',
-        title: "ธรรมะก่อนนอน พระมหาสมปอง ท้อใจ ทำยังไง ให้หายทุกข์ ลองฟังธรรมะสิ คลายเครียด และได้ข้อคิดีดี",
-        thumbnailUrl: "https://i.ytimg.com/vi/SCp5AJUWsSY/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'MPR3FGc2DLI',
-        title: "ธรรมะก่อนนอน พระมหาสมปอง หลับสบาย คลายเครียด สนุกและได้ความรู้ธรรม",
-        thumbnailUrl: "https://i.ytimg.com/vi/MPR3FGc2DLI/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'ZG9GsORm9vs',
-        title: "ธรรมะก่อนนอน เครียดไปทำไม กับพระมหาสมปอง ฟังแล้วนอนหลับฝันดี",
-        thumbnailUrl: "https://i.ytimg.com/vi/ZG9GsORm9vs/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'sq-v_eUmD28',
-        title: "ธรรมะสอนใจ ฟังก่อนนอน กับ พระมหาสมปอง เฮฮาธรรม ก่อนนอน จิตเป็นนาย กายเป็นบ่าว ",
-        thumbnailUrl: "https://i.ytimg.com/vi/sq-v_eUmD28/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'VH1BClJvAFY',
-        title: "พระมหาสมปอง ความสุข อยู่หนใด ธรรมะดีดีฟังก่อนนอน",
-        thumbnailUrl: "https://i.ytimg.com/vi/VH1BClJvAFY/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'NfohkCWSxIY',
-        title: "ธรรมะก่อนนอน พระมหาสมปอง ดึงสติ ให้เกิดปัญญา ธรรมะเฮฮา ฟังแล้วดีมากๆ",
-        thumbnailUrl: "https://i.ytimg.com/vi/NfohkCWSxIY/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'WSM6-PenPaw',
-        title: "ธรรมะก่อนนอน พระมหาสมปอง ธรรมะโลกแตก ขำๆ ฟังก่อนนอน",
-        thumbnailUrl: "https://i.ytimg.com/vi/WSM6-PenPaw/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'UJVgoTz7Q3Y',
-        title: "ธรรมะก่อนนอน พระมหาสมปอง ความสุขอยู่ที่ตัวเราคิด ทุกสิ่งอยู่ที่ตัวเราทำ ธรรมะชุดนี้ สนุก และดีมาก",
-        thumbnailUrl: "https://i.ytimg.com/vi/UJVgoTz7Q3Y/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'ypn24D5h-Mg',
-        title: "ธรรมะก่อนนอน พระมหาสมปอง คนเราเกิดมา เพื่ออะไร ธรรมะดีดี สนุกๆ สุดฮา ชุดนี้ดีมากๆ",
-        thumbnailUrl: "https://i.ytimg.com/vi/ypn24D5h-Mg/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
-      Video(
-        id: 'wXe-dtIeISk',
-        title: "ธรรมะก่อนนอน พระมหาสมปอง ทำอย่างไรให้มีความสุข ธรรมะชุดนี้เฮฮาและดีมากๆ",
-        thumbnailUrl: "https://i.ytimg.com/vi/wXe-dtIeISk/maxresdefault.jpg",
-        categories: [categoryThammaBanYai, categorySomphong],
-      ),
+//      Video(
+//        id: 'SCp5AJUWsSY',
+//        title: "ธรรมะก่อนนอน พระมหาสมปอง ท้อใจ ทำยังไง ให้หายทุกข์ ลองฟังธรรมะสิ คลายเครียด และได้ข้อคิดีดี",
+//        thumbnailUrl: "https://i.ytimg.com/vi/SCp5AJUWsSY/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'MPR3FGc2DLI',
+//        title: "ธรรมะก่อนนอน พระมหาสมปอง หลับสบาย คลายเครียด สนุกและได้ความรู้ธรรม",
+//        thumbnailUrl: "https://i.ytimg.com/vi/MPR3FGc2DLI/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'ZG9GsORm9vs',
+//        title: "ธรรมะก่อนนอน เครียดไปทำไม กับพระมหาสมปอง ฟังแล้วนอนหลับฝันดี",
+//        thumbnailUrl: "https://i.ytimg.com/vi/ZG9GsORm9vs/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'sq-v_eUmD28',
+//        title: "ธรรมะสอนใจ ฟังก่อนนอน กับ พระมหาสมปอง เฮฮาธรรม ก่อนนอน จิตเป็นนาย กายเป็นบ่าว ",
+//        thumbnailUrl: "https://i.ytimg.com/vi/sq-v_eUmD28/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'VH1BClJvAFY',
+//        title: "พระมหาสมปอง ความสุข อยู่หนใด ธรรมะดีดีฟังก่อนนอน",
+//        thumbnailUrl: "https://i.ytimg.com/vi/VH1BClJvAFY/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'NfohkCWSxIY',
+//        title: "ธรรมะก่อนนอน พระมหาสมปอง ดึงสติ ให้เกิดปัญญา ธรรมะเฮฮา ฟังแล้วดีมากๆ",
+//        thumbnailUrl: "https://i.ytimg.com/vi/NfohkCWSxIY/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'WSM6-PenPaw',
+//        title: "ธรรมะก่อนนอน พระมหาสมปอง ธรรมะโลกแตก ขำๆ ฟังก่อนนอน",
+//        thumbnailUrl: "https://i.ytimg.com/vi/WSM6-PenPaw/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'UJVgoTz7Q3Y',
+//        title: "ธรรมะก่อนนอน พระมหาสมปอง ความสุขอยู่ที่ตัวเราคิด ทุกสิ่งอยู่ที่ตัวเราทำ ธรรมะชุดนี้ สนุก และดีมาก",
+//        thumbnailUrl: "https://i.ytimg.com/vi/UJVgoTz7Q3Y/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'ypn24D5h-Mg',
+//        title: "ธรรมะก่อนนอน พระมหาสมปอง คนเราเกิดมา เพื่ออะไร ธรรมะดีดี สนุกๆ สุดฮา ชุดนี้ดีมากๆ",
+//        thumbnailUrl: "https://i.ytimg.com/vi/ypn24D5h-Mg/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
+//      Video(
+//        id: 'wXe-dtIeISk',
+//        title: "ธรรมะก่อนนอน พระมหาสมปอง ทำอย่างไรให้มีความสุข ธรรมะชุดนี้เฮฮาและดีมากๆ",
+//        thumbnailUrl: "https://i.ytimg.com/vi/wXe-dtIeISk/maxresdefault.jpg",
+//        categories: [categoryThammaBanYai, categorySomphong],
+//      ),
       Video(
         id: 'ICOoO_t9Ydc',
         title: "ผู้สูงอายุควรอยู่อย่างไร ",
@@ -382,24 +490,24 @@ class Video {
         thumbnailUrl: "https://i.ytimg.com/vi/T_BV3haa7s8/maxresdefault.jpg",
         categories: [categoryThammaBanYai, categoryPanya],
       ),
-      Video(
-        id: 'xksvEY7U8nM',
-        title: "คาถาชนะมาร เรื่องเล่าหลวงพ่อจรัญกับพระภิกษุลึกลับ",
-        thumbnailUrl: "https://i.ytimg.com/vi/xksvEY7U8nM/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryJaran],
-      ),
+//      Video(
+//        id: 'xksvEY7U8nM',
+//        title: "คาถาชนะมาร เรื่องเล่าหลวงพ่อจรัญกับพระภิกษุลึกลับ",
+//        thumbnailUrl: "https://i.ytimg.com/vi/xksvEY7U8nM/sddefault.jpg",
+//        categories: [categoryThammaBanYai, categoryJaran],
+//      ),
       Video(
         id: '_AsdI0xIm4w',
         title: "หลวงพ่อจรัญ - ทำใจได้รวยมหาศาล",
         thumbnailUrl: "https://i.ytimg.com/vi/_AsdI0xIm4w/sddefault.jpg",
         categories: [categoryThammaBanYai, categoryJaran],
       ),
-      Video(
-        id: '0ujE2wkJ_iQ',
-        title: "เสียดายคนตายไม่ได้ฟัง คู่มือมนุษย์ท่านพุทธทาส ภิกขุ",
-        thumbnailUrl: "https://i.ytimg.com/vi/0ujE2wkJ_iQ/sddefault.jpg",
-        categories: [categoryThammaBanYai, categoryPuthatart],
-      ),
+//      Video(
+//        id: '0ujE2wkJ_iQ',
+//        title: "เสียดายคนตายไม่ได้ฟัง คู่มือมนุษย์ท่านพุทธทาส ภิกขุ",
+//        thumbnailUrl: "https://i.ytimg.com/vi/0ujE2wkJ_iQ/sddefault.jpg",
+//        categories: [categoryThammaBanYai, categoryPuthatart],
+//      ),
       Video(
         id: 'gYrJw0pdqkE',
         title: "เทศน์คำเมือง ล้านนา",
@@ -451,7 +559,7 @@ class Video {
       Video(
         id: "9YygEyLaIr8",
         title: "สาธิตวิธีเดินจงกรม ๑-๖ ระยะ",
-        thumbnailUrl: "https://i.ytimg.com/vi/9YygEyLaIr8/sddefault.jpg",
+        thumbnailUrl: "https://i.ytimg.com/vi/9YygEyLaIr8/default.jpg",
         categories: [categoryPatebatTham],
       ),
       Video(

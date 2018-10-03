@@ -20,4 +20,10 @@ class Stop {
   );
 }
 
+class Seek {
+  final double position;
+
+  Seek(this.position);
+}
+
 class ClearPlaying {}

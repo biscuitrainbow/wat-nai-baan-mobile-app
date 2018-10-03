@@ -1,8 +1,12 @@
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/survey.dart';
+import 'package:buddish_project/data/model/survey_question.dart';
+import 'package:buddish_project/redux/app/app_state.dart';
+import 'package:buddish_project/redux/survey/survey_action.dart';
 import 'package:buddish_project/ui/common/confirm_dialog.dart';
 import 'package:buddish_project/utils/string_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 class SurveyScreen extends StatefulWidget {
   static final String route = '/survey';
@@ -12,39 +16,40 @@ class SurveyScreen extends StatefulWidget {
 }
 
 class _SurveyScreenState extends State<SurveyScreen> {
-  final List<Survey> surveys = Survey.getSurveys();
+  final List<SurveyQestion> surveys = SurveyQestion.getSurveys();
   final PageController surveyController = PageController();
 
   int totalScore = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  double page;
+  bool finished;
 
   Widget _showAskResultDialog() {
     showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return ConfirmDialog(
-            title: 'ต้องการทำแบบสอบถามต่อหรือไม่',
-            description: 'ข้อมูลของคุณเพียงพอต่อการสรุปผลแล้ว',
-            confirmText: 'สรุปผล',
-            cancelText: 'ทำต่อ',
-            onCancel: () {
-              surveyController.nextPage(
-                duration: Duration(milliseconds: 400),
-                curve: Curves.easeOut,
-              );
-              Navigator.of(context).pop();
-            },
-            onConfirm: () {
-              surveyController.jumpToPage(28);
-              Navigator.of(context).pop();
-            },
-          );
-        });
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return ConfirmDialog(
+          title: 'ต้องการทำแบบสอบถามต่อหรือไม่',
+          description: 'ข้อมูลของคุณเพียงพอต่อการสรุปผลแล้ว',
+          confirmText: 'สรุปผล',
+          cancelText: 'ทำต่อ',
+          onCancel: () {
+            _next(totalScore);
+            Navigator.of(context).pop();
+          },
+          onConfirm: () {
+            surveyController.jumpToPage(28);
+            Navigator.of(context).pop();
+
+            _save();
+
+            setState(() {
+              finished = true;
+            });
+          },
+        );
+      },
+    );
   }
 
   void _next(int score) {
@@ -61,17 +66,48 @@ class _SurveyScreenState extends State<SurveyScreen> {
       duration: Duration(milliseconds: 400),
       curve: Curves.easeOut,
     );
+
+    setState(() {
+      page++;
+    });
+
+    if (surveyController.page == Survey.maxQuestion - 1) {
+      _save();
+
+      setState(() {
+        finished = true;
+      });
+    }
   }
 
-  bool isLast(int currentPage) {
-    return currentPage == surveys.length;
+  void _save() {
+    final resultDescription = totalScore >= 6 ? 'ผิดปกติ' : 'ปกติ';
+    final surveyResult = Survey(point: totalScore, result: resultDescription);
+
+    final store = StoreProvider.of<AppState>(context);
+    store.dispatch(CreateSurvey(surveyResult));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    page = 1.0;
+    finished = false;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    surveyController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     List<Widget> pages = surveys
         .map(
-          (Survey survey) => SurveyWidget(
+          (SurveyQestion survey) => SurveyWidget(
                 survey: survey,
                 onNext: _next,
                 isResult: false,
@@ -80,12 +116,36 @@ class _SurveyScreenState extends State<SurveyScreen> {
         )
         .toList();
 
-    pages.add(SurveyWidget(
-      survey: null,
-      onNext: _next,
-      isResult: true,
-      score: totalScore,
-    ));
+    pages.add(
+      SurveyWidget(
+        survey: null,
+        onNext: _next,
+        isResult: true,
+        score: totalScore,
+      ),
+    );
+
+    final pageCount = !finished
+        ? Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                '${page.toInt()}/${Survey.maxQuestion.toInt()}',
+                style: TextStyle(color: Colors.black54),
+              )
+            ],
+          )
+        : Container();
+
+    final surveyPages = Expanded(
+      flex: 19,
+      child: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        pageSnapping: true,
+        controller: surveyController,
+        children: pages,
+      ),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -96,11 +156,15 @@ class _SurveyScreenState extends State<SurveyScreen> {
         ),
         iconTheme: IconThemeData(color: AppColors.primary),
       ),
-      body: PageView(
-        physics: NeverScrollableScrollPhysics(),
-        pageSnapping: true,
-        controller: surveyController,
-        children: pages,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            pageCount,
+            SizedBox(height: 16.0),
+            surveyPages,
+          ],
+        ),
       ),
     );
   }
@@ -150,10 +214,6 @@ class ResultWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: Dimension.screenHorizonPadding,
-        vertical: Dimension.screenVerticalPadding,
-      ),
       child: Column(
         children: <Widget>[
           _buildHeader(),
@@ -173,7 +233,7 @@ class SurveyWidget extends StatefulWidget {
     @required this.score,
   });
 
-  final Survey survey;
+  final SurveyQestion survey;
   final Function(int) onNext;
   final bool isResult;
   final int score;
@@ -218,7 +278,7 @@ class SurveyWidgetState extends State<SurveyWidget> {
 
   Widget _buildQuestion(String question) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0),
       child: Center(
         child: Text(
           widget.survey.question,
@@ -261,7 +321,6 @@ class SurveyWidgetState extends State<SurveyWidget> {
       ..add(SizedBox(height: 20.0))
       ..add(
         MaterialButton(
-
           elevation: 0.2,
           padding: EdgeInsets.symmetric(vertical: 8.0),
           minWidth: MediaQuery.of(context).size.width * 0.4,
@@ -277,9 +336,9 @@ class SurveyWidgetState extends State<SurveyWidget> {
     return GestureDetector(
       child: Container(
         padding: EdgeInsets.symmetric(
-          horizontal: Dimension.screenHorizonPadding,
-          vertical: Dimension.screenVerticalPadding,
-        ),
+//          horizontal: Dimension.screenHorizonPadding,
+//          vertical: Dimension.screenVerticalPadding,
+            ),
         child: Column(children: children),
       ),
     );
