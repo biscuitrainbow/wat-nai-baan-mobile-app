@@ -76,31 +76,41 @@ class ActivityItem extends StatelessWidget {
   }
 
   Widget _buildDetail(BuildContext context) {
-    final actions = IconButton(
-      icon: Icon(Icons.more_vert),
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) => _buildActionDialog(activity),
-        );
-      },
+    final actions = Expanded(
+      flex: 1,
+      child: IconButton(
+        icon: Icon(Icons.more_vert),
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) => _buildActionDialog(activity),
+          );
+        },
+      ),
     );
 
-    final detail = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          toThaiDate(activity.datetime),
-          style: TextStyle(color: Colors.black54),
-        ),
-        Text(
-          activity.title,
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: AppColors.primary),
-        ),
-        Row(
-          children: activity.tags.map((String tag) => _buildCategories(tag)).toList(),
-        )
-      ],
+    final detail = Expanded(
+      flex: 9,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            toThaiDate(activity.datetime),
+            style: TextStyle(color: Colors.black54),
+          ),
+          Text(
+            activity.title,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: AppColors.primary),
+          ),
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: activity.tags.map((String tag) => _buildCategories(tag)).toList(),
+            ),
+          )
+        ],
+      ),
     );
 
     return Expanded(
@@ -134,7 +144,7 @@ class ActivityItem extends StatelessWidget {
           ),
         ],
       ),
-      height: 110.0,
+      height: 140.0,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
