@@ -57,10 +57,10 @@ class _SurveyScreenState extends State<SurveyScreen> {
       totalScore += score;
     });
 
-    if (totalScore == 6) {
-      _showAskResultDialog();
-      return;
-    }
+//    if (totalScore == 6) {
+//      _showAskResultDialog();
+//      return;
+//    }
 
     surveyController.nextPage(
       duration: Duration(milliseconds: 400),
