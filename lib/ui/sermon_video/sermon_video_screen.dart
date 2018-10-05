@@ -22,7 +22,6 @@ class SermonVideoScreen extends StatefulWidget {
 }
 
 class _SermonVideoScreenState extends State<SermonVideoScreen> {
-  List<String> selectedCategories = [];
   String selectedCategory = null;
 
   List<Video> _getFilterVideos() {
@@ -70,9 +69,6 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
               backgroundColor: Colors.white,
               activeTextColor: Colors.white,
               activeBackgroundColor: AppColors.primary,
-//              onItemsSelected: (selected) {
-//                setState(() => selectedCategories = selected);
-//              },
               onItemSelected: (String selectedItem) {
                 setState(() {
                   selectedCategory = selectedItem;

@@ -30,8 +30,8 @@ android {
         applicationId "buddish.camt.cmu.ac.th.buddishproject"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 9
-        versionName "1.9"
+        versionCode 10
+        versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
