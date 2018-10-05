@@ -23,13 +23,14 @@ class SermonVideoScreen extends StatefulWidget {
 
 class _SermonVideoScreenState extends State<SermonVideoScreen> {
   List<String> selectedCategories = [];
+  String selectedCategory = null;
 
   List<Video> _getFilterVideos() {
-    if (selectedCategories.isEmpty) {
+    if (selectedCategory == null) {
       return widget.viewModel.state.videos;
     }
 
-    return widget.viewModel.state.videos.where((Video video) => video.isInCategories(selectedCategories)).toList();
+    return widget.viewModel.state.videos.where((Video video) => video.categories.contains(selectedCategory)).toList();
   }
 
   Widget _buildAppBar() {
@@ -63,14 +64,19 @@ class _SermonVideoScreenState extends State<SermonVideoScreen> {
               ),
             ),
             SizedBox(width: Dimension.screenHorizonPadding),
-            FilterBar(
+            FilterBar.singleSelection(
               items: Video.category.map((String category) => FilterItem(title: category)).toList(),
               textColor: Colors.black,
               backgroundColor: Colors.white,
               activeTextColor: Colors.white,
               activeBackgroundColor: AppColors.primary,
-              onItemsSelected: (selected) {
-                setState(() => selectedCategories = selected);
+//              onItemsSelected: (selected) {
+//                setState(() => selectedCategories = selected);
+//              },
+              onItemSelected: (String selectedItem) {
+                setState(() {
+                  selectedCategory = selectedItem;
+                });
               },
             ),
           ],

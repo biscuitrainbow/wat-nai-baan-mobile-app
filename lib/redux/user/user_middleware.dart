@@ -44,7 +44,6 @@ Middleware<AppState> _login(
 
         store.dispatch(Init(action.context));
       } catch (error) {
-        print(error);
         action.completer.completeError(error);
         next(HideLoginLoading());
       }

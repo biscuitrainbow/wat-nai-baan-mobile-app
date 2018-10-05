@@ -14,7 +14,7 @@ Widget buildAppBar({@required String title, List<Widget> actions = const []}) {
 void showToast(String message) {
   Fluttertoast.showToast(
     msg: message,
-    toastLength: Toast.LENGTH_LONG,
+    toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIos: 3,
     bgcolor: "#000000",

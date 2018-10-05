@@ -6,6 +6,7 @@ import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/ui/login_screen/login_screen_state.dart';
 import 'package:buddish_project/redux/user/user_action.dart';
 import 'package:buddish_project/ui/login/login_screen.dart';
+import 'package:buddish_project/utils/widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -46,10 +47,10 @@ class LoginScreenViewModel {
           completer.future.catchError((error) {
             switch (error.runtimeType) {
               case UnauthorizedException:
-                _showToast(error.error, context);
+                showToast('เข้าสู่ระบบล้มเหลว อีเมลล์หรือรหัสผ่านไม่ถูกต้อง');
                 break;
               case FormatException:
-                _showToast('เกิดข้อผิดพลาด', context);
+                showToast('เกิดข้อผิดพลาด');
                 break;
             }
           });

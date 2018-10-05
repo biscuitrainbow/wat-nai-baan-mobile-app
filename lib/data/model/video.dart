@@ -19,10 +19,10 @@ class Video {
   static final List<String> category = [
     categoryThammaBanYai,
     categoryKhammuang,
-    categoryKosajan,
+//    categoryKosajan,
     categoryPromBandit,
     categoryWor,
-    categorySomphong,
+//    categorySomphong,
     categoryPanya,
     categoryJaran,
     categoryLanna,
