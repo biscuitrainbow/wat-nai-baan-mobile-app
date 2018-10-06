@@ -63,6 +63,13 @@ class _UserFormState extends State<UserForm> {
           onChanged: (String value) {
             widget.onGenderChanged(value);
           },
+        ),
+        RadioItem(
+          value: 'ไม่ระบุ',
+          groupValue: widget.gender,
+          onChanged: (String value) {
+            widget.onGenderChanged(value);
+          },
         )
       ],
     );
