@@ -47,7 +47,7 @@ dependency_overrides:
     uuid: ^1.0.3
 
 flutter_icons:
-  image_path: "asset/icon/icon.png"
+  image_path: "asset/icon/icon_ios.png"
   android: true 
   ios: true
 
