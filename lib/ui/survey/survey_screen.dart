@@ -219,6 +219,19 @@ class ResultWidget extends StatelessWidget {
           _buildHeader(),
           _buildResultItem('คุณมีสุขภาพจิตปกติ', score < 6),
           _buildResultItem('คุณมีสุขภาพจิตผิดปกติ ', score >= 6),
+          SizedBox(height: 64.0),
+          MaterialButton(
+            elevation: 0.2,
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            minWidth: MediaQuery.of(context).size.width,
+            child: Text(
+              'เสร็จสิ้น',
+              style: TextStyle(fontSize: 22.0, color: AppColors.primary, fontWeight: FontWeight.w600),
+            ),
+            color: AppColors.secondary,
+            onPressed: () => Navigator.of(context).pop(),
+            //  onPressed : selectedAnswer.isNotEmpty ? _next : null,
+          ),
         ],
       ),
     );
