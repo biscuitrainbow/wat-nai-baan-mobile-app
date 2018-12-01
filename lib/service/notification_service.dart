@@ -92,10 +92,10 @@ class NotificationService {
       'notification': {
         'body': body,
         'title': title,
-        'topic': Environment.notificationTopicNews,
       },
       "data": {
         "click_action": "FLUTTER_NOTIFICATION_CLICK",
+        'topic': Environment.notificationTopicNews,
       }
     };
 
