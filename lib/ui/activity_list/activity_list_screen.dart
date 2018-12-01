@@ -54,7 +54,7 @@ class _ActivityListScreenState extends State<ActivityListScreen> {
     );
 
     final scoreCard = Container(
-      height: 120.0,
+      height: 135.0,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),

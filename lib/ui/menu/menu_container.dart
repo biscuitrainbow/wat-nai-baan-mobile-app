@@ -10,7 +10,7 @@ class MenuContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
-      onInit: (Store store) => store.dispatch(SubscribeTopic(Environment.notificationTopic, context)),
+      onInit: (Store store) => store.dispatch(SubscribeTopic(Environment.notificationTopicNews, context)),
       converter: MenuScreenViewModel.fromStore,
       builder: (BuildContext context, MenuScreenViewModel viewModel) {
         return MenuScreen();

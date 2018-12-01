@@ -292,7 +292,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
                         onPressed: onDonePress,
                         child: Text(
                           nameDoneBtn ?? "DONE",
-                          style:TextStyle(color: Colors.white,fontFamily: 'Kanit'),
+                          style: TextStyle(color: Colors.white, fontFamily: 'Kanit'),
                         ),
                         color: colorDoneBtn != null ? Color(colorDoneBtn) : Colors.transparent,
                         highlightColor: highlightColorDoneBtn != null ? Color(highlightColorDoneBtn) : Colors.white.withOpacity(0.3),
@@ -314,7 +314,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
                         },
                         child: Text(
                           nameNextBtn ?? "NEXT",
-                          style:TextStyle(color: Colors.white,fontFamily: 'Kanit'),
+                          style: TextStyle(color: Colors.white, fontFamily: 'Kanit'),
                         ),
                         color: colorDoneBtn != null ? Color(colorDoneBtn) : Colors.transparent,
                         highlightColor: highlightColorDoneBtn != null ? Color(highlightColorDoneBtn) : Colors.white.withOpacity(0.3),
@@ -376,7 +376,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
 
   Widget renderTab(Slide slide) {
     return Container(
-      padding: EdgeInsets.only(top: 48.0, bottom: 64.0),
+      padding: EdgeInsets.only(top: 18.0, bottom: 64.0),
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
@@ -391,8 +391,7 @@ class IntroSliderState extends State<IntroSlider> with SingleTickerProviderState
           ],
         ),
       ),
-      child: Column(
-//        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: ListView(
         children: <Widget>[
           _buildLogo(slide.pathImage),
           _buildHeader(slide.title, slide.subTitle),

@@ -45,7 +45,7 @@ Middleware<AppState> _addNews(
 
         action.completer.complete(null);
 
-        next(BroadcastTopic('แจ้งเตือนข่าวสาร', action.news.title, Environment.notificationTopic));
+        next(BroadcastTopic('แจ้งเตือนข่าวสาร', action.news.title, Environment.notificationTopicNews));
         next(FetchNews());
       } catch (error) {
         print(error);

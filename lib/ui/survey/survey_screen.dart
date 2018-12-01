@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:buddish_project/constants.dart';
 import 'package:buddish_project/data/model/survey.dart';
 import 'package:buddish_project/data/model/survey_question.dart';
@@ -5,6 +7,7 @@ import 'package:buddish_project/redux/app/app_state.dart';
 import 'package:buddish_project/redux/survey/survey_action.dart';
 import 'package:buddish_project/ui/common/confirm_dialog.dart';
 import 'package:buddish_project/utils/string_util.dart';
+import 'package:buddish_project/utils/widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -84,8 +87,20 @@ class _SurveyScreenState extends State<SurveyScreen> {
     final resultDescription = totalScore >= 6 ? 'ผิดปกติ' : 'ปกติ';
     final surveyResult = Survey(point: totalScore, result: resultDescription);
 
+    // showDialog(context: context, builder: (BuildContext context) => LoadingDialog(title: 'กำลังบันทึกผล'));
+
+    Completer<Null> completer = Completer();
+    completer.future.then((_) {
+      showToast("บันทึกแบบสอบถามแล้ว");
+//      Navigator.of(context).pop();
+//      Navigator.of(context).pop();
+    }).catchError((error) {
+      //   Navigator.of(context).pop();
+      showToast("บันทึกแบบสอบถามไม่สำเร็จลองอีกครั้ง");
+    });
+
     final store = StoreProvider.of<AppState>(context);
-    store.dispatch(CreateSurvey(surveyResult));
+    store.dispatch(CreateSurvey(surveyResult, completer));
   }
 
   @override
@@ -195,12 +210,14 @@ class ResultWidget extends StatelessWidget {
 
   Widget _buildHeader() {
     return Container(
-      height: 80.0,
+//      height: 80.0,
       margin: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       color: Color(0xFF84C554),
       child: Center(
         child: Text(
           'ระดับสุขภาพจิตของท่าน',
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: Color(0xFF1c602a),
             fontSize: 28.0,

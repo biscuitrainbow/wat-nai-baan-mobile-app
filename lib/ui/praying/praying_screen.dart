@@ -118,10 +118,11 @@ class MantraPlayer extends StatelessWidget {
             onPressed: onPressed,
           ),
         ),
+        SizedBox(width: 12.0),
         Expanded(
           child: Text(
             title,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
             style: TextStyle(color: titleColor, fontSize: fontSize, fontWeight: FontWeight.w600),
           ),
         ),

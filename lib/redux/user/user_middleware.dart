@@ -62,7 +62,7 @@ Middleware<AppState> _logout(
       try {
         await sharedPrefRepository.deleteToken();
 
-        next(UnSubscribeTopic(Environment.notificationTopic));
+        next(UnSubscribeTopic(Environment.notificationTopicNews));
         next(ClearAppState());
       } catch (error) {}
       next(action);

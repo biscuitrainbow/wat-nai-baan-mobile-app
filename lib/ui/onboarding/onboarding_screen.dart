@@ -12,6 +12,18 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   List<Slide> slides = [];
 
+  Widget _buildAppBar() {
+    return AppBar(
+      backgroundColor: Color(0xFFF6EB31),
+      elevation: 0.0,
+      title: Text(
+        'ไตรสิกขา',
+        style: AppStyle.appbarTitle,
+      ),
+      iconTheme: IconThemeData(color: AppColors.primary),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -53,17 +65,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return IntroSlider(
-      slides: slides,
-      nameNextBtn: 'ต่อไป',
-      nameSkipBtn: 'ข้าม',
-      nameDoneBtn: 'เสร็จสิ้น',
-      onSkipPress: () {
-        Navigator.of(context).pop();
-      },
-      onDonePress: () {
-        Navigator.of(context).pop();
-      },
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: IntroSlider(
+        slides: slides,
+        nameNextBtn: 'ต่อไป',
+        nameSkipBtn: 'ข้าม',
+        nameDoneBtn: 'เสร็จสิ้น',
+        onSkipPress: () {
+          Navigator.of(context).pop();
+        },
+        onDonePress: () {
+          Navigator.of(context).pop();
+        },
+      ),
     );
   }
 }

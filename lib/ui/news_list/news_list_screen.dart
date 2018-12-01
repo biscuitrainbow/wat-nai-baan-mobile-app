@@ -225,13 +225,9 @@ class NewsActivityItem extends StatelessWidget {
   Widget _buildThumbnail() {
     return Flexible(
       flex: 2,
-      child: Container(
-        height: 300.0,
-        width: 500.0,
-        child: CachedNetworkImage(
-          fit: BoxFit.cover,
-          imageUrl: news.cover ?? 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png',
-        ),
+      child: CachedNetworkImage(
+        fit: BoxFit.cover,
+        imageUrl: news.cover ?? 'https://increasify.com.au/wp-content/uploads/2016/08/default-image.png',
       ),
     );
   }
@@ -257,16 +253,14 @@ class NewsActivityItem extends StatelessWidget {
     return Flexible(
       flex: 3,
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: AppStyle.boxShadow,
-        ),
+        decoration: BoxDecoration(color: Colors.white, boxShadow: AppStyle.boxShadow),
         padding: EdgeInsets.all(Dimension.screenVerticalPadding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             content,
+            SizedBox(height: 4.0),
             location,
           ],
         ),
@@ -280,7 +274,7 @@ class NewsActivityItem extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         color: Colors.grey.shade200,
-        height: 150.0,
+//        height: 150.0,
         margin: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
         child: Row(
           children: <Widget>[

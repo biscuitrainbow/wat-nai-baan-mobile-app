@@ -255,10 +255,23 @@ class MenuItem extends StatelessWidget {
   }
 
   Widget _buildTitle() {
-    return Text(
-      menu.title,
-      textAlign: TextAlign.start,
-      style: TextStyle(color: menu.primaryColor, fontSize: fontSize, fontWeight: FontWeight.w600),
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Center(
+              child: Text(
+                menu.title,
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: menu.primaryColor, fontSize: fontSize, fontWeight: FontWeight.w600),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -287,11 +300,9 @@ class MenuItem extends StatelessWidget {
             ),
           ],
         ),
+        height: 120.0,
         margin: EdgeInsets.only(bottom: Dimension.fieldVerticalMargin),
-        height: 100.0,
-        width: double.infinity,
         child: Stack(
-          overflow: Overflow.clip,
           alignment: Alignment.centerRight,
           children: <Widget>[
             _buildBackgroundIcon(),

@@ -3,5 +3,6 @@ class Environment {
 
   static final String apiUrl = 'http://rootanya.com/watnaibaan/api';
   static final String youtubeApiUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50';
-  static final String notificationTopic = 'news';
+  static final String notificationTopicNews = 'news';
+  static final String notificationTopicSurvey = 'survey';
 }
